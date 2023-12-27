@@ -8,3 +8,45 @@
     bg-fixed
   }
 }
+
+
+.title{
+  font-family: 'Afacad', sans-serif;
+}
+
+
+.grupo1{
+  @apply
+  col-span-1  
+  bg-white 
+  flex 
+  gap-12 
+  rounded-full 
+  h-32 w-32 
+  place-items-center 
+  md:h-48
+  md:w-48 
+  object-contain 
+  md:hover:w-4/12 
+  transition-all 
+  delay-75 ease-in 
+  duration-200
+}
+
+.grupo2{
+  @apply
+  col-span-2  
+  bg-white 
+  flex 
+  gap-12 
+  rounded-full 
+  h-32 w-32 
+  place-items-center 
+  md:h-48
+  md:w-48 
+  object-contain 
+  md:hover:w-4/12 
+  transition-all 
+  delay-75 ease-in 
+  duration-200
+}
