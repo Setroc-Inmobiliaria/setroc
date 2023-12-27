@@ -7,9 +7,9 @@ export const Layout = ({children}) => {
       <Header/>
         <main>{children}</main>
         <footer className="flex w-full justify-center items-center h-28">
-          © {new Date().getFullYear()} &middot;
+          © {new Date().getFullYear()} 
           {` `}
-          <a>SETROC Inmobiliaria</a>
+          <a>. SETROC Inmobiliaria</a>
         </footer>
       </div>
     </>

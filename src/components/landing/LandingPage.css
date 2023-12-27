@@ -1,0 +1,10 @@
+@tailwind components;
+@layer components {
+  .bg-image {
+    @apply 
+    bg-[url('../../assets/4k/pais.jpg')]
+    bg-cover
+    bg-center
+    bg-fixed
+  }
+}
