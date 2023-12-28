@@ -9,9 +9,9 @@ import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 export const LandingPage = () => {
   return (
-    <div className="bg-image h-screen w-full flex flex-col justify-center items-center">
+    <div className="bg-image h-auto w-full flex flex-col justify-center items-center">
       <div className=" bg-orange-200 h-full w-full bg-opacity-30 flex flex-col justify-center items-center gap-6 p-10">
-        <div className="grid grid-cols-2 md:flex flex-row md:justify-evenly place-items-center gap-12 items-center w-full md:relative md:bottom-32">
+        <div className="grid grid-cols-2 md:flex flex-row md:justify-evenly place-items-center gap-12 items-center w-full ">
           <img src={konstr} alt="cobague" className="grupo1" />
           <img src={cobague} alt="cobague" className="grupo1" />
           <img src={setroc} alt="cobague" className="grupo2" />
