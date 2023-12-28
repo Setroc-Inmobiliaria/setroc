@@ -108,7 +108,7 @@ export const Privacidad = ({ handleClose, open }) => {
         <span>Le informamos que sus datos personales no son compartidos ni dentro ni fuera del 
 país. Nosotros SETROC GRUPO KONSTRUCTOR es el único que tiene acceso a sus 
 datos personales, que también se puede hacer alusión con el nombre comercial 
-SETROC INMBILIARIO.</span><br/><br/>
+SETROC INMOBILIARIO.</span><br/><br/>
 
 <strong>Derechos ARCO para el usuario.</strong><br/><br/>
 <span>Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los 
