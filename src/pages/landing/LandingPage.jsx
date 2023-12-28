@@ -5,8 +5,6 @@ import setroc from "../../assets/SETROC.png";
 import "./LandingPage.css";
 import SelectComponent from "../../components/styledComponents/select/SelectComponent";
 import { Button } from "@mui/material";
-import "react-whatsapp-widget/dist/index.css";
-import { WhatsAppWidget } from "react-whatsapp-widget";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 export const LandingPage = () => {
