@@ -5,27 +5,18 @@ import setroc from "../../assets/SETROC.png";
 import "./LandingPage.css";
 import SelectComponent from "../../components/styledComponents/select/SelectComponent";
 import { Button } from "@mui/material";
+import "react-whatsapp-widget/dist/index.css";
+import { WhatsAppWidget } from "react-whatsapp-widget";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 export const LandingPage = () => {
   return (
-    <div className="bg-image h-screen flex flex-col justify-center items-center">
+    <div className="bg-image h-screen w-full flex flex-col justify-center items-center">
       <div className=" bg-orange-200 h-full w-full bg-opacity-30 flex flex-col justify-center items-center gap-6 p-10">
         <div className="grid grid-cols-2 md:flex flex-row md:justify-evenly place-items-center gap-12 items-center w-full md:relative md:bottom-32">
-          <img
-            src={konstr}
-            alt="cobague"
-            className="grupo1"
-          />
-          <img
-            src={cobague}
-            alt="cobague"
-            className="grupo1"
-          />
-          <img
-            src={setroc}
-            alt="cobague"
-            className="grupo2"
-          />
+          <img src={konstr} alt="cobague" className="grupo1" />
+          <img src={cobague} alt="cobague" className="grupo1" />
+          <img src={setroc} alt="cobague" className="grupo2" />
         </div>
         <h1 className="title text-7xl text-center md:text-9xl">
           El terreno a tu medida
@@ -63,6 +54,18 @@ export const LandingPage = () => {
             Buscar
           </Button>
         </div>
+      </div>
+      <div>
+        <FloatingWhatsApp
+          phoneNumber="525577137642"
+          accountName="SETROC Inmobiliaria"
+          avatar={setroc}
+          allowClickAway={true}
+          chatMessage="¡Hola! ¿En qué puedo ayudarte?"
+          notification={true}
+          statusMessage="Online"
+          // darkMode={true}
+        />
       </div>
     </div>
   );
