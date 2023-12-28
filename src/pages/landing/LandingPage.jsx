@@ -3,7 +3,7 @@ import cobague from "../../assets/cobague.png";
 import konstr from "../../assets/konstructor.png";
 import setroc from "../../assets/SETROC.png";
 import "./LandingPage.css";
-import SelectComponent from "../styledComponents/select/SelectComponent";
+import SelectComponent from "../../components/styledComponents/select/SelectComponent";
 import { Button } from "@mui/material";
 
 export const LandingPage = () => {
@@ -30,7 +30,7 @@ export const LandingPage = () => {
         <h1 className="title text-7xl text-center md:text-9xl">
           El terreno a tu medida
         </h1>
-        <div className="w-full md:w-8/12 flex flex-col md:flex-row gap-5 bg-smoke p-4 rounded-lg drop-shadow-2xl">
+        <div className="bg-white w-full md:w-8/12 flex flex-col md:flex-row gap-5 bg-smoke p-4 rounded-lg drop-shadow-2xl">
           <SelectComponent
             items={[
               "San Andres, Cuauhtempan",
