@@ -92,7 +92,7 @@ export const Privacidad = ({ handleClose, open }) => {
         <span>
           En caso de que no desee que sus datos personales sean tratados para
           estos fines adicionales, usted puede presentar un correo electrónico a
-          la dirección <strong>setroc-central@hotmail.com</strong> manifestando
+          la dirección <strong>servicioalcliente@setrocinmobiliario.com</strong> manifestando
           lo anterior.
         </span>
         <br />
@@ -154,7 +154,7 @@ de la PROFECO, o bien ponerse en contacto directo con ésta.
 A fin de que sus datos personales no sean tratados para fines mercadotécnicos, 
 publicitarios o de prospección comercial por nuestra parte. Para mayor información 
 llamar al número telefónico 5552039848 o bien enviar un correo electrónico a la 
-siguiente dirección <strong>setroc-central@hotmail.com</strong><br/><br/>
+siguiente dirección <strong>servicioalcliente@setrocinmobiliario.com</strong><br/><br/>
 
 El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones 
 derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los 
