@@ -98,41 +98,6 @@ export const Header = () => {
                 <li>Contactanos</li>
               </Link>
             </div>
-
-            <div className="flex flex-row w-full justify-evenly relative top-16">
-              <li>
-                <a
-                  href="https://www.facebook.com/setroc.inmobiliario?mibextid=ZbWKwL"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FaFacebookF size={45} color="#3b5998" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.tiktok.com/@setroc.inmobiliario?_t=8i6w7rOUpV7&_r=1"
-                  target="_blank"
-                  rel="noreferrer"
-
-                >
-                  <FaTiktok size={45} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/setroc.inmobiliaria?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
-                  target="_blank"
-                  rel="noreferrer"
-
-                >
-                  <FaInstagram size={45} />
-                </a>
-              </li>
-              <li>
-                <FaYoutube color="#CD201F" size={45} />
-              </li>
-            </div>
           </ul>
         </div>
       </div>

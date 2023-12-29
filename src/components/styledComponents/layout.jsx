@@ -1,26 +1,32 @@
 import { Header } from "./header";
-import { FaRegBuilding } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaRegBuilding,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
 import { Privacidad } from "./privacidad/Privacidad";
 import { useState } from "react";
 
 export const Layout = ({ children }) => {
-
   const [open, setOpen] = useState(false);
 
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
       <div>
         <Header />
+
         <main>{children}</main>
-        <footer className="flex flex-col md:flex-row w-full justify-evenly items-center py-12 gap-10 bg-p5">
+        <footer className="flex flex-col-reverse md:flex-row w-full justify-evenly items-center py-12 gap-16 bg-p5 shadow-p2">
           <div className="font-afacad flex flex-col gap-5">
             <h2>Contactanos</h2>
             <span className="flex flex-row justify-center items-center gap-2 md:text-xl">
@@ -29,15 +35,44 @@ export const Layout = ({ children }) => {
               Miguel Hidalgo, 11590, CDMX
             </span>
           </div>
-          <div className="font-afacad flex flex-col">
+          <div className="font-afacad flex flex-col text-center md:text-start">
             <h3> © {new Date().getFullYear()} . SETROC Inmobiliaria</h3>
-            <h3 onClick={handleClickOpen} className="cursor-pointer">Aviso de privacidad</h3>
+            <h3 onClick={handleClickOpen} className="cursor-pointer">
+              Aviso de privacidad
+            </h3>
             <h3>Terminos y Condiciones</h3>
           </div>
-           <Privacidad
-            handleClose={handleClose}
-            open={open}
-           />
+
+          <div>
+          <div className="flex flex-row w-full h-12 items-center md:justify-center gap-4 md:p-12 list-none top-16">
+            <a
+              href="https://www.facebook.com/setroc.inmobiliario?mibextid=ZbWKwL"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaFacebookF size={45} color="#3b5998" />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@setroc.inmobiliario?_t=8i6w7rOUpV7&_r=1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaTiktok size={45} />
+            </a>
+
+            <a
+              href="https://www.instagram.com/setroc.inmobiliaria?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram size={45} />
+            </a>
+
+            <FaYoutube color="#CD201F" size={45} />
+          </div>
+        </div>
+          <Privacidad handleClose={handleClose} open={open} />
         </footer>
       </div>
     </>

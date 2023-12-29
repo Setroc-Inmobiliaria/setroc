@@ -4,7 +4,7 @@
     @apply 
     bg-[url('../../assets/4k/pais.jpg')]
     bg-cover
-    bg-center
+    bg-bottom
     bg-fixed
   }
 }

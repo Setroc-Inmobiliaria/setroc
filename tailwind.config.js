@@ -23,7 +23,8 @@ export default {
         p3: '#276296',
         p4: '#67ADD4',
         p5: '#B2D3E7',
-        p6: '#D9DFEC'
+        p6: '#D9DFEC',
+        p7: '#1565C0'
       }
     },
   },
