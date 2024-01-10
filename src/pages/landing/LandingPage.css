@@ -18,7 +18,7 @@
 .grupo1{
   @apply
   col-span-1  
-  bg-white 
+
   flex 
   gap-12 
   rounded-full 
@@ -36,7 +36,7 @@
 .grupo2{
   @apply
   col-span-2  
-  bg-white 
+ 
   flex 
   gap-12 
   rounded-full 

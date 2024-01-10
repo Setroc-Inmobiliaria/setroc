@@ -17,7 +17,7 @@ const terrenos = db.map(elemento => {
         imagenes={elemento.imagenes}
         />
     )
-})
+}).slice(0,3)
   return (
     
         <div className="md:w-[80%] w-full flex flex-col items-center justify-center md:grid md:grid-cols-3 place-items-center md:gap-12">
