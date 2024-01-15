@@ -73,26 +73,34 @@ export const Header = () => {
               className="flex left-[80%] absolute -top-28"
               onClick={toggleCloseNavbar}
             />
-            <div className="flex flex-row gap-5 justify-start items-center">
+            <div className="flex flex-row gap-5 justify-start items-center" 
+              onClick={toggleCloseNavbar}
+            >
               <FaHouseDamage size={35} />
               <Link to="/propiedades">
                 <li>Encuentra tu propiedad</li>
               </Link>
             </div>
-            <div className="flex flex-row gap-5 justify-start items-center">
+            <div className="flex flex-row gap-5 justify-start items-center"
+              onClick={toggleCloseNavbar}
+              >
               <FaCubes size={35} />
               <Link to="/servicios">
                 <li>Servicios</li>
               </Link>
             </div>
 
-            <div className="flex flex-row gap-5 justify-start items-center">
+            <div className="flex flex-row gap-5 justify-start items-center"
+              onClick={toggleCloseNavbar}
+              >
               <IoPeople size={35} />
               <Link to="/nosotros">
                 <li>Nosotros</li>
               </Link>
             </div>
-            <div className="flex flex-row gap-5 justify-start items-center ">
+            <div className="flex flex-row gap-5 justify-start items-center "
+              onClick={toggleCloseNavbar}
+              >
               <MdPhoneAndroid size={35} />
               <Link to="/contacto">
                 <li>Contactanos</li>

@@ -9,52 +9,115 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { MdNavigateNext } from "react-icons/md";
 import { MdNavigateBefore } from "react-icons/md";
+import { IoMdPricetag } from "react-icons/io";
+import { FaCircleDollarToSlot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const CardComponent = ({
   nombre,
   precio,
+  metrosCuadrados,
   descripcion,
   servicios,
   enganche,
   id,
+  municipio,
+  ubicacion,
   imagenes,
+  meses,
+  escritura
 }) => {
+  function currencyFormatter({ currency, value }) {
+    const formatter = new Intl.NumberFormat("es-EU", {
+      style: "currency",
+      minimumFractionDigits: 0,
+      currency,
+    });
+
+    const rounded = Math.round(value);
+    return formatter.format(rounded);
+  }
+
+  const formatPrice = currencyFormatter({
+    currency: "MXN",
+    value: precio,
+  });
+
+  const formatEnganche = currencyFormatter({
+    currency: "MXN",
+    value: enganche,
+  });
+
+  const mensualidades = (precio - enganche) / meses
+  const formatMens = Math.round(mensualidades)
+  const url = nombre.replace(' ', "-")
+
   return (
-    <div className="w-full bg-yellow-100 flex flex-col justify-center rounded-lg shadow-2xl relative">
+    <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 transition-all hover:scale-105 hover:transition-all">
       <CarouselProvider
         naturalSlideHeight={100}
         naturalSlideWidth={100}
         totalSlides={imagenes.length}
         infinite={true}
+        className="w-full"
         // hasMasterSpinner={true}
       >
-        <Slider>
+        <Slider className="h-40 w-full">
           {imagenes.map((img, index) => {
             return (
               <Slide index={img[index]}>
-                <img
-                  className="w-full object-cover rounded-t-lg"
+                <Link to={`/terrenos/${url}`}><img
+                  className="h-40 w-full object-cover object-botom"
                   src={img}
                   alt="terreno"
-                />
+                /></Link>
               </Slide>
             );
           })}
         </Slider>
-        <div className="w-full flex flex-row items-center justify-between p-2 absolute bottom-16">
+        <div className="flex flex-row items-center justify-between">
           <ButtonBack>
-            <MdNavigateBefore size={100} color="#1565C0"/>
+            <MdNavigateBefore size={25} color="#1565C0" />
           </ButtonBack>
           <ButtonNext>
-            <MdNavigateNext size={100} color="#1565C0"/>
+            <MdNavigateNext size={25} color="#1565C0" />
           </ButtonNext>
         </div>
       </CarouselProvider>
-      <div className="">
-        <h1 className="">Terreno en {nombre}</h1>
-        <h1>{servicios.electricidad ? 'electricidad' : ''}</h1>
-        <h1>{servicios.pavimentado ? 'pavimentado' : ''}</h1>
+
+      <div className="w-full flex flex-row justify-between items-center">
+        <div className="flex flex-col p-4 font-afacad text-p2 font-light">
+          <div className="w-full flex flex-col justify-center ">
+            <h1>Desrrollo en {nombre}</h1>
+            <h1 className="">
+              {ubicacion}, {municipio}
+            </h1>
+          </div>
+
+          <div className="">
+            <span className="text-2xl text-p3 font-medium flex flex-row items-center gap-2">
+              <IoMdPricetag />
+              {formatPrice}
+            </span>
+          </div>
+        </div>
+
+        <div className="w-[25%] flex flex-col justify-center items-center">
+          <span className="text-p4">
+            <FaCircleDollarToSlot size={20} />
+          </span>
+          <span className="flex flex-col text-center text-xs">
+            <span>Enganche</span>
+            <span>{formatEnganche}</span>
+          </span>
+        </div>
       </div>
+
+      <div className="font-afacad flex justify-between text-center">
+  <span className="w-full flex-grow-1 border border-p2">{metrosCuadrados}m²</span>
+  <span className="w-full flex-grow-1 border border-p2">Escritura {escritura}</span>
+  <span className="w-full flex-grow-1 border border-p2">{meses} mens. ${formatMens}</span>
+</div>
     </div>
   );
 };

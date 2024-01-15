@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { Privacidad } from "./privacidad/Privacidad";
 import { useState } from "react";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 export const Layout = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -73,6 +74,18 @@ export const Layout = ({ children }) => {
           </div>
         </div>
           <Privacidad handleClose={handleClose} open={open} />
+          <div>
+          <FloatingWhatsApp
+            phoneNumber="525577137642"
+            accountName="SETROC Inmobiliaria"
+            // avatar={setroc}
+            allowClickAway={true}
+            chatMessage="¡Hola! ¿En qué puedo ayudarte?"
+            notification={true}
+            statusMessage="Online"
+            // darkMode={true}
+          />
+        </div>
         </footer>
       </div>
     </>
