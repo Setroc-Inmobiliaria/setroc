@@ -53,7 +53,7 @@ const CardComponent = ({
   const url = nombre.replace(' ', "-")
 
   return (
-    <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 transition-all hover:scale-105 hover:transition-all">
+    <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">
       <CarouselProvider
         naturalSlideHeight={100}
         naturalSlideWidth={100}
@@ -66,7 +66,7 @@ const CardComponent = ({
           {imagenes.map((img, index) => {
             return (
               <Slide index={img[index]}>
-                <Link to={`/terrenos/${url}`}><img
+                <Link to={`/propiedades/${url}`}><img
                   className="h-40 w-full object-cover object-botom"
                   src={img}
                   alt="terreno"

@@ -29,7 +29,7 @@ const terrenos = parse.map(elemento => {
 
 
 return (
-    <div className="w-full gap-12 flex flex-col items-center justify-between md:grid md:grid-cols-3 md:col-span-1 place-items-center md:gap-12 p-12">
+    <div className="w-full gap-12 flex flex-col items-center justify-between md:grid md:grid-cols-3 md:col-span-1 place-items-center md:gap-12 p-2 md:p-12  ">
     {terrenos}
 </div>
 )
