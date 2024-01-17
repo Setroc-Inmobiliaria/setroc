@@ -100,7 +100,7 @@ const url = terreno.nombre.replace(' ', "-")
             className="w-full"
             // hasMasterSpinner={true}
           >
-            <Slider className="w-[400px] flex">
+            <Slider className="w-full">
               {terreno.imagenes.map((img, index) => {
                 return (
                   <Slide index={img[index]}>
