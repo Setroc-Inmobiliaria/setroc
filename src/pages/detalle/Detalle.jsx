@@ -60,7 +60,7 @@ const url = terreno.nombre.replace(' ', "-")
                 <li></li>
                 <li></li>
                 <li></li>
-            </ul>
+            </ul> 
         </div>
       <div className="bg-p2 w-full flex flex-col justify-center items-center p-2 md:p-12">
         <div className="w-full flex pl-4">
