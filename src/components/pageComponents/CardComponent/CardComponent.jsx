@@ -50,7 +50,7 @@ const CardComponent = ({
 
   const mensualidades = (precio - enganche) / meses
   const formatMens = Math.round(mensualidades)
-  const url = nombre.replace(' ', "-")
+  const url = nombre
 
   return (
     <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">

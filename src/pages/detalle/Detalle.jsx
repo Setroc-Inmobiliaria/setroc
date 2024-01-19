@@ -1,136 +1,67 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import MapContainer from "../../components/googleMap/CustomMap";
-import {
-  ButtonBack,
-  ButtonNext,
-  CarouselProvider,
-  Slide,
-  Slider,
-} from "pure-react-carousel";
-import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { Button } from "@mui/material";
+import CustomCarousel from "../../components/styledComponents/carousel/CustomCarousel";
+import db from "../../db/db";
 
 const DetalleTerreno = () => {
   const { id } = useParams();
-  const idFormat = id;
-  const storage = localStorage.getItem("terrenos");
-  const storageParse = JSON.parse(storage);
-  const terreno = storageParse.find((terreno) => terreno.nombre === idFormat);
+  const terreno = db.find((terreno) => terreno.nombre === id);
 
   const [switchContainer, setSwitchContainer] = useState(true);
-
-  function currencyFormatter({ currency, value }) {
-    const formatter = new Intl.NumberFormat("es-EU", {
-      style: "currency",
-      minimumFractionDigits: 0,
-      currency,
-    });
-
-    const rounded = Math.round(value);
-    return formatter.format(rounded);
-  }
-
-const formatPrice = currencyFormatter({
-  currency: "MXN",
-  value:terreno.precio,
-});
-
-const formatEnganche = currencyFormatter({
-  currency: "MXN",
-  value: terreno.enganche,
-});
-
-const mensualidades = (terreno.precio - terreno.enganche) / terreno.meses
-const formatMens = Math.round(mensualidades)
-const url = terreno.nombre.replace(' ', "-")
-
 
   const handleSwitchContainer = () => {
     setSwitchContainer(!switchContainer);
   };
 
   return (
-    <div className="w-full flex flex-col md:flex-row justify-center bg-p1 md:p-20">
-        <div className="flex w-full justify-center">
-            <ul>
-                <li>Precio de venta: {formatPrice}</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul> 
-        </div>
-      <div className="bg-p2 w-full flex flex-col justify-center items-center p-2 md:p-12">
-        <div className="w-full flex pl-4">
-            <Button
-          style={{
-            backgroundColor: "#67ADD4", 
-            color: "white",
-            padding: "10px 15px", 
-          }}
-          onClick={handleSwitchContainer}
-        >
-          {switchContainer ? "Mirar el mapa" : "Ver Fotografias"}
-        </Button>
-        </div>
-        
-        <div
-          className={
-            !switchContainer
-              ? `block transition-all delay-100`
-              : "hidden transition-all "
-          }
-        >
-          <MapContainer location={[18.9964, -98.932971]} />
-        </div>
-        <div
-          className={
-            switchContainer
-              ? `block w-full transition-all delay-100`
-              : "hidden transition-all "
-          }
-        >
-          <CarouselProvider
-            naturalSlideHeight={100}
-            naturalSlideWidth={100}
-            totalSlides={terreno.imagenes.length}
-            infinite={true}
-            className="w-full"
-            // hasMasterSpinner={true}
-          >
-            <Slider className="w-full">
-              {terreno.imagenes.map((img, index) => {
-                return (
-                  <Slide index={img[index]}>
-                    <img
-                      className="h-full w-full object-cover object-botom"
-                      src={img}
-                      alt="terreno"
-                    />
-                  </Slide>
-                );
-              })}
-            </Slider>
-            <div className="flex flex-col items-center justify-between gap-8">
-              <div className="w-full flex justify-between">
-                <ButtonBack>
-                  <MdNavigateBefore size={25} color="#1565C0" />
-                </ButtonBack>
-                <ButtonNext>
-                  <MdNavigateNext size={25} color="#1565C0" />
-                </ButtonNext>
-              </div>
+    <div className="w-full h-full flex flex-col md:flex-row bg-p1">
+      <div className="w-full h-full flex flex-col md:flex-row md:p-12 md:m-12">
+        <div className="w-full h-full flex flex-col gap-12 md:m-12">
+          <div>
+            <h1 className="font-afacad text-5xl">{terreno.nombre} {terreno.ubicacion}, {terreno.municipio}</h1>
+          </div>
+          <div className={`w-full h-full`}>
+            <div className="text-center w-24 bg-p4">
+              <Button onClick={handleSwitchContainer} className="cursor-pointer w-full">{!switchContainer ? 'Album' : 'Mapa'}</Button>
             </div>
-          </CarouselProvider>
+            <MapContainer
+              className={`${switchContainer ? 'hidden' : 'block'}`}
+              lat={terreno.coordenadas[0]}
+              lang={terreno.coordenadas[1]}
+            />
+            <CustomCarousel className={`${!switchContainer ? 'hidden' : 'block'}`} imagenes={terreno.imagenes}/>
+          </div>
         </div>
-        
-        <div className="w-full">
-                <h1>{terreno.nombre}</h1>
-                <h1>{terreno.ubicacion}</h1>
-                <h1>{terreno.municipio}</h1>
-              </div>
+
+        <div className="h-full w-[100%] flex flex-col justify-center gap-4 p-6 md:p-0 md:gap-8">
+          <h1 className="text-2xl font-bold">Detalles del Terreno</h1>
+
+          <span className="font-bold">Descripción:</span>
+          <p>{terreno.descripcion}</p>
+
+          <span className="font-bold">Servicios Básicos:</span>
+          <p>{terreno.servicios.electricidad ? 'Cuenta con electricidad.' : 'No cuenta con servicios básicos en la actualidad, ideal para inversión a largo plazo y desarrollo personalizado.'}</p>
+
+          <span className="font-bold">Amenidades:</span>
+          <p>{terreno.amenidades}</p>
+
+          <span className="font-bold">Costos:</span>
+          <ul>
+            <li>Tamaño: {terreno.metrosCuadrados}m²</li>
+            {/* <li>Precio: ${terreno.precio} MXN por metro cuadrado</li> */}
+            <li>Costo total: ${terreno.precio}</li>
+            <li>Enganche del 30%: ${terreno.enganche}</li>
+            <li>Facilidades de pago disponibles en 12, 24 y 36 meses sin intereses.</li>
+            <li>Pago mensual por 36 meses: ${Math.round((terreno.precio - terreno.enganche) / 36)}</li>
+          </ul>
+
+          <span className="font-bold">Ubicación:</span>
+          <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" className="text-blue-500">Ver en Google Maps</a>
+
+          <p className="mt-4">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.municipio}, {terreno.estado}!</p>
+        </div>
       </div>
     </div>
   );

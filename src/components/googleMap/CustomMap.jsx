@@ -4,34 +4,39 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 
 // Configura el componente del mapa
-const MapContainer = ({ location }) => {
+const MapContainer = ({ lat, lang, className}) => {
     const API_KEY = import.meta.env.VITE_API_KEY;
 
 
-    console.log(location);
+    console.log(lat, lang);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: API_KEY,
   });
 
   const mapStyles = {
-    height: '450px',
-    width: '400px',
+    height: '24rem',
+    width: '100%'
+    
   };
 
   const defaultCenter = {
-    lat: location[0],
-    lng: location[1],
+    lat: lat,
+    lng: lang,
   };
 
   return isLoaded ? (
-    <GoogleMap
+    <div className={className}>
+      <GoogleMap
       mapContainerStyle={mapStyles}
       zoom={15}
       center={defaultCenter}
+      
     >
       <Marker position={defaultCenter} />
     </GoogleMap>
+    </div>
+    
   ) : <></>;
 };
 
