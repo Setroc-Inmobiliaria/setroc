@@ -24,14 +24,26 @@ export const Layout = ({ children }) => {
   return (
     <>
       <div>
+        <div>
+          <FloatingWhatsApp
+            phoneNumber="525577137642"
+            accountName="SETROC Inmobiliaria"
+            // avatar={setroc}
+            allowClickAway={true}
+            chatMessage="¡Hola! ¿En qué puedo ayudarte?"
+            notification={true}
+            statusMessage="Online"
+            // darkMode={true}
+          />
+        </div>
         <Header />
 
         <main>{children}</main>
         <footer className="flex flex-col-reverse md:flex-row w-full justify-evenly items-center py-12 gap-16 bg-p5 shadow-p2">
-          <div className="font-afacad flex flex-col gap-5">
-            <h2>Contactanos</h2>
-            <span className="flex flex-row justify-center items-center gap-2 md:text-xl">
-              <FaRegBuilding size={35} />
+          <div className="font-afacad flex flex-col justify-center items-center gap-5">
+            <h2>Visitanos</h2>
+            <span className="flex flex-row justify-center w-full text-center items-center gap-2 md:text-xl">
+              {/* <FaRegBuilding size={35} /> */}
               Gral. Mariano Escobedo 476-piso 12,<br></br> Chapultepec, Anzures,
               Miguel Hidalgo, 11590, CDMX
             </span>
@@ -74,18 +86,6 @@ export const Layout = ({ children }) => {
           </div>
         </div>
           <Privacidad handleClose={handleClose} open={open} />
-          <div>
-          <FloatingWhatsApp
-            phoneNumber="525577137642"
-            accountName="SETROC Inmobiliaria"
-            // avatar={setroc}
-            allowClickAway={true}
-            chatMessage="¡Hola! ¿En qué puedo ayudarte?"
-            notification={true}
-            statusMessage="Online"
-            // darkMode={true}
-          />
-        </div>
         </footer>
       </div>
     </>

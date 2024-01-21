@@ -16,11 +16,11 @@ const DetalleTerreno = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col md:flex-row bg-p1">
-      <div className="w-full h-full flex flex-col md:flex-row md:p-12 md:m-12">
+    <div className="w-full h-full flex flex-col md:flex-row bg-p4">
+      <div className="w-full h-full flex flex-col md:flex-row my-12 md:my-0 md:p-12 bg-white md:m-12">
         <div className="w-full h-full flex flex-col gap-12 md:m-12">
           <div>
-            <h1 className="font-afacad text-5xl">{terreno.nombre} {terreno.ubicacion}, {terreno.municipio}</h1>
+            <h1 className="font-afacad text-2xl md:text-5xl p-4">{terreno.nombre} {terreno.ubicacion}, {terreno.municipio}</h1>
           </div>
           <div className={`w-full h-full`}>
             <div className="text-center w-24 bg-p4">
@@ -60,7 +60,7 @@ const DetalleTerreno = () => {
           <span className="font-bold">Ubicación:</span>
           <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" className="text-blue-500">Ver en Google Maps</a>
 
-          <p className="mt-4">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.municipio}, {terreno.estado}!</p>
+          <p className="mt-4">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.ubicacion}, {terreno.municipio}!</p>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import { MdNavigateBefore } from "react-icons/md";
 import { IoMdPricetag } from "react-icons/io";
 import { FaCircleDollarToSlot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import goToTop from "../../../utils/functions";
 
 const CardComponent = ({
   nombre,
@@ -53,7 +54,7 @@ const CardComponent = ({
   const url = nombre
 
   return (
-    <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">
+    <div onClick={goToTop} className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">
       <CarouselProvider
         naturalSlideHeight={100}
         naturalSlideWidth={100}
@@ -113,11 +114,7 @@ const CardComponent = ({
         </div>
       </div>
 
-      <div className="font-afacad flex justify-between text-center">
-  <span className="w-full flex-grow-1 border border-p2">{metrosCuadrados}m²</span>
-  <span className="w-full flex-grow-1 border border-p2">Escritura {escritura}</span>
-  <span className="w-full flex-grow-1 border border-p2">{meses} mens. ${formatMens}</span>
-</div>
+      
     </div>
   );
 };

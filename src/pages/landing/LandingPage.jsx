@@ -9,6 +9,7 @@ import { FloatingWhatsApp } from "react-floating-whatsapp";
 import CardsComponent from "../../components/pageComponents/CardsComponent/CardsComponent";
 import { Link } from "react-router-dom";
 import db from "../../db/db";
+import goToTop from '../../utils/functions'
 
 export const LandingPage = () => {
 
@@ -72,7 +73,7 @@ export const LandingPage = () => {
         <div className="w-full flex-col flex gap-12 items-center relative bottom-40 z-10 p-4 md:px-40 pt-32">
           <CardsComponent />
 
-          <Link to="/propiedades"><Button>Conocer mas...</Button></Link>
+          <Link to="/propiedades"><Button onClick={goToTop}>Conocer mas...</Button></Link>
         </div>
     </div>
   );
