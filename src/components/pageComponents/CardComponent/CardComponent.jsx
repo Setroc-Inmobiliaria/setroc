@@ -54,7 +54,7 @@ const CardComponent = ({
   const url = nombre
 
   return (
-    <div onClick={goToTop} className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">
+    <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">
       <CarouselProvider
         naturalSlideHeight={100}
         naturalSlideWidth={100}
@@ -66,7 +66,7 @@ const CardComponent = ({
         <Slider className="h-40 w-full">
           {imagenes.map((img, index) => {
             return (
-              <Slide index={img[index]}>
+              <Slide onClick={goToTop} index={img[index]}>
                 <Link to={`/propiedades/${url}`}><img
                   className="h-40 w-full object-cover object-botom"
                   src={img}
