@@ -1,15 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CardComponent from "../../components/pageComponents/CardComponent/CardComponent";
-
+import FilterAccordion from "../../components/pageComponents/Accordion/CustomAccordion";
 
 const Terrenos = () => {
+  const local = localStorage.getItem("terrenos");
+  const parse = JSON.parse(local);
+  const [terrenoWFilter, setTerrenoWFilter] = useState(parse);
 
-const local = localStorage.getItem('terrenos')
-const parse = JSON.parse(local)
+  const setFilter = (filter) => {
+    if(filter === 'todos') {
+        setTerrenoWFilter(parse)
+    } else {
+    setTerrenoWFilter(parse)
+    setTerrenoWFilter(parse.filter(terreno => terreno.ubicacion.toLowerCase() === filter.toLowerCase()));
+    }
+  };
 
-const terrenos = parse.map(elemento => {
+  const terrenos = terrenoWFilter.map((elemento) => {
     return (
-        <CardComponent
+      <CardComponent
         nombre={elemento.nombre}
         ubicacion={elemento.ubicacion}
         municipio={elemento.municipio}
@@ -22,18 +31,21 @@ const terrenos = parse.map(elemento => {
         imagenes={elemento.imagenes}
         escritura={elemento.tipoEscritura}
         meses={elemento.mensualidades[0]}
-        />
-    )
-})
+      />
+    );
+  });
 
+  return (
+    <div className="flex flex-col md:flex-row">
+      <div className="h-full md:w-5/12 p-3 md:p-12 flex items-center justify-center">
+        <FilterAccordion setFilter={setFilter} />
+      </div>
 
+      <div className="w-full grid gap-10 p-3 md:grid-cols-2 place-items-center md:gap-12 md:p-12">
+        {terrenos}
+      </div>
+    </div>
+  );
+};
 
-return (
-    <div className="w-full gap-12 flex flex-col items-center justify-between md:grid md:grid-cols-3 md:col-span-1 place-items-center md:gap-12 p-2 md:p-12  ">
-    {terrenos}
-</div>
-)
-    
-}
-
-export default Terrenos
+export default Terrenos;

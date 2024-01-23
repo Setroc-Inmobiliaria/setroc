@@ -2,13 +2,30 @@
 @layer components {
   .bg-image {
     @apply 
-    bg-[url('../../assets/4k/pais.jpg')]
+    bg-[url('../../assets/4k/waves.jpg')]
     bg-cover
     bg-bottom
-    bg-fixed
+    /* bg-fixe */
   }
 }
 
+.bg-waves{
+  @apply
+  bg-[url('../../assets/4k/flow.jpg')]
+  bg-cover
+  bg-bottom
+  /* bg-fixed */
+}
+
+
+.bg-banner {
+  @apply 
+  bg-[url('../../assets/4k/terr.jpg')]
+
+  bg-cover
+  bg-center
+  /* bg-fixed */
+}
 
 .title{
   font-family: 'Afacad', sans-serif;

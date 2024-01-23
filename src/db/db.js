@@ -81,7 +81,7 @@ const db = [
   },
   {
     nombre: "Colatitla",
-    ubicacion: "San Andrés Cuauhtémpan",
+    ubicacion: "San Andres Cuauhtempan",
     municipio: "Morelos",
     metrosCuadrados: 260,
     tipoEscritura: "privada",
@@ -140,7 +140,7 @@ const db = [
   },
   {
     nombre: "Rancho San Miguel",
-    ubicacion: "San Andrés Cuauhtémpan",
+    ubicacion: "San Andres Cuauhtempan",
     municipio: "Tlayacapan",
     metrosCuadrados: 623.55,
     tipoEscritura: "privada",

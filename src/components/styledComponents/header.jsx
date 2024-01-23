@@ -31,8 +31,8 @@ export const Header = () => {
         {/* Navegación en pantallas grandes */}
         <ul className="hidden md:flex flex-row w-full md:w-5/12 justify-between font-afacad text-xl">
           <div className="flex flex-row gap-5 justify-start items-center ">
-            <Link to="/propiedades">
-              <li>Encuentra tu propiedad</li>
+            <Link to="/catalogo">
+              <li>Catálogo</li>
             </Link>
           </div>
           <div className="flex flex-row gap-5 justify-start items-center">
@@ -77,8 +77,8 @@ export const Header = () => {
               onClick={toggleCloseNavbar}
             >
               <FaHouseDamage size={35} />
-              <Link to="/propiedades">
-                <li>Encuentra tu propiedad</li>
+              <Link to="/catalogo">
+                <li>Catálogo</li>
               </Link>
             </div>
             <div className="flex flex-row gap-5 justify-start items-center"
