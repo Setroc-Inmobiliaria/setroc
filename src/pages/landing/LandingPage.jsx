@@ -21,9 +21,9 @@ export const LandingPage = () => {
   return (
     <div className="flex flex-col md:flex-row h-full">
       <div className="bg-image w-full flex flex-col justify-center items-center">
-        <div className=" h-full bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-10">
+        <div className=" h-full bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-8">
           
-          <div className="bg-white bg-opacity-80 w-full md:w-8/12 flex flex-col gap-5 bg-smoke p-4 rounded-lg drop-shadow-2xl">
+          <div className="bg-white bg-opacity-80 w-full md:w-8/12 flex flex-col gap-5 bg-smoke p-8 rounded-lg drop-shadow-2xl">
             <SelectComponent
               items={[
                 "San Andres, Cuauhtempan",
@@ -56,7 +56,7 @@ export const LandingPage = () => {
               Buscar
             </Button>
           </div>
-          <h1 className="title text-7xl md:text-9xl">
+          <h1 className="title text-center text-7xl md:text-9xl">
             El terreno a tu medida
           </h1>
         </div>

@@ -16,22 +16,45 @@ const DetalleTerreno = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col md:flex-row bg-p4">
+    <div className="w-full h-full flex flex-col md:flex-row bg-p4 p-2">
       <div className="w-full h-full flex flex-col md:flex-row my-12 md:my-0 md:p-12 bg-white md:m-12">
         <div className="w-full h-full flex flex-col gap-12 md:m-12">
           <div>
             <h1 className="font-afacad text-2xl md:text-5xl p-4">{terreno.nombre} {terreno.ubicacion}, {terreno.municipio}</h1>
           </div>
           <div className={`w-full h-full`}>
-            <div className="text-center w-24 bg-p4">
-              <Button onClick={handleSwitchContainer} className="cursor-pointer w-full">{!switchContainer ? 'Album' : 'Mapa'}</Button>
+            <div className="text-center w-full flex ">
+            <Button
+  onClick={handleSwitchContainer}
+  className={`cursor-pointer w-full ${
+    switchContainer
+      ? 'bg-blue-500 text-white font-bold rounded shadow-0 transition-transform transform scale-100 focus:outline-none focus:shadow-outline-blue active:scale-100'
+      : 'bg-white text-blue-500 font-bold rounded shadow-xl transition-transform transform scale-105 focus:outline-none focus:shadow-outline-white active:scale-100'
+  }`}
+ 
+>
+  Mapa
+</Button>
+
+<Button
+  onClick={handleSwitchContainer}
+  className={`cursor-pointer w-full ${
+    !switchContainer
+      ? 'bg-white text-blue-500 font-bold rounded shadow-0 transition-transform transform scale-100 focus:outline-none focus:shadow-outline-white active:scale-100'
+      : 'bg-blue-500 text-white font-bold rounded shadow-xl transition-transform transform scale-105 focus:outline-none focus:shadow-outline-blue active:scale-100'
+  }`}
+ 
+>
+  Galeria
+</Button>
+
             </div>
             <MapContainer
-              className={`${switchContainer ? 'hidden' : 'block'}`}
+              className={`${switchContainer ? 'hidden p-2' : 'block p-2'}`}
               lat={terreno.coordenadas[0]}
               lang={terreno.coordenadas[1]}
             />
-            <CustomCarousel className={`${!switchContainer ? 'hidden' : 'block'}`} imagenes={terreno.imagenes}/>
+            <CustomCarousel className={`${!switchContainer ? 'hidden p-2' : 'block p-2'}`} imagenes={terreno.imagenes}/>
           </div>
         </div>
 
