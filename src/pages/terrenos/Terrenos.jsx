@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CardComponent from "../../components/pageComponents/CardComponent/CardComponent";
 import FilterAccordion from "../../components/pageComponents/Accordion/CustomAccordion";
 

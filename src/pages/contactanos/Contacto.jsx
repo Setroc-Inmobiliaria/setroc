@@ -1,8 +1,6 @@
 import React from "react";
-import SelectComponent from "../../components/styledComponents/select/SelectComponent";
 import TextFieldComponent from "../../components/styledComponents/textfield/TextfieldComponent";
-import banner from "../../assets/varios/contacto2.jpg";
-import { Button, FormControl, TextareaAutosize } from "@mui/material";
+import { Button, FormControl } from "@mui/material";
 import TextAreaComponent from "../../components/styledComponents/textfield/TextareaComponent";
 
 const ContactoPage = () => {

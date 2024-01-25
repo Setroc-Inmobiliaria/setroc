@@ -1,15 +1,9 @@
 import React, { useEffect } from "react";
-
-import setroc from "../../assets/SETROC.png";
-import banner1 from "../../assets/varios/banner1.jpg";
 import "./LandingPage.css";
 import SelectComponent from "../../components/styledComponents/select/SelectComponent";
 import { Button, FormControl } from "@mui/material";
-import { FloatingWhatsApp } from "react-floating-whatsapp";
 import CardsComponent from "../../components/pageComponents/CardsComponent/CardsComponent";
-import { Link } from "react-router-dom";
 import db from "../../db/db";
-import goToTop from "../../utils/functions";
 import TextFieldComponent from "../../components/styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../components/styledComponents/textfield/TextareaComponent";
 

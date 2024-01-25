@@ -4,7 +4,6 @@ import { LandingPage } from "./pages/landing/LandingPage";
 import { Layout } from "./components/styledComponents/layout";
 import ContactoPage from "./pages/contactanos/Contacto";
 import Terrenos from "./pages/terrenos/Terrenos";
-import DetalleTerreno from "./components/pageComponents/detalle/Detalle";
 import Propiedades from "./pages/propiedades/Propiedades";
 
 function App() {
