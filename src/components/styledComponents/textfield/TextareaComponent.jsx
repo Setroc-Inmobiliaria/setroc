@@ -3,7 +3,7 @@ import { alpha, styled } from "@mui/material/styles";
 import InputLabel from "@mui/material/InputLabel";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 
-const TextAreaComponent = ({ label }) => {
+const TextAreaComponent = ({ label, value }) => {
   const BootstrapTextarea = styled(TextareaAutosize)(({ theme }) => ({
     borderRadius: 4,
     position: 'relative',
@@ -27,7 +27,7 @@ const TextAreaComponent = ({ label }) => {
 
   return (
    
-      <BootstrapTextarea rowsMin={3} />
+      <BootstrapTextarea rowsMin={3} value={value} />
  
   );
 };

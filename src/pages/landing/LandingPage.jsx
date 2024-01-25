@@ -19,6 +19,7 @@ export const LandingPage = () => {
   }, []);
 
   return (
+    <div className="flex flex-col w-full">
     <div className="flex flex-col md:flex-row h-full">
       <div className="bg-image w-full flex flex-col justify-center items-center">
         <div className=" h-full bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-8">
@@ -65,13 +66,13 @@ export const LandingPage = () => {
 
 
       <div className="w-full flex flex-col p-5 md:p-12 gap-6">
-      <h1 className="title text-4xl  md:text-3xl font-bold">
+      <h1 className="title text-4xl  md:text-3xl font-bold text-center md:text-start">
       ¡Vende tu Terreno o Encuentra tu Rincón Perfecto!
           </h1>
           <span className="title text-2xl ">
           ¿Listo para dar el siguiente paso? ¡Nosotros también! Completa este formulario rápido y nuestros expertos en terrenos se encargarán del resto. Ya sea que quieras vender tu espacio o descubrir tu nuevo oasis, ¡Estamos aquí para hacerlo realidad!
           </span>
-        <FormControl sx={{padding: '20px',}} className="w-full flex flex-col gap-5 font-afacad">
+        <FormControl className="w-full flex flex-col gap-5 font-afacad">
           <label>Nombre Completo</label>
           <TextFieldComponent label="Nombre Completo *" />
           <label>Email</label>
@@ -85,6 +86,19 @@ export const LandingPage = () => {
           </Button>
         </FormControl>
       </div>
+
+    </div>
+    <div className="relative">
+      <div className="w-full -z-10 h-96 absolute bg-p4 pt-2 md:pt-8">
+      <p className="font-afacad text-center text-4xl md:text-5xl p-4">Tu única tarea es soñar, nosotros lo hacemos realidad.</p>
+<p className="font-afacad text-center text-4xl md:text-5xl p-4">¡Encuentra tu próximo hogar!</p>
+      </div>
+      <div className="z-50 p-2 md:p-16 mt-72 md:mt-40">
+      <CardsComponent/>
+
+      </div>
+
+    </div>
     </div>
   );
 };

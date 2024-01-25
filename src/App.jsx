@@ -4,7 +4,8 @@ import { LandingPage } from "./pages/landing/LandingPage";
 import { Layout } from "./components/styledComponents/layout";
 import ContactoPage from "./pages/contactanos/Contacto";
 import Terrenos from "./pages/terrenos/Terrenos";
-import DetalleTerreno from "./pages/detalle/Detalle";
+import DetalleTerreno from "./components/pageComponents/detalle/Detalle";
+import Propiedades from "./pages/propiedades/Propiedades";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/contacto" element={<ContactoPage />} />
         <Route path="/catalogo" element={<Terrenos />} />
-        <Route path="/propiedades/:id" element={<DetalleTerreno />} />
+        <Route path="/propiedades/:id" element={<Propiedades />} />
       </Routes>
     </Layout>
   );

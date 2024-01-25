@@ -6,7 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 
-const TextFieldComponent = ({ label}) => {
+const TextFieldComponent = ({ placeholder}) => {
     const BootstrapInput = styled(InputBase)(({ theme }) => ({
         'label + &': {
           marginTop: theme.spacing(0),
@@ -37,7 +37,7 @@ const TextFieldComponent = ({ label}) => {
   return (
  
   
-      <BootstrapInput id="bootstrap-input"/>
+      <BootstrapInput placeholder={placeholder} id="bootstrap-input"/>
    
   );
 };

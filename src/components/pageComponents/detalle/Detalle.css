@@ -1,0 +1,10 @@
+@tailwind components;
+@layer components {
+  .image {
+    @apply 
+    bg-[url('../../../assets/4k/waves.jpg')]
+    /* bg-opacity-30 */
+    bg-center
+    bg-cover
+  }
+}
