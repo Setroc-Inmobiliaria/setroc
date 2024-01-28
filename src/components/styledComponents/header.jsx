@@ -22,7 +22,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="w-full h-32">
+    <header className="w-full h-32 bg-p5">
       <div className="w-full h-full flex flex-row md:justify-around justify-between items-center">
         <div className="h-full">
          <Link to="/"> <img className="h-full" src={logo} alt="SETROC" /></Link>

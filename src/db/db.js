@@ -40,23 +40,26 @@ import tla3 from "../assets/terrenos/tlaltenco/3.png";
 const db = [
   {
     nombre: "Acatitla",
-    ubicacion: "San Andres Cuauhtempan",
-    municipio: "Morelos",
-    metrosCuadrados: 423,
-    tipoEscritura: "privada",
-    precio: 211546,
+    ubicacion: "San Andrés Cuauhtempan",
+    muncipio: "Morelos",
+    metrosCuadrados: [374.45, 423.09, 439.33, 448.89, 808.38, 1018, 1929],
+    costoPorMetroCuadrado: 500,
+    tipoEscritura: "Pública",
+    precio: 2115646,
     descripcion:
-      "1 hora de CDMX. Inversión única en Acatitla, San Andrés Cuauhtémpan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración privada. Costo desde $500 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      'Gran oportunidad de inversión en nuestros lotes de nombre "Acatitla" ubicados en el municipio de San Andrés Cuauhtempan, Estado de Morelos.Estos terrenos rústicos ofrecen un potencial prometedor para el futuro.El costo por metro cuadrado es de 500 pesos, con facilidades de pago.El enganche es del 30%, que se puede diferir hasta en 3 meses, y también ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses.Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: false,
     },
     coordenadas: [18.980071, -98.9511693],
-    enganche: 63464,
-    mensualidades: [36],
+    enganche: 91800,
+    mensualidades: [12, 24, 36],
     id: 1,
-    imagenes: [aca1, aca2, aca3, aca4],
-    amenidades: "1 hora de CDMX",
+    imagenes: [],
+    amenidades:
+      "A 1 hora de Ciudad de Mexico",
   },
+
   {
     nombre: "Aguador",
     ubicacion: "Tlayacapan",

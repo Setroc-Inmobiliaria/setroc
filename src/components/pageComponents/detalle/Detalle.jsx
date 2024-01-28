@@ -9,6 +9,7 @@ import './Detalle.css'
 import TextFieldComponent from "../../styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../styledComponents/textfield/TextareaComponent";
 import {FormControl} from '@mui/material'
+import SelectComponent from "../../styledComponents/select/SelectComponent";
 
 
 const DetalleTerreno = () => {
@@ -16,6 +17,24 @@ const DetalleTerreno = () => {
   const terreno = db.find((terreno) => terreno.nombre === id);
 
   const [switchContainer, setSwitchContainer] = useState(true);
+  const [monthValue, setMonthValue] = useState(0)
+  const [supValue, setSupValue] = useState(0)
+  const [engancheFinal, setEngancheFinal] = useState(0)
+  const [totalFinal, setTotalFinal] = useState(0)
+  const [montFinal, setMonthFinal] = useState(0)
+
+  const setFinalPrices = () => {
+    const total = (terreno.costoPorMetroCuadrado * supValue)
+    const totalEnganche = total * .30
+    const totalMensualidades = (total / monthValue)
+    setTotalFinal(total)
+    setEngancheFinal(totalEnganche)
+    setMonthFinal(totalMensualidades)
+    console.log(total, monthValue);
+  }
+
+
+
   const mensaje = "Me interesa mucho esta propiedad y quiero recibir más información. ¡Gracias!"
 
 
@@ -96,7 +115,7 @@ const DetalleTerreno = () => {
          
             <CustomCarousel className={`${!switchContainer ? 'hidden' : 'block p-1'}`} imagenes={terreno.imagenes} />
           </div>
-          <FormControl  className="w-full flex flex-col font-afacad gap-3">
+       
          
           <TextFieldComponent placeholder="Nombre Completo *" />
         
@@ -108,36 +127,39 @@ const DetalleTerreno = () => {
           <Button variant="contained" disableElevation sx={{padding: 1}} className="w-full">
             Enviar
           </Button>
-        </FormControl>
+        
         </div>
         
                   <div className="w-full md:p-12 p-2 bg-white rounded-md shadow-sm md:shadow-lg shadow-black">
         <div className="h-full w-[100%] flex flex-col justify-center gap-4 p-2 md:p-0 md:gap-8">
-          <h1 className="text-2xl font-bold">Detalles del Terreno</h1>
+          <h1 className="font-montserrat text-2xl font-bold">Detalles del Terreno</h1>
 
-          <span className="font-bold">Descripción:</span>
-          <p>{terreno.descripcion}</p>
+          {/* <span className="font-roboto font-medium italic">Descripción:</span> */}
+          <p className="font-nunito font-normal">{terreno.descripcion}</p>
 
-          <span className="font-bold">Servicios Básicos:</span>
+          <span className="font-robot font-medium italic">Servicios Básicos:</span>
           <p>{terreno.servicios.electricidad ? 'Cuenta con electricidad.' : 'No cuenta con servicios básicos en la actualidad, ideal para inversión a largo plazo y desarrollo personalizado.'}</p>
 
           <span className="font-bold">Amenidades:</span>
           <p>{terreno.amenidades}</p>
 
           <span className="font-bold">Costos:</span>
-          <ul>
-            <li>Tamaño: {terreno.metrosCuadrados}m²</li>
+          <ul className="flex flex-col gap-4">
+            <li>{<SelectComponent setSelected={setSupValue} selected={supValue} title="Selecciona el tamano de superficie" items={terreno.metrosCuadrados} />}</li>
+            <li>{<SelectComponent op={setFinalPrices} setSelected={setMonthValue} selected={monthValue} title="Mensualidades" items={terreno.mensualidades}/>}</li>
             {/* <li>Precio: ${terreno.precio} MXN por metro cuadrado</li> */}
-            <li>Costo total: ${terreno.precio}</li>
-            <li>Enganche del 30%: ${terreno.enganche}</li>
+            <li>Costo total: ${totalFinal}</li>
+            <li>Pagos mensuales: ${montFinal}</li>
+            <li>Enganche del 30%: ${engancheFinal}</li>
             <li>Facilidades de pago disponibles en 12, 24 y 36 meses sin intereses.</li>
-            <li>Pago mensual por 36 meses: ${Math.round((terreno.precio - terreno.enganche) / 36)}</li>
           </ul>
-
           <span className="font-bold">Ubicación:</span>
           <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" className="text-blue-500">Ver en Google Maps</a>
 
           <p className="mt-4">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.ubicacion}, {terreno.municipio}!</p>
+
+          <span>Precios sujetos a disponibilidad*</span>
+
         </div>
         </div>
       </div>

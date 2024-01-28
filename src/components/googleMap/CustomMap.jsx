@@ -8,7 +8,7 @@ const MapContainer = ({ lat, lang, className}) => {
     const API_KEY = import.meta.env.VITE_API_KEY;
 
 
-    console.log(lat, lang);
+    // console.log(lat, lang);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: API_KEY,

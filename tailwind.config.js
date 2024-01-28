@@ -16,6 +16,11 @@ export default {
       },
       fontFamily: {
         'afacad': ['Afacad', 'sans-serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'roboto': ['Roboto', 'sans-serif'],
+        'open': ['Open Sans', 'sans-serif'],
+        'nunito': ['Nunito', 'sans-serif'],
+
       },
       colors: {
         p1: '#91D1C5',

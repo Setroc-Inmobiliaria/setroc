@@ -6,6 +6,8 @@ const CardsComponent = () => {
 
 const x_terrenos = localStorage.setItem('terrenos', db)
 
+const randomNumber = Int8Array
+console.log(randomNumber);
 
 const terrenos = db.map(elemento => {
     return (

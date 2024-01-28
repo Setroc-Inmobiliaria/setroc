@@ -27,7 +27,7 @@ const TextAreaComponent = ({ label, value }) => {
 
   return (
    
-      <BootstrapTextarea rowsMin={3} value={value} />
+      <BootstrapTextarea value={value} />
  
   );
 };

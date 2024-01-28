@@ -8,11 +8,14 @@ import { alpha } from '@mui/material/styles';
 import { InputLabel } from "@mui/material";
 // import colors from "../../../constants/colors";
 
-const SelectComponent = ({ title, items, width, name  }) => {
+const SelectComponent = ({ title, items, width, name, setSelected, selected, op }) => {
 
-    // const handleChange = (e) => {
-    //     setSelected(e.target.value);
-    // };
+    const handleOnChange = (e) => {
+        e.preventDefault()
+        setSelected(e.target.value)
+        console.log(e.target.value);
+
+    }
 
     const itemElements = items.map(i => (
         <MenuItem value={i} key={i}>{i}</MenuItem>
@@ -30,6 +33,7 @@ const SelectComponent = ({ title, items, width, name  }) => {
             size="small"
         >
             <Select
+                onChange={handleOnChange}
                 IconComponent={SlArrowDown}
                 sx={{
                     width: "100%",
@@ -66,7 +70,7 @@ const SelectComponent = ({ title, items, width, name  }) => {
                 }}
                 name={name}
                 defaultValue={title}
-            variant="outlined"
+                variant="outlined"
             >
 
                 <MenuItem value={title}>
