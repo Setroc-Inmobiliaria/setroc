@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,17 +9,17 @@ import { alpha } from '@mui/material/styles';
 import { InputLabel } from "@mui/material";
 // import colors from "../../../constants/colors";
 
-const SelectComponent = ({ title, items, width, name, setSelected, selected, op }) => {
+const SelectComponent = ({ title, items, width, name, setSelected }) => {
 
     const handleOnChange = (e) => {
         e.preventDefault()
         setSelected(e.target.value)
-        console.log(e.target.value);
+        // console.log(e.target.value);
 
     }
 
     const itemElements = items.map(i => (
-        <MenuItem value={i} key={i}>{i}</MenuItem>
+        <MenuItem value={i} key={i}>{Number.isInteger(i) ? i : Math.round(i)  }</MenuItem>
     ));
 
 
@@ -33,6 +34,7 @@ const SelectComponent = ({ title, items, width, name, setSelected, selected, op 
             size="small"
         >
             <Select
+          
                 onChange={handleOnChange}
                 IconComponent={SlArrowDown}
                 sx={{

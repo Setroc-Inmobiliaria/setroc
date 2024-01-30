@@ -1,9 +1,12 @@
 import * as React from "react";
 import { alpha, styled } from "@mui/material/styles";
-import InputLabel from "@mui/material/InputLabel";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { useState } from "react";
 
-const TextAreaComponent = ({ label, value }) => {
+const TextAreaComponent = ({ label, value, setValueOutside }) => {
+
+  const [valueInside, setValueInside] = useState(value)
+
   const BootstrapTextarea = styled(TextareaAutosize)(({ theme }) => ({
     borderRadius: 4,
     position: 'relative',
@@ -17,18 +20,26 @@ const TextAreaComponent = ({ label, value }) => {
       'background-color',
       'box-shadow',
     ]),
+    minHeight: 100,
+    minWidth: '100%',
     '&:focus': {
       boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
       borderColor: theme.palette.primary.main,
     },
-    minHeight: 100,
-    minWidth: '100%'
   }));
 
+  const handleOnChange = (e)  => {
+    e.preventDefault()
+    const newValue =  e.target.value;
+    setValueInside(newValue);
+  };
+
   return (
-   
-      <BootstrapTextarea value={value} />
- 
+    <BootstrapTextarea
+      value={valueInside}
+      onChange={handleOnChange}
+      placeholder={label}
+    />
   );
 };
 

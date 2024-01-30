@@ -2,7 +2,7 @@ import { Header } from "./header";
 import {
   FaFacebookF,
   FaInstagram,
-  FaRegBuilding,
+  
   FaTiktok,
   FaYoutube,
 } from "react-icons/fa";

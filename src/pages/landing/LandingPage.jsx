@@ -15,7 +15,7 @@ export const LandingPage = () => {
   return (
     <div className="flex flex-col w-full">
     <div className="flex flex-col md:flex-row h-full">
-      <img src="https://imgur.com/gallery/07KYxPy" alt="" srcset="" />
+      <img src="https://imgur.com/gallery/07KYxPy" alt="" />
       <div className="bg-image w-full flex flex-col justify-center items-center">
         <div className=" h-full bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-8">
           

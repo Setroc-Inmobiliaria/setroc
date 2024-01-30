@@ -13,7 +13,7 @@ const terrenos = db.map(elemento => {
     return (
         <CardComponent
         nombre={elemento.nombre}
-        ubicacion={elemento.ubicacion}
+        ubicacion={elemento.estado }
         municipio={elemento.municipio}
         precio={elemento.precio}
         servicios={elemento.servicios}
@@ -32,7 +32,7 @@ const terrenos2 = db.map(elemento => {
     return (
         <CardComponent
         nombre={elemento.nombre}
-        ubicacion={elemento.ubicacion}
+        ubicacion={elemento.estado}
         municipio={elemento.municipio}
         precio={elemento.precio}
         servicios={elemento.servicios}

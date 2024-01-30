@@ -38,209 +38,230 @@ import tla2 from "../assets/terrenos/tlaltenco/2.png";
 import tla3 from "../assets/terrenos/tlaltenco/3.png";
 
 const db = [
+
+
+
+
   {
     nombre: "Acatitla",
-    ubicacion: "San Andrés Cuauhtempan",
-    muncipio: "Morelos",
+    municipio: "San Andrés Cuauhtempan",
+    estado: "Morelos",
     metrosCuadrados: [374.45, 423.09, 439.33, 448.89, 808.38, 1018, 1929],
     costoPorMetroCuadrado: 500,
     tipoEscritura: "Pública",
     precio: 2115646,
     descripcion:
-      'Gran oportunidad de inversión en nuestros lotes de nombre "Acatitla" ubicados en el municipio de San Andrés Cuauhtempan, Estado de Morelos.Estos terrenos rústicos ofrecen un potencial prometedor para el futuro.El costo por metro cuadrado es de 500 pesos, con facilidades de pago.El enganche es del 30%, que se puede diferir hasta en 3 meses, y también ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses.Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
+      'Gran oportunidad de inversión en nuestros lotes de nombre "Acatitla" ubicados en el municipio de San Andrés Cuauhtempan, Estado de Morelos. Estos terrenos rústicos ofrecen un potencial prometedor para el futuro. El costo por metro cuadrado es de 500 pesos, con facilidades de pago. El enganche es del 30%, que se puede diferir hasta en 3 meses, y también ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: false,
     },
     coordenadas: [18.980071, -98.9511693],
     enganche: 91800,
     mensualidades: [12, 24, 36],
-    id: 1,
-    imagenes: [],
+    id: 10,
+    imagenes: [aca1, aca2, aca3, aca4],
     amenidades:
-      "A 1 hora de Ciudad de Mexico",
+      "A 1 hora de CDMX",
   },
+
 
   {
     nombre: "Aguador",
-    ubicacion: "Tlayacapan",
-    municipio: "Morelos",
-    metrosCuadrados: 200,
-    tipoEscritura: "privada",
+    municipio: "Totoloapan",
+    estado: "Morelos",
+    metrosCuadrados: [200, 400, 453.21, 600, 800, 825.55, 1000, 1089.145],
+    costoPorMetroCuadrado: 1500,
+    tipoEscritura: "publica",
     precio: 300000,
     descripcion:
-      "Cerca del club Paraiso del Sol, 15 minutos del corazón de Tlayacapan, a 5 minutos de la carretera México-Cuautla. Inversión única en Aguador, Tlayacapan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración privada. Costo desde $1500 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      'Gran oportunidad de inversión en nuestros lotes de nombre "Aguador" ubicados en el municipio de Totoloapan, Estado de Morelos. El costo por metro cuadrado es de 1500 pesos, con facilidades de pago. El enganche es del 30%, que se puede diferir hasta en 3 meses, y también ofrecemos opciones de financiamiento a 12, 24, 36 y 40 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: true,
       pavimentacion: true,
       telefono: true,
+      internet: true,
     },
     coordenadas: [18.9439155, -98.9710452],
     enganche: 90000,
-    mensualidades: [36],
-    id: 2,
-    imagenes: [agu1, agu2, agu3],
+    mensualidades: [12, 24, 36],
+    id: 10,
+    imagenes: [agu1, agu2 ,agu3],
     amenidades:
-      "Cerca del club Paraiso del Sol, 15 minutos del corazón de Tlayacapan, A 5 minutos de la carretera México-Cuautla",
+      "A espalda del “Club paraiso del sol, A 15 minutos del corazón de Tlayacapan A 5 minutos de la carretera México - Cuautla"
   },
+
+
   {
     nombre: "Colatitla",
-    ubicacion: "San Andres Cuauhtempan",
-    municipio: "Morelos",
-    metrosCuadrados: 260,
-    tipoEscritura: "privada",
+    municipio: "San Andres Cuauhtempan",
+    estado: "Morelos",
+    metrosCuadrados: [260],
+    costoPorMetroCuadrado: 800,
+    tipoEscritura: "Privada",
     precio: 208000,
     descripcion:
-      "Inversión única en Colatitla, San Andrés Cuauhtémpan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración privada. Costo desde $800 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      'Gran oportunidad de inversión en nuestros lotes de nombre "Colatitla" ubicados en el municipio de San Andrés Cuauhtempan, Estado de Morelos. Estos terrenos rústicos ofrecen un potencial prometedor para el futuro. El costo por metro cuadrado es de 800 pesos, con facilidades de pago. El enganche es del 30%, que se puede diferir hasta en 3 meses, y también ofrecemos opciones de financiamiento a 12 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: false,
     },
     coordenadas: [18.9750626, -98.9506144],
     enganche: 62400,
-    mensualidades: [36],
-    id: 3,
+    mensualidades: [12, 24, 36],
+    id: 10,
     imagenes: [col1, col2],
-    amenidades: "",
+    amenidades:
+      "A 5 minutos del Centro de San Andrés Cuauhtempan"
   },
+
+
+  // {
+  //   nombre: "Escondida",
+  //   municipio: "Totoloapan",
+  //   estado: "Morelos",
+  //   metrosCuadrados: [210],
+  //   tipoEscritura: "Pública",
+  //   precio: 189000,
+  //   descripcion:
+  //     'Gran oportunidad de inversión en nuestros lotes de nombre "Escondida" ubicados en el municipio de Totoloapan, Estado de Morelos. Estos terrenos rústicos ofrecen un potencial prometedor para el futuro. El costo por metro cuadrado es de 900 pesos, con facilidades de pago. El enganche es del 30%, ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
+  //   servicios: {
+  //     electricidad: false,
+  //   },
+  //   coordenadas: [18.992215, -98.935113],
+  //   enganche: 56700,
+  //   mensualidades: [12, 24, 36],
+  //   id: 10,
+  //   imagenes: [es1, es2 ,es3 ,es4],
+  //   amenidades:
+  //     "A 5 minutos de la Escuela de Estudios Superiores de Totolapan (UAEM)”, A 1 hora con 30 minutos de CDMX"
+  // },
+
   {
-    nombre: "El Potrero",
-    ubicacion: 'Lomas "El Potrero"',
+    nombre: "Potrero",
     municipio: "Oaxtepec",
-    metrosCuadrados: 244.59,
-    tipoEscritura: "publica",
+    estado: "Morelos",
+    metrosCuadrados: [244.59],
+    costoPorMetroCuadrado: 1000,
+    tipoEscritura: "Privada",
     precio: 317200,
     descripcion:
-      "Inversión única en El Potrero, Lomas 'El Potrero', Oaxtepec. Terreno rústico con potencial de desarrollo futuro, escrituración pública. Costo desde $1000 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      ' Gran oportunidad de inversión en el terreno de  nombre "Potrero" ubicado en el municipio de Oaxtepec, Estado de Morelos. El costo por metro cuadrado es de 1300 pesos, con facilidades de pago. El enganche es del 30%, ofrecemos opciones de financiamiento a 12 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: true,
     },
-    coordenadas: [18.9964, -98.932971],
-    enganche: 95160,
-    mensualidades: [36],
-    id: 4,
-    imagenes: [pot1, pot2, pot3],
+    coordenadas: [18.8868064, -99.0768712],
+    enganche: 951600,
+    mensualidades: [12],
+    id: 10,
+    imagenes: [pot1, pot2 ,pot3],
     amenidades:
-      "A 1 hora con 30 de CDMX, A 15 minutos de Six Flags Oaxtepec, Fácil Acceso, Colindante con Lomas de Cocoyoc",
+      "A 15 minutos de Six Flags Oaxtepec, A 1 hora con 30 minutos de CDMX, Colindante con “Lomas de Cocoyoc"
   },
-  {
-    nombre: "La Escondida",
-    ubicacion: "Totoloapan",
-    municipio: "Morelos",
-    metrosCuadrados: 210,
-    tipoEscritura: "publica",
-    precio: 189000,
-    descripcion:
-      "Inversión única en La Escondida, Totoloapan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración pública. Costo desde $900 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
-    servicios: {
-      electricidad: false,
-    },
-    coordenadas: [18.992215, -98.935113],
-    enganche: 56700,
-    mensualidades: [36],
-    id: 5,
-    imagenes: [es1, es2, es3, es4],
-    amenidades:
-      "A 5 minutos de la escuela de estudios superiores de Totolapan (UAEM), A una hora con treinta minutos de metro taxqueña",
-  },
+
   {
     nombre: "Rancho San Miguel",
-    ubicacion: "San Andres Cuauhtempan",
-    municipio: "Tlayacapan",
-    metrosCuadrados: 623.55,
-    tipoEscritura: "privada",
+    municipio: "San Andres Cuauhtempan",
+    estado: "Morelos",
+    metrosCuadrados: [623.55],
+    costoPorMetroCuadrado: 800,
+    tipoEscritura: "Pública",
     precio: 498840,
     descripcion:
-      "Inversión única en Rancho San Miguel, San Andrés Cuauhtémpan, Tlayacapan. Terreno rústico con potencial de desarrollo futuro, escrituración privada. Costo desde $800 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      ' Gran oportunidad de inversión en el terreno de nombre  "Rancho San Miguel" ubicado en el municipio de San Andrés Cuauhtempan, Estado de Morelos. El costo por metro cuadrado es de 800 pesos, con facilidades de pago. El enganche es del 30%, ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: true,
     },
-    coordenadas: [18.980071, -98.9511693],
+    coordenadas: [18.9640357, -98.9257589],
     enganche: 149652,
-    mensualidades: [36],
-    id: 6,
+    mensualidades: [12, 24, 36],
+    id: 10,
     imagenes: [sm1, sm2, sm3, sm4],
-    amenidades:
-      "A 1 hora de CDMX, A 15 minutos de Six Flags Oaxtepec, Facil Acceso, Colindante con Lomas de Cocoyoc",
+    amenidades: "A 10 minutos del corazón de Tlayacapan, A 20 minutos de Oaxtepec"
+
   },
   {
-    nombre: "Tlatenco 261",
-    ubicacion: "Totoloapan",
-    municipio: "Morelos",
-    metrosCuadrados: 261,
-    tipoEscritura: "publica",
-    precio: 208800,
+    nombre: "Tlatenco",
+    municipio: "Totoloapan",
+    estado: "Morelos",
+    metrosCuadrados: [261, 344.42, 605.42],
+    costoPorMetroCuadrado: 800,
+    tipoEscritura: "Pública",
+    precio: 296000,
     descripcion:
-      "Inversión única en Tlatenco, Totoloapan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración pública. Costo desde $500 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      'Gran oportunidad de inversión en el terreno de nombre Tlatenco ubicado en el municipio de Totoloapan, Estado de Morelos. El costo por metro cuadrado es de 800 pesos, con facilidades de pago. El enganche es del 30%, ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses. Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
     servicios: {
       electricidad: true,
     },
-    coordenadas: [18.9964, -98.932971],
-    enganche: 62640,
-    mensualidades: [36],
-    id: 7,
+    coordenadas: [18.9913531, -98.9338029],
+    enganche: 88800,
+    mensualidades: [12, 24, 36],
+    id: 10,
     imagenes: [tla1, tla2, tla3],
     amenidades:
-      "Calles de 8 metros, A 5 minutos de la escuela de estudios superiores de Totolapan (UAEM), A una hora con treinta minutos de metro taxqueña",
+      "A 5 minutos de la Escuela de Estudios Superiores de Totolapan (UAEM) Calles de 8 metros"
+
   },
-  {
-    nombre: "Tlaltenco 344",
-    ubicacion: "Totoloapan",
-    municipio: "Morelos",
-    metrosCuadrados: 344.42,
-    tipoEscritura: "publica",
-    precio: 275536,
-    descripcion:
-      "Inversión única en Tlaltenco, Totoloapan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración pública. Costo desde $500 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
-    servicios: {
-      electricidad: false,
-    },
-    coordenadas: [18.9964, -98.932971],
-    enganche: 82660.8,
-    mensualidades: [36],
-    id: 8,
-    imagenes: [tla1, tla2, tla3],
-    amenidades:
-      "Calles de 8 metros, A 5 minutos de la escuela de estudios superiores de Totolapan (UAEM), A una hora con treinta minutos de metro taxqueña",
-  },
+
   {
     nombre: "Valle Verde",
-    ubicacion: "Totoloapan",
-    municipio: "Morelos",
-    metrosCuadrados: 200,
-    tipoEscritura: "privada",
+    municipio: "Totoloapan",
+    estado: "Morelos",
+    metrosCuadrados: [200],
+    costoPorMetroCuadrado: 900,
+    tipoEscritura: "Privada",
     precio: 180000,
     descripcion:
-      "Inversión única en Valle Verde, Totoloapan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración privada. Costo desde $500 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      'Gran oportunidad de inversión en nuestros lotes de nombre "Valle Verde" ubicados en el municipio de Totoloapan, Estado de Morelos.Estos terrenos rústicos ofrecen un potencial prometedor para el futuro.El costo por metro cuadrado es de 900 pesos, con facilidades de pago.El enganche es del 30%, ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses.Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
+
     servicios: {
-      electricidad: false,
+      electricidad: false
     },
-    coordenadas: [18.9964, -98.932971],
+    coordenadas: [18.979909, -98.951170],
     enganche: 54000,
-    mensualidades: [36],
-    id: 9,
+    mensualidades: [12, 24, 36],
+    id: 10,
     imagenes: [val1, val2, val3, val4],
-    amenidades:
-      "Calles de 8 metros, A 5 minutos de la escuela de estudios superiores de Totolapan (UAEM), A una hora con treinta minutos de metro taxqueña",
+    amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
+
+
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
     nombre: "Zacanco",
-    ubicacion: "Ahuatlan",
-    municipio: "Morelos",
-    metrosCuadrados: 306,
-    tipoEscritura: "publica",
+    municipio: "Ahuatlan",
+    estado: "Morelos",
+    metrosCuadrados: [305.95, 306.00, 400, 503.22, 516.28, 521.21, 669.56, 800],
+    costoPorMetroCuadrado: 1000,
+    tipoEscritura: "Pública",
     precio: 306000,
     descripcion:
-      "Inversión única en Zacanco, Ahuatlan, Morelos. Terreno rústico con potencial de desarrollo futuro, escrituración pública. Costo desde $1000 MXN por metro cuadrado. Enganche del 30% y facilidades de pago en 12, 24 y 36 meses sin intereses. ¡Aprovecha esta oportunidad de crecimiento en un entorno prometedor!",
+      ' Gran oportunidad de inversión en nuestros lotes de nombre "Zacanco" ubicados en el municipio de Ahuatlan, Estado de Morelos.El costo por metro cuadrado es de 1000 pesos, con facilidades de pago.El enganche es del 30 %, ofrecemos opciones de financiamiento a 12, 24, 36 y 40 meses sin intereses.Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
+
     servicios: {
       electricidad: true,
+      pavimentacion: true,
     },
-    coordenadas: [18.9964, -98.932971],
+    coordenadas: [18.996400, -98.932971],
     enganche: 91800,
-    mensualidades: [36],
+    mensualidades: [12, 24, 36, 40],
     id: 10,
-    imagenes: [zac1, zac2, zac3],
-    amenidades:
-      "Calles de 8 metros, A 5 minutos de la escuela de estudios superiores de Totolapan (UAEM), A una hora con treinta minutos de metro taxqueña",
-  },
+    imagenes: [zac1, zac2 ,zac3],
+    amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
+
+  }
+
+
 ];
 
 export default db;

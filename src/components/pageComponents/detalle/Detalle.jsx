@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapContainer from "../../googleMap/CustomMap";
 import { Button } from "@mui/material";
@@ -8,8 +8,8 @@ import db from "../../../db/db";
 import './Detalle.css'
 import TextFieldComponent from "../../styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../styledComponents/textfield/TextareaComponent";
-import {FormControl} from '@mui/material'
 import SelectComponent from "../../styledComponents/select/SelectComponent";
+import { currencyFormatter } from "../../../utils/functions";
 
 
 const DetalleTerreno = () => {
@@ -23,21 +23,41 @@ const DetalleTerreno = () => {
   const [totalFinal, setTotalFinal] = useState(0)
   const [montFinal, setMonthFinal] = useState(0)
 
-  const setFinalPrices = () => {
-    const total = (terreno.costoPorMetroCuadrado * supValue)
-    const totalEnganche = total * .30
-    const totalMensualidades = (total / monthValue)
-    setTotalFinal(total)
-    setEngancheFinal(totalEnganche)
-    setMonthFinal(totalMensualidades)
-    console.log(total, monthValue);
-  }
+ 
+  useEffect(() => {
+    // Esta función se ejecutará cada vez que supValue o monthValue cambien
+    const setFinalPrices = () => {
+      const total = (terreno.costoPorMetroCuadrado * supValue)
+      const totalEnganche = total * .30
+      const totalMenosEnganche = total - totalEnganche
+
+      const totalMensualidades = totalMenosEnganche / monthValue
+
+      const totalWithoutFormat = Math.round(total)
+      const totalFormat = currencyFormatter({ currency: "MXN",
+      value: totalWithoutFormat})
+      setTotalFinal(totalFormat)
 
 
+      const engancheNoFormater = Math.round(totalEnganche)
+      const engancheWFormat = currencyFormatter({currency: "MXN", value: engancheNoFormater})
+      setEngancheFinal(engancheWFormat)
 
-  const mensaje = "Me interesa mucho esta propiedad y quiero recibir más información. ¡Gracias!"
 
+      const mensualidadesNoFormater = Math.round(totalMensualidades)
+      const mensualidadesFormat = currencyFormatter({currency: 'MXN', value: mensualidadesNoFormater})
+      setMonthFinal(mensualidadesFormat)
+      // console.log(total, monthValue);
+    }
 
+    setFinalPrices(); 
+  }, [supValue, monthValue, terreno.costoPorMetroCuadrado, totalFinal]);
+
+  const mensaje = `Quisiera recibir informacion de la propiedad ${terreno.nombre} ¡Gracias!`
+
+  const [messageTextArea, setMessageTextArea] = useState(mensaje)
+
+  
 
   const handleSwitchContainer = () => {
     setSwitchContainer(!switchContainer);
@@ -48,11 +68,11 @@ const DetalleTerreno = () => {
       <div className="w-full h-96 pt-6 md:pt-12 image absolute">
         <div className="w-full">
             <p className="font-afacad text-center text-2xl md:text-5xl p-4">{terreno.nombre} {terreno.ubicacion}, {terreno.municipio}</p>
-            <div className="w-full md:w-[78%] flex flex-row justify-evenly items-center">
+            {/* <div className="w-full md:w-[78%] flex flex-row justify-evenly items-center">
             <p>{terreno.metrosCuadrados}m²</p>
             <p>{terreno.metrosCuadrados}m²</p>
 
-            </div>
+            </div> */}
           </div>
       </div>
       <div className="p-2 relative pt-48">
@@ -123,8 +143,8 @@ const DetalleTerreno = () => {
           
           <TextFieldComponent placeholder="Número de teléfono *" />
           
-          <TextAreaComponent placeholder="Tu mensaje" value={mensaje}/>
-          <Button variant="contained" disableElevation sx={{padding: 1}} className="w-full">
+          <TextAreaComponent setValueOutside={setMessageTextArea} placeholder="Tu mensaje" value={messageTextArea}/>
+          <Button variant="contained" sx={{padding: 1}} className="w-full">
             Enviar
           </Button>
         
@@ -145,8 +165,8 @@ const DetalleTerreno = () => {
 
           <span className="font-bold">Costos:</span>
           <ul className="flex flex-col gap-4">
-            <li>{<SelectComponent setSelected={setSupValue} selected={supValue} title="Selecciona el tamano de superficie" items={terreno.metrosCuadrados} />}</li>
-            <li>{<SelectComponent op={setFinalPrices} setSelected={setMonthValue} selected={monthValue} title="Mensualidades" items={terreno.mensualidades}/>}</li>
+            <li>Un terreno de{<SelectComponent setSelected={setSupValue} selected={supValue} title="Selecciona el tamano de superficie" items={terreno.metrosCuadrados} />}  metros cuadrados</li>
+            <li>A{<SelectComponent setSelected={setMonthValue} selected={monthValue} title="Mensualidades" items={terreno.mensualidades}/>} Mensualidades sin intereses</li>
             {/* <li>Precio: ${terreno.precio} MXN por metro cuadrado</li> */}
             <li>Costo total: ${totalFinal}</li>
             <li>Pagos mensuales: ${montFinal}</li>
@@ -154,7 +174,7 @@ const DetalleTerreno = () => {
             <li>Facilidades de pago disponibles en 12, 24 y 36 meses sin intereses.</li>
           </ul>
           <span className="font-bold">Ubicación:</span>
-          <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" className="text-blue-500">Ver en Google Maps</a>
+          <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" rel="noreferrer" className="text-blue-500">Ver en Google Maps</a>
 
           <p className="mt-4">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.ubicacion}, {terreno.municipio}!</p>
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import {
   CarouselProvider,
@@ -12,21 +13,19 @@ import { MdNavigateBefore } from "react-icons/md";
 import { IoMdPricetag } from "react-icons/io";
 import { FaCircleDollarToSlot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import goToTop from "../../../utils/functions";
+import {goToTop} from "../../../utils/functions";
 
 const CardComponent = ({
   nombre,
   precio,
-  metrosCuadrados,
-  descripcion,
-  servicios,
+
   enganche,
-  id,
+
   municipio,
   ubicacion,
   imagenes,
   meses,
-  escritura
+
 }) => {
   function currencyFormatter({ currency, value }) {
     const formatter = new Intl.NumberFormat("es-EU", {
@@ -66,7 +65,7 @@ const CardComponent = ({
         <Slider className="h-40 w-full">
           {imagenes.map((img, index) => {
             return (
-              <Slide onClick={goToTop} index={img[index]}>
+              <Slide onClick={goToTop} key={index} index={img[index]}>
                 <Link to={`/propiedades/${url}`}><img
                   className="h-40 w-full object-cover object-botom"
                   src={img}
@@ -91,7 +90,7 @@ const CardComponent = ({
           <div className="w-full flex flex-col justify-center ">
             <h1>Desrrollo en {nombre}</h1>
             <h1 className="">
-              {ubicacion}, {municipio}
+               {municipio}, {ubicacion}
             </h1>
           </div>
 
