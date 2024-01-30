@@ -1,16 +1,12 @@
-import React, { useEffect } from "react";
 import "./LandingPage.css";
 import SelectComponent from "../../components/styledComponents/select/SelectComponent";
 import { Button, FormControl } from "@mui/material";
 import CardsComponent from "../../components/pageComponents/CardsComponent/CardsComponent";
-import db from "../../db/db";
 import TextFieldComponent from "../../components/styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../components/styledComponents/textfield/TextareaComponent";
 
 export const LandingPage = () => {
-  useEffect(() => {
-    localStorage.setItem("terrenos", JSON.stringify(db));
-  }, []);
+  
 
   return (
     <div className="flex flex-col w-full">

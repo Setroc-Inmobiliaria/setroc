@@ -18,10 +18,10 @@ import aca4 from "../assets/terrenos/acatitla/4.png";
 import col1 from "../assets/terrenos/colatitla/1.png";
 import col2 from "../assets/terrenos/colatitla/2.png";
 
-import es1 from "../assets/terrenos/escondida/1.png";
-import es2 from "../assets/terrenos/escondida/2.png";
-import es3 from "../assets/terrenos/escondida/3.png";
-import es4 from "../assets/terrenos/escondida/4.png";
+// import es1 from "../assets/terrenos/escondida/1.png";
+// import es2 from "../assets/terrenos/escondida/2.png";
+// import es3 from "../assets/terrenos/escondida/3.png";
+// import es4 from "../assets/terrenos/escondida/4.png";
 
 import val1 from "../assets/terrenos/valle/1.png";
 import val2 from "../assets/terrenos/valle/2.png";

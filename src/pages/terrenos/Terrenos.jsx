@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CardComponent from "../../components/pageComponents/CardComponent/CardComponent";
 import FilterAccordion from "../../components/pageComponents/Accordion/CustomAccordion";
+import db from "../../db/db";
 
 const Terrenos = () => {
-  const local = localStorage.getItem("terrenos");
-  const parse = JSON.parse(local);
-  const [terrenoWFilter, setTerrenoWFilter] = useState(parse);
+  const terreno = db;
+  const [terrenoWFilter, setTerrenoWFilter] = useState(terreno);
 
   const setFilter = (filter) => {
     if(filter === 'todos') {
-        setTerrenoWFilter(parse)
+        setTerrenoWFilter(terreno)
     } else {
-    setTerrenoWFilter(parse)
-    setTerrenoWFilter(parse.filter(terreno => terreno.ubicacion.toLowerCase() === filter.toLowerCase()));
+    setTerrenoWFilter(terreno)
+    setTerrenoWFilter(terreno.filter(terreno => terreno.ubicacion.toLowerCase() === filter.toLowerCase()));
     }
   };
 

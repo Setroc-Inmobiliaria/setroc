@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapContainer from "../../googleMap/CustomMap";
 import { Button } from "@mui/material";
@@ -13,8 +13,7 @@ import { currencyFormatter } from "../../../utils/functions";
 
 
 const DetalleTerreno = () => {
-  const { id } = useParams();
-  const terreno = db.find((terreno) => terreno.nombre === id);
+  
 
   const [switchContainer, setSwitchContainer] = useState(true);
   const [monthValue, setMonthValue] = useState(0)
@@ -23,11 +22,17 @@ const DetalleTerreno = () => {
   const [totalFinal, setTotalFinal] = useState(0)
   const [montFinal, setMonthFinal] = useState(0)
 
+  const { id } = useParams();
  
+  const terreno = db.find((terreno) => terreno.nombre === id);
   useEffect(() => {
     // Esta función se ejecutará cada vez que supValue o monthValue cambien
     const setFinalPrices = () => {
-      const total = (terreno.costoPorMetroCuadrado * supValue)
+
+      if(supValue === 0) {
+        setMonthFinal(0)
+      } else {
+        const total = (terreno.costoPorMetroCuadrado * supValue)
       const totalEnganche = total * .30
       const totalMenosEnganche = total - totalEnganche
 
@@ -47,6 +52,8 @@ const DetalleTerreno = () => {
       const mensualidadesNoFormater = Math.round(totalMensualidades)
       const mensualidadesFormat = currencyFormatter({currency: 'MXN', value: mensualidadesNoFormater})
       setMonthFinal(mensualidadesFormat)
+      }
+      
       // console.log(total, monthValue);
     }
 
@@ -152,15 +159,15 @@ const DetalleTerreno = () => {
         
                   <div className="w-full md:p-12 p-2 bg-white rounded-md shadow-sm md:shadow-lg shadow-black">
         <div className="h-full w-[100%] flex flex-col justify-center gap-4 p-2 md:p-0 md:gap-8">
-          <h1 className="font-montserrat text-2xl font-bold">Detalles del Terreno</h1>
+          {/* <h1 className="font-montserrat text-2xl font-bold text-p4">Detalles del Terreno</h1> */}
 
           {/* <span className="font-roboto font-medium italic">Descripción:</span> */}
           <p className="font-nunito font-normal">{terreno.descripcion}</p>
 
-          <span className="font-robot font-medium italic">Servicios Básicos:</span>
+          <span className="font-roboto font-medium italic text-p4">Servicios Básicos:</span>
           <p>{terreno.servicios.electricidad ? 'Cuenta con electricidad.' : 'No cuenta con servicios básicos en la actualidad, ideal para inversión a largo plazo y desarrollo personalizado.'}</p>
 
-          <span className="font-bold">Amenidades:</span>
+          <span className="font-roboto font-medium italic text-p4">Amenidades:</span>
           <p>{terreno.amenidades}</p>
 
           <span className="font-bold">Costos:</span>

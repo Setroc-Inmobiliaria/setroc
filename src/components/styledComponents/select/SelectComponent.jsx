@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { SlArrowDown } from 'react-icons/sl'
 import { alpha } from '@mui/material/styles';
-import { InputLabel } from "@mui/material";
+
 // import colors from "../../../constants/colors";
 
 const SelectComponent = ({ title, items, width, name, setSelected }) => {
