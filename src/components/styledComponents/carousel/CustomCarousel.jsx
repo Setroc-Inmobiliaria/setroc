@@ -20,7 +20,7 @@ isPlaying={true}
         <Slider className={`h-96 w-full` } >
           {imagenes?.map((img, index) => {
             return (
-              <Slide index={index}>
+              <Slide key={index} index={index}>
                 <img
                 key={index}
                   className="h-96 w-full object-cover object-botom"

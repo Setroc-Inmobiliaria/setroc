@@ -4,8 +4,6 @@ import CardComponent from "../CardComponent/CardComponent";
 
 const CardsComponent = () => {
 
-const randomNumber = Int8Array
-console.log(randomNumber);
 
 const terrenos = db.map(elemento => {
     return (

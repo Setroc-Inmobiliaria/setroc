@@ -58,7 +58,7 @@ const db = [
     coordenadas: [18.980071, -98.9511693],
     enganche: 91800,
     mensualidades: [12, 24, 36],
-    id: 10,
+    id: 1,
     imagenes: [aca1, aca2, aca3, aca4],
     amenidades:
       "A 1 hora de CDMX",
@@ -84,7 +84,7 @@ const db = [
     coordenadas: [18.9439155, -98.9710452],
     enganche: 90000,
     mensualidades: [12, 24, 36],
-    id: 10,
+    id: 2,
     imagenes: [agu1, agu2 ,agu3],
     amenidades:
       "A espalda del “Club paraiso del sol, A 15 minutos del corazón de Tlayacapan A 5 minutos de la carretera México - Cuautla"
@@ -107,7 +107,7 @@ const db = [
     coordenadas: [18.9750626, -98.9506144],
     enganche: 62400,
     mensualidades: [12, 24, 36],
-    id: 10,
+    id: 3,
     imagenes: [col1, col2],
     amenidades:
       "A 5 minutos del Centro de San Andrés Cuauhtempan"
@@ -151,7 +151,7 @@ const db = [
     coordenadas: [18.8868064, -99.0768712],
     enganche: 951600,
     mensualidades: [12],
-    id: 10,
+    id: 4,
     imagenes: [pot1, pot2 ,pot3],
     amenidades:
       "A 15 minutos de Six Flags Oaxtepec, A 1 hora con 30 minutos de CDMX, Colindante con “Lomas de Cocoyoc"
@@ -173,7 +173,7 @@ const db = [
     coordenadas: [18.9640357, -98.9257589],
     enganche: 149652,
     mensualidades: [12, 24, 36],
-    id: 10,
+    id: 5,
     imagenes: [sm1, sm2, sm3, sm4],
     amenidades: "A 10 minutos del corazón de Tlayacapan, A 20 minutos de Oaxtepec"
 
@@ -194,7 +194,7 @@ const db = [
     coordenadas: [18.9913531, -98.9338029],
     enganche: 88800,
     mensualidades: [12, 24, 36],
-    id: 10,
+    id: 6,
     imagenes: [tla1, tla2, tla3],
     amenidades:
       "A 5 minutos de la Escuela de Estudios Superiores de Totolapan (UAEM) Calles de 8 metros"
@@ -218,7 +218,7 @@ const db = [
     coordenadas: [18.979909, -98.951170],
     enganche: 54000,
     mensualidades: [12, 24, 36],
-    id: 10,
+    id: 7,
     imagenes: [val1, val2, val3, val4],
     amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
 
@@ -255,7 +255,7 @@ const db = [
     coordenadas: [18.996400, -98.932971],
     enganche: 91800,
     mensualidades: [12, 24, 36, 40],
-    id: 10,
+    id: 8,
     imagenes: [zac1, zac2 ,zac3],
     amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
 
