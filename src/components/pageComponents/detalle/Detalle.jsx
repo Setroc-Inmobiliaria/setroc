@@ -9,7 +9,7 @@ import './Detalle.css'
 import TextFieldComponent from "../../styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../styledComponents/textfield/TextareaComponent";
 import SelectComponent from "../../styledComponents/select/SelectComponent";
-import { currencyFormatter } from "../../../utils/functions";
+import { currencyFormatter, goToTop } from "../../../utils/functions";
 
 
 const DetalleTerreno = () => {
@@ -31,6 +31,8 @@ const DetalleTerreno = () => {
 
       if(supValue === 0) {
         setMonthFinal(0)
+    goToTop()
+
       } else {
         const total = (terreno.costoPorMetroCuadrado * supValue)
       const totalEnganche = total * .30
