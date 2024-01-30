@@ -27,6 +27,7 @@ const DetalleTerreno = () => {
   const terreno = db.find((terreno) => terreno.nombre === id);
   useEffect(() => {
     // Esta función se ejecutará cada vez que supValue o monthValue cambien
+    console.log(terreno);
     const setFinalPrices = () => {
 
       if(supValue === 0) {

@@ -1,10 +1,8 @@
-import React from "react";
+
 import db from '../../../db/db'
 import CardComponent from "../CardComponent/CardComponent";
 
 const CardsComponent = () => {
-
-const x_terrenos = localStorage.setItem('terrenos', db)
 
 const randomNumber = Int8Array
 console.log(randomNumber);
