@@ -105,7 +105,7 @@ const CardComponent = ({
           </div>
 
           <div className="">
-            <span className="text-2xl text-p3 font-medium flex flex-row items-center gap-2">
+            <span className="text-lg text-p3 font-medium flex flex-row items-center gap-2">
               <IoMdPricetag />
               Desde {formatPrice}
             </span>

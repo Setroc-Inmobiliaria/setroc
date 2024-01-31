@@ -168,13 +168,13 @@ const DetalleTerreno = () => {
           <p className="font-nunito font-normal">{terreno.descripcion}</p>
 
           <span className="font-roboto font-medium italic text-p4">Servicios Básicos:</span>
-          <p>{terreno.servicios.electricidad ? 'Cuenta con electricidad.' : 'No cuenta con servicios básicos en la actualidad, ideal para inversión a largo plazo y desarrollo personalizado.'}</p>
+          <p className="font-nunito">{terreno.servicios.electricidad ? 'Cuenta con electricidad.' : 'No cuenta con servicios básicos en la actualidad, ideal para inversión a largo plazo y desarrollo personalizado.'}</p>
 
           <span className="font-roboto font-medium italic text-p4">Amenidades:</span>
-          <p>{terreno.amenidades}</p>
+          <p className="font-nunito">{terreno.amenidades}</p>
 
-          <span className="font-bold">Costos:</span>
-          <ul className="flex flex-col gap-4">
+          <span className="font-roboto font-medium italic text-p4">Costos:</span>
+          <ul className="flex flex-col gap-4 font-nunito">
             <li>Un terreno de{<SelectComponent setSelected={setSupValue} selected={supValue} title="Selecciona el tamano de superficie" items={terreno.metrosCuadrados} />}  metros cuadrados</li>
             <li>A{<SelectComponent setSelected={setMonthValue} selected={monthValue} title="Mensualidades" items={terreno.mensualidades}/>} Mensualidades sin intereses</li>
             {/* <li>Precio: ${terreno.precio} MXN por metro cuadrado</li> */}
@@ -186,9 +186,9 @@ const DetalleTerreno = () => {
           <span className="font-bold">Ubicación:</span>
           <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" rel="noreferrer" className="text-blue-500">Ver en Google Maps</a>
 
-          <p className="mt-4">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.ubicacion}, {terreno.municipio}!</p>
+          <p className="mt-4 font-nunito">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.ubicacion}, {terreno.municipio}!</p>
 
-          <span>Precios sujetos a disponibilidad*</span>
+          <span className="font-nunito text-p2">Precios sujetos a disponibilidad*</span>
 
         </div>
         </div>

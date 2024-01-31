@@ -42,7 +42,7 @@ export const LandingPage = () => {
         <div className="bg-image w-full flex flex-col justify-center items-center">
           <div className=" h-full bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-8">
 
-            <div className="bg-white bg-opacity-80 h-full w-full md:w-12/12 flex flex-col gap-5 bg-smoke p-8 rounded-lg drop-shadow-2xl">
+            <div className="bg-white bg-opacity-80 h-full w-full md:w-full flex flex-col gap-5 bg-smoke p-2 rounded-lg drop-shadow-2xl">
         <h1>Tenemos terrenos que se adecuan a las posibilidades de tu enganche!</h1>
 
         <h1>Enganche de: {sliderValue}</h1>
