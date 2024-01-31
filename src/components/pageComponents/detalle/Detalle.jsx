@@ -153,7 +153,7 @@ const DetalleTerreno = () => {
           
           <TextFieldComponent placeholder="Número de teléfono *" />
           
-          <TextAreaComponent setValueOutside={setMessageTextArea} placeholder="Tu mensaje" value={messageTextArea}/>
+          <TextAreaComponent setValue={setMessageTextArea} placeholder="Tu mensaje" value={messageTextArea}/>
           <Button variant="contained" sx={{padding: 1}} className="w-full">
             Enviar
           </Button>

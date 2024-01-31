@@ -13,18 +13,20 @@ import { MdNavigateBefore } from "react-icons/md";
 import { IoMdPricetag } from "react-icons/io";
 import { FaCircleDollarToSlot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import {goToTop} from "../../../utils/functions";
+// import {goToTop} from "../../../utils/functions";
 
 const CardComponent = ({
   nombre,
-  precio,
+  // precio,
+  costoPorMetroCuadrado,
+  metrosCuadrados,
 
-  enganche,
+  // enganche,
 
   municipio,
   ubicacion,
   imagenes,
-  meses,
+  // meses,
 
 }) => {
   function currencyFormatter({ currency, value }) {
@@ -38,19 +40,27 @@ const CardComponent = ({
     return formatter.format(rounded);
   }
 
+  const precio = (metrosCuadrados[0] * costoPorMetroCuadrado)
+
   const formatPrice = currencyFormatter({
     currency: "MXN",
     value: precio,
   });
+
+  
+  const enganche = precio * 0.30
 
   const formatEnganche = currencyFormatter({
     currency: "MXN",
     value: enganche,
   });
 
-  const mensualidades = (precio - enganche) / meses
-  const formatMens = Math.round(mensualidades)
+  // const mensualidades = (precio - enganche) / meses
+  // const formatMens = Math.round(mensualidades)
   const url = nombre
+
+
+
 
   return (
     <div className="w-full bg-white flex flex-col shadow-2xl border-p2 border-2 md:transition-all md:hover:scale-105 md:hover:transition-all">
@@ -65,7 +75,7 @@ const CardComponent = ({
         <Slider className="h-40 w-full">
           {imagenes.map((img, index) => {
             return (
-              <Slide onClick={goToTop} key={index} index={img[index]}>
+              <Slide key={index} index={img[index]}>
                 <Link to={`/propiedades/${url}`}><img
                   className="h-40 w-full object-cover object-botom"
                   src={img}
@@ -97,7 +107,7 @@ const CardComponent = ({
           <div className="">
             <span className="text-2xl text-p3 font-medium flex flex-row items-center gap-2">
               <IoMdPricetag />
-              {formatPrice}
+              Desde {formatPrice}
             </span>
           </div>
         </div>
@@ -108,7 +118,7 @@ const CardComponent = ({
           </span>
           <span className="flex flex-col text-center text-xs">
             <span>Enganche</span>
-            <span>{formatEnganche}</span>
+            <span>Desde {formatEnganche}</span>
           </span>
         </div>
       </div>

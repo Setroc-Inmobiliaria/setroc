@@ -13,8 +13,9 @@ const terrenos = db.map(elemento => {
         municipio={elemento.municipio}
         precio={elemento.precio}
         servicios={elemento.servicios}
-        enganche={elemento.enganche}
+        // enganche={elemento.enganche}
         metrosCuadrados={elemento.metrosCuadrados}
+        costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
         key={elemento.id}
         imagenes={elemento.imagenes}
@@ -32,8 +33,9 @@ const terrenos2 = db.map(elemento => {
         municipio={elemento.municipio}
         precio={elemento.precio}
         servicios={elemento.servicios}
-        enganche={elemento.enganche}
+        // enganche={elemento.enganche}
         metrosCuadrados={elemento.metrosCuadrados}
+        costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
         key={elemento.id}
         imagenes={elemento.imagenes}

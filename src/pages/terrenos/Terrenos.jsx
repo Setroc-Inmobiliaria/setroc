@@ -26,6 +26,7 @@ const Terrenos = () => {
         servicios={elemento.servicios}
         enganche={elemento.enganche}
         metrosCuadrados={elemento.metrosCuadrados}
+        costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
         key={elemento.id}
         imagenes={elemento.imagenes}
