@@ -1,42 +1,3 @@
-import pot1 from "../assets/terrenos/potrero/1.png";
-import pot2 from "../assets/terrenos/potrero/2.png";
-import pot3 from "../assets/terrenos/potrero/3.png";
-
-import zac1 from "../assets/terrenos/zacanco/1.png";
-import zac2 from "../assets/terrenos/zacanco/2.png";
-import zac3 from "../assets/terrenos/zacanco/3.png";
-
-import agu1 from "../assets/terrenos/aguador/1.png";
-import agu2 from "../assets/terrenos/aguador/2.png";
-import agu3 from "../assets/terrenos/aguador/3.png";
-
-import aca1 from "../assets/terrenos/acatitla/1.png";
-import aca2 from "../assets/terrenos/acatitla/2.png";
-import aca3 from "../assets/terrenos/acatitla/3.png";
-import aca4 from "../assets/terrenos/acatitla/4.png";
-
-import col1 from "../assets/terrenos/colatitla/1.png";
-import col2 from "../assets/terrenos/colatitla/2.png";
-
-// import es1 from "../assets/terrenos/escondida/1.png";
-// import es2 from "../assets/terrenos/escondida/2.png";
-// import es3 from "../assets/terrenos/escondida/3.png";
-// import es4 from "../assets/terrenos/escondida/4.png";
-
-import val1 from "../assets/terrenos/valle/1.png";
-import val2 from "../assets/terrenos/valle/2.png";
-import val3 from "../assets/terrenos/valle/3.png";
-import val4 from "../assets/terrenos/valle/4.png";
-
-import sm1 from "../assets/terrenos/miguel/1.png";
-import sm2 from "../assets/terrenos/miguel/2.png";
-import sm3 from "../assets/terrenos/miguel/3.png";
-import sm4 from "../assets/terrenos/miguel/4.png";
-
-import tla1 from "../assets/terrenos/tlaltenco/1.png";
-import tla2 from "../assets/terrenos/tlaltenco/2.png";
-import tla3 from "../assets/terrenos/tlaltenco/3.png";
-
 const db = [
 
 
@@ -59,12 +20,14 @@ const db = [
     enganche: 91800,
     mensualidades: [12, 24, 36],
     id: 1,
-    imagenes: [aca1, aca2, aca3, aca4],
+    imagenes: [
+      'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748076/setroc/terrenos/acatitla/qvumsxl0iqxekotfh7fm.png'
+      , 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748076/setroc/terrenos/acatitla/j703tiih6vbb0ekb2cnk.png',
+      'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748076/setroc/terrenos/acatitla/qedsfdtvqg7ksorludhd.png',
+      'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748075/setroc/terrenos/acatitla/kyfiqiflpqsurx13u0jq.png'],
     amenidades:
       "A 1 hora de CDMX",
   },
-
-
   {
     nombre: "Aguador",
     municipio: "Totoloapan",
@@ -85,12 +48,12 @@ const db = [
     enganche: 90000,
     mensualidades: [12, 24, 36],
     id: 2,
-    imagenes: [agu1, agu2 ,agu3],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748076/setroc/terrenos/aguador/m8s0numv2ykfdrvtmzfy.png',
+      'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748076/setroc/terrenos/aguador/shavepc7glteoa9ocxli.png',
+      'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748076/setroc/terrenos/aguador/c96zatnzqn1gp5whfj8h.png'],
     amenidades:
       "A espalda del “Club paraiso del sol, A 15 minutos del corazón de Tlayacapan A 5 minutos de la carretera México - Cuautla"
   },
-
-
   {
     nombre: "Colatitla",
     municipio: "San Andres Cuauhtempan",
@@ -108,7 +71,7 @@ const db = [
     enganche: 62400,
     mensualidades: [12, 24, 36],
     id: 3,
-    imagenes: [col1, col2],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748077/setroc/terrenos/colatitla/o8lltbrmhbdeuwtqbr7o.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748077/setroc/terrenos/colatitla/vng23blrzgkeb2w2vh7u.png'],
     amenidades:
       "A 5 minutos del Centro de San Andrés Cuauhtempan"
   },
@@ -152,11 +115,10 @@ const db = [
     enganche: 951600,
     mensualidades: [12],
     id: 4,
-    imagenes: [pot1, pot2 ,pot3],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/potrero/vfg6wryggtl5cpej3bjg.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748079/setroc/terrenos/potrero/no8zxjdmsqk246zmuyrq.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748079/setroc/terrenos/potrero/r1ugiwuphmjke8raumr2.png'],
     amenidades:
       "A 15 minutos de Six Flags Oaxtepec, A 1 hora con 30 minutos de CDMX, Colindante con “Lomas de Cocoyoc"
   },
-
   {
     nombre: "Rancho San Miguel",
     municipio: "San Andres Cuauhtempan",
@@ -174,7 +136,7 @@ const db = [
     enganche: 149652,
     mensualidades: [12, 24, 36],
     id: 5,
-    imagenes: [sm1, sm2, sm3, sm4],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748079/setroc/terrenos/miguel/ngc0ivranhzv9iqopsrn.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748078/setroc/terrenos/miguel/twadoyvxbnzzwa43rmb8.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748078/setroc/terrenos/miguel/sudt8mliyb5tbsrxbxgu.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748078/setroc/terrenos/miguel/qghmtuz8amycg1sq9xv3.png'],
     amenidades: "A 10 minutos del corazón de Tlayacapan, A 20 minutos de Oaxtepec"
 
   },
@@ -195,12 +157,11 @@ const db = [
     enganche: 88800,
     mensualidades: [12, 24, 36],
     id: 6,
-    imagenes: [tla1, tla2, tla3],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748085/setroc/terrenos/tlaltenco/prfuwgglwenbzokdum8h.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/tlaltenco/xmoippu3x1uzhpxbdeu0.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748080/setroc/terrenos/tlaltenco/lzercle3wn68xpor3zit.png'],
     amenidades:
       "A 5 minutos de la Escuela de Estudios Superiores de Totolapan (UAEM) Calles de 8 metros"
 
   },
-
   {
     nombre: "Valle Verde",
     municipio: "Totoloapan",
@@ -219,24 +180,11 @@ const db = [
     enganche: 54000,
     mensualidades: [12, 24, 36],
     id: 7,
-    imagenes: [val1, val2, val3, val4],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748082/setroc/terrenos/valle/fv9qm6bfqven0nk5eq4x.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/gooxby4kt6yrxtlhsqwn.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/n6ydhoo3spjhqhehsbti.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/erahkgfiywi2lgfi7dzy.png'],
     amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
 
 
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
   {
     nombre: "Zacanco",
     municipio: "Ahuatlan",
@@ -256,7 +204,7 @@ const db = [
     enganche: 91800,
     mensualidades: [12, 24, 36, 40],
     id: 8,
-    imagenes: [zac1, zac2 ,zac3],
+    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748083/setroc/terrenos/zacanco/epjdzhdsnwughjz8t8n0.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748082/setroc/terrenos/zacanco/hajlmdbbctvg9itsss6x.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748082/setroc/terrenos/zacanco/mmbnxap0t1zzms9ahioh.png'],
     amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
 
   }
