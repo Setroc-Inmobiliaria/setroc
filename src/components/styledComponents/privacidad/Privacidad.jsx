@@ -6,11 +6,13 @@ import {
   Slide,
 } from "@mui/material";
 import React from "react";
+import { MdClose } from "react-icons/md";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+// eslint-disable-next-line react/prop-types
 export const Privacidad = ({ handleClose, open }) => {
   return (
     <Dialog
@@ -19,8 +21,12 @@ export const Privacidad = ({ handleClose, open }) => {
       keepMounted
       onClose={handleClose}
       aria-describedby="alert-dialog-slide-description"
+      sx={{'.css-1t1j96h-MuiPaper-root-MuiDialog-paper' : {
+        padding : 0,
+        margin: 1
+      }}}
     >
-      <DialogTitle>AVISO DE PRIVACIDAD</DialogTitle>
+      <DialogTitle className="flex justify-between items-center">AVISO DE PRIVACIDAD <MdClose size={30} className="fill-red-700 cursor-pointer" onClick={handleClose}/></DialogTitle>
       <DialogContent>
         {/* <DialogContentText id="alert-dialog-slide-description"> */}
         <strong>SETROC GRUPO KONSTRUCTOR S.A de C.V</strong> con domicilio en

@@ -12,7 +12,7 @@ const Terrenos = () => {
         setTerrenoWFilter(terreno)
     } else {
     setTerrenoWFilter(terreno)
-    setTerrenoWFilter(terreno.filter(terreno => terreno.ubicacion.toLowerCase() === filter.toLowerCase()));
+    setTerrenoWFilter(terreno.filter(terreno => terreno.municipio.toLowerCase() === filter.toLowerCase()));
     }
   };
 
@@ -20,7 +20,7 @@ const Terrenos = () => {
     return (
       <CardComponent
         nombre={elemento.nombre}
-        ubicacion={elemento.ubicacion}
+        ubicacion={elemento.estado}
         municipio={elemento.municipio}
         precio={elemento.precio}
         servicios={elemento.servicios}

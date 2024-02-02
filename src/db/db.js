@@ -5,7 +5,7 @@ const db = [
 
   {
     nombre: "Acatitla",
-    municipio: "San Andrés Cuauhtempan",
+    municipio: "San Andres Cuauhtempan",
     estado: "Morelos",
     metrosCuadrados: [374.45, 423.09, 439.33, 448.89, 808.38, 1018, 1929],
     costoPorMetroCuadrado: 500,
