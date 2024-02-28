@@ -1,13 +1,12 @@
-import * as React from "react"
 import { useState } from "react"
 import logo from "../../assets/SETROC.png"
-import { GiHamburgerMenu } from "react-icons/gi"
+import { GiHamburgerMenu, GiPineTree } from "react-icons/gi"
 import { GrClose } from "react-icons/gr"
-import { FaHouseDamage } from "react-icons/fa"
-import { FaCubes } from "react-icons/fa6"
-import { IoPeople } from "react-icons/io5"
+import { FaCrown, FaHouseDamage, FaPhone } from "react-icons/fa"
+import { FaCubes,  } from "react-icons/fa6"
+import { IoBuild, IoPeople } from "react-icons/io5"
 import { MdPhoneAndroid } from "react-icons/md"
-import { FaFacebookF, FaTiktok, FaInstagram, FaYoutube } from "react-icons/fa"
+
 import { Link } from "react-router-dom"
 
 export const Header = () => {
@@ -32,23 +31,23 @@ export const Header = () => {
         <ul className="hidden md:flex flex-row w-full md:w-5/12 justify-between font-afacad text-xl">
           <div className="flex flex-row gap-5 justify-start items-center ">
             <Link to="/catalogo">
-              <li>Catálogo</li>
+              <li className="flex justify-center items-center gap-2"><GiPineTree />Catálogo</li>
             </Link>
           </div>
           <div className="flex flex-row gap-5 justify-start items-center">
             <Link to="/servicios">
-              <li>Servicios</li>
+            <li className="flex justify-center items-center gap-2"><IoBuild />Servicios</li>
             </Link>
           </div>
 
           <div className="flex flex-row gap-5 justify-start items-center">
             <Link to="/nosotros">
-              <li>Nosotros</li>
+            <li className="flex justify-center items-center gap-2"><FaCrown />Nosotros</li>
             </Link>
           </div>
           <div className="flex flex-row gap-5 justify-start items-center ">
             <Link to="/contacto">
-              <li>Contactanos</li>
+            <li className="flex justify-center items-center gap-2"><FaPhone />Contactanos</li>
             </Link>
           </div>
         </ul>
