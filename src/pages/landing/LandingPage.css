@@ -67,3 +67,11 @@
   delay-75 ease-in 
   duration-200
 }
+
+.panel1{
+  @apply
+  bg-[url('../../assets/1.png')]
+  bg-cover
+  bg-bottom
+  bg-no-repeat
+}

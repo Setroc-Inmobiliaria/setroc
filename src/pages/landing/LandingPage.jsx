@@ -122,7 +122,7 @@ export const LandingPage = () => {
 
 
 
-        <div className="w-full flex flex-col justify-center p-5 md:p-20 gap-6">
+        <div className="w-full flex flex-col justify-center p-5 md:p-20 gap-6 panel1">
           <h1 className="title text-3xl font-bold md:text-5xl font-nunito text-end md:text-center text-p2">
             <span className="text-5xl md:text-7xl text-p3">¡</span>Vende tu Terreno o Encuentra tu Rincón <span className="font-extrabold text-p3">Perfecto</span><span className="text-5xl md:text-7xl text-p3">!</span>
           </h1>
@@ -146,7 +146,7 @@ export const LandingPage = () => {
 
       </div>
       <div className="relative">
-        <div className="w-full -z-10 h-96 absolute bg-p4 pt-2 md:pt-8">
+        <div className="w-full -z-10 h-96 absolute panel2 pt-2 md:pt-8">
           <p className="font-afacad text-center text-4xl md:text-5xl p-4">Tu única tarea es soñar, nosotros lo hacemos realidad.</p>
           <p className="font-afacad text-center text-4xl md:text-5xl p-4">¡Encuentra tu próximo hogar!</p>
         </div>
