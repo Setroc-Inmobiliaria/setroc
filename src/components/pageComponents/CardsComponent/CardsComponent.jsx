@@ -45,7 +45,7 @@ const terrenos2 = db.map(elemento => {
     )
 }).slice(4,6)
   return (
-    <div className="w-full flex flex-col gap-12 ">
+    <div className="w-full flex flex-col gap-12">
         <div className="w-full gap-12 flex flex-col items-center justify-between md:grid md:grid-cols-3 md:col-span-1 place-items-center md:gap-12 ">
             {terrenos}
         </div>

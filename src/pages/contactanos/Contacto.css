@@ -1,0 +1,13 @@
+.panel3{
+    @apply
+    bg-[url('../../assets/1.png')]
+    bg-cover
+    bg-top
+  }
+
+  .panel4{
+    @apply
+    bg-[url('../../assets/6.png')]
+    bg-cover
+    
+  }

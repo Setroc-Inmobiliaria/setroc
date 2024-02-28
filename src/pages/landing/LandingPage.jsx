@@ -1,6 +1,5 @@
 import "./LandingPage.css";
-import SelectComponent from "../../components/styledComponents/select/SelectComponent";
-import { Button, FormControl, Slider } from "@mui/material";
+import { Button, Slider } from "@mui/material";
 import CardsComponent from "../../components/pageComponents/CardsComponent/CardsComponent";
 import TextFieldComponent from "../../components/styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../components/styledComponents/textfield/TextareaComponent";
@@ -150,7 +149,7 @@ export const LandingPage = () => {
           <p className="font-afacad text-center text-4xl md:text-5xl p-4">Tu única tarea es soñar, nosotros lo hacemos realidad.</p>
           <p className="font-afacad text-center text-4xl md:text-5xl p-4">¡Encuentra tu próximo hogar!</p>
         </div>
-        <div className="z-50 p-2 md:p-16 mt-72 md:mt-40">
+        <div className="z-50 p-2 md:p-16 mt-72 md:mt-40 ">
           <CardsComponent />
 
         </div>

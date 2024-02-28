@@ -75,3 +75,11 @@
   bg-bottom
   bg-no-repeat
 }
+
+.panel2{
+  @apply
+  bg-[url('../../assets/5.png')]
+  bg-cover
+  bg-center
+  
+}

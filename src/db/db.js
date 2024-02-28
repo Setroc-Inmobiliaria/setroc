@@ -162,29 +162,29 @@ const db = [
       "A 5 minutos de la Escuela de Estudios Superiores de Totolapan (UAEM) Calles de 8 metros"
 
   },
-  {
-    nombre: "Valle Verde",
-    municipio: "Totoloapan",
-    estado: "Morelos",
-    metrosCuadrados: [200],
-    costoPorMetroCuadrado: 900,
-    tipoEscritura: "Privada",
-    precio: 180000,
-    descripcion:
-      'Gran oportunidad de inversión en nuestros lotes de nombre "Valle Verde" ubicados en el municipio de Totoloapan, Estado de Morelos.Estos terrenos rústicos ofrecen un potencial prometedor para el futuro.El costo por metro cuadrado es de 900 pesos, con facilidades de pago.El enganche es del 30%, ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses.Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
+  // {
+  //   nombre: "Valle Verde",
+  //   municipio: "Totoloapan",
+  //   estado: "Morelos",
+  //   metrosCuadrados: [200],
+  //   costoPorMetroCuadrado: 900,
+  //   tipoEscritura: "Privada",
+  //   precio: 180000,
+  //   descripcion:
+  //     'Gran oportunidad de inversión en nuestros lotes de nombre "Valle Verde" ubicados en el municipio de Totoloapan, Estado de Morelos.Estos terrenos rústicos ofrecen un potencial prometedor para el futuro.El costo por metro cuadrado es de 900 pesos, con facilidades de pago.El enganche es del 30%, ofrecemos opciones de financiamiento a 12, 24 y 36 meses sin intereses.Aprovecha esta oportunidad para tener tu casa de vacaciones, tu nuevo hogar o incluso una nueva fuente de ingresos.',
 
-    servicios: {
-      electricidad: false
-    },
-    coordenadas: [18.979909, -98.951170],
-    enganche: 54000,
-    mensualidades: [12, 24, 36],
-    id: 7,
-    imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748082/setroc/terrenos/valle/fv9qm6bfqven0nk5eq4x.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/gooxby4kt6yrxtlhsqwn.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/n6ydhoo3spjhqhehsbti.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/erahkgfiywi2lgfi7dzy.png'],
-    amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
+  //   servicios: {
+  //     electricidad: false
+  //   },
+  //   coordenadas: [18.979909, -98.951170],
+  //   enganche: 54000,
+  //   mensualidades: [12, 24, 36],
+  //   id: 7,
+  //   imagenes: ['https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748082/setroc/terrenos/valle/fv9qm6bfqven0nk5eq4x.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/gooxby4kt6yrxtlhsqwn.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/n6ydhoo3spjhqhehsbti.png', 'https://res.cloudinary.com/dod4a1pxx/image/upload/v1706748081/setroc/terrenos/valle/erahkgfiywi2lgfi7dzy.png'],
+  //   amenidades: "A 5 minutos de la Escuela de Estudios Superiores de Totolapan(UAEM), A 1 hora con 30 minutos de CDMX, Calles de 8 metros"
 
 
-  },
+  // },
   {
     nombre: "Zacanco",
     municipio: "Ahuatlan",
