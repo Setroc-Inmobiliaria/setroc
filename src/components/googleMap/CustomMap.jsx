@@ -1,9 +1,9 @@
 // Importa las dependencias necesarias
-import React from 'react';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 
 // Configura el componente del mapa
+// eslint-disable-next-line react/prop-types
 const MapContainer = ({ lat, lang, className}) => {
     const API_KEY = import.meta.env.VITE_API_KEY;
 
