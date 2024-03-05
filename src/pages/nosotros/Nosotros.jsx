@@ -26,7 +26,7 @@ const Nosotros = () => {
                     b: 'animate-pulse animate-infinite animate-duration-[5000ms] animate-ease-linear',
                     c: 'animate-pulse animate-infinite animate-duration-[5000ms] animate-ease-linear',
                     title: 'Misión',
-                    text: 'Ofrecer a nuestros clientes servicios profesionales inmobiliarios que les permitan encontrar y obtener el máximo beneficio en sus inversiones. Comprometidos en cada negociación con una comunicación responsable e inteligente.',
+                    text: <div className='flex flex-col gap-4 animate-jump animate-once'>Ofrecer a nuestros clientes servicios profesionales inmobiliarios que les permitan encontrar y obtener el máximo beneficio en sus inversiones. Comprometidos en cada negociación con una comunicación responsable e inteligente.</div>,
                     img: chill
                 })
                 break;
@@ -36,7 +36,7 @@ const Nosotros = () => {
                     b: 'hidden',
                     c: 'animate-pulse animate-infinite animate-duration-[5000ms] animate-ease-linear',
                     title: 'Visión',
-                    text: 'Convertirnos en la empresa líder del sector inmobiliario, actuando con ética, responsabilidad y profesionalismo con nuestros clientes y colaboradores. Comprometidos a impulsar el crecimiento personal de ambas partes, trabajando juntos para alcanzar el éxito deseado en nuestras operaciones y relaciones comerciales.',
+                    text: <div className='flex flex-col gap-4 animate-jump-in animate-once'>Convertirnos en la empresa líder del sector inmobiliario, actuando con ética, responsabilidad y profesionalismo con nuestros clientes y colaboradores. Comprometidos a impulsar el crecimiento personal de ambas partes, trabajando juntos para alcanzar el éxito deseado en nuestras operaciones y relaciones comerciales.</div>,
                     img: lider
 
                 })
@@ -47,7 +47,7 @@ const Nosotros = () => {
                     b: 'animate-pulse animate-infinite animate-duration-[5000ms] animate-ease-linear',
                     c: 'hidden',
                     title: 'Valores',
-                    text: <ul className='flex flex-col gap-4'>
+                    text: <ul className='flex flex-col gap-4 animate-jump animate-once'>
                         <li>Pasión: La pasión impulsa el compromiso, la creatividad y el deseo de superar obstáculos para asegurar el éxito de nuestros clientes.
                         </li>
                         <li>Profesionalismo: Comprometidos con altos estándares de competencia y ética en todas las operaciones. Esto implica actuar con integridad, eficiencia y conocimiento especializado en el mercado inmobiliario.
