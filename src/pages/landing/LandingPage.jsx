@@ -74,9 +74,9 @@ export const LandingPage = () => {
 
             <div className="bg-white bg-opacity-80 h-full w-full md:w-full flex flex-col gap-5 bg-smoke p-4 md:p-24 rounded-lg drop-shadow-2xl">
             <h1 className="title  font-roboto text-5xl md:text-5xl text-p3 font-medium">
-              <span className="font-extrabold text-7xl">E</span>L terreno a tu medida
+              <span className="font-extrabold text-7xl">E</span>L lugar de tus sueños
             </h1>
-        <h1 className="text-end font-nunito text-3xl md:text-5xl text-p2"><span className="text-6xl font-bold">T</span>enemos un terreno que se ajusta a tu presupuesto</h1>
+        <h1 className="text-end font-nunito text-3xl md:text-5xl text-p2"><span className="text-6xl font-bold">C</span>ada presupuesto tiene su terreno ideal</h1>
 
         <div className="w-full flex flex-col justify-center items-center md:p-12 ">
         <h1 className="md:text-2xl text-2xl text-center py-5 text-p4"><span className="text-5xl">S</span>elecciona el rango del presupuesto destinado para el enganche</h1>

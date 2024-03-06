@@ -1,5 +1,5 @@
 import { useState } from "react"
-import logo from "../../assets/SETROC.png"
+import logo from "../../assets/inmobiliaria.png"
 import { GiHamburgerMenu, GiPineTree } from "react-icons/gi"
 import { GrClose } from "react-icons/gr"
 import { FaCrown, FaHouseDamage, FaPhone } from "react-icons/fa"
