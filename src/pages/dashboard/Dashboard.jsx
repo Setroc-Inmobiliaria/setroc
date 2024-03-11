@@ -41,7 +41,10 @@ const Dashboard = () => {
     return (
         <TabContext value={tableValue}>
 
-            <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
+            <TabList 
+            onChange={handleChangeTab}
+            visibleScrollbar={true} 
+            variant="scrollable">
                 <Tab label="Terrenos disponibles en SETROC" value="1"/>
                 <Tab label="Agregar un nuevo terreno" value="2" />
                 <Tab label="Mensajes" value="3"/>
