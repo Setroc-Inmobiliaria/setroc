@@ -53,10 +53,10 @@ const Dashboard = () => {
                 <Loader/>
             </TabPanel>
             <TabPanel value="2">
-                <h1>HOLAAAAA Perre</h1>
+                <h1>HOLAAAAA 2</h1>
             </TabPanel>
             <TabPanel value="3">
-                <h1>HOLAAAAA papure</h1>
+                <h1>HOLAAAAA 3</h1>
             </TabPanel>
 
         </TabContext>
