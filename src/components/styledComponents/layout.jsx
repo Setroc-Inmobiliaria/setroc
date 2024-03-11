@@ -9,6 +9,7 @@ import {
 import { Privacidad } from "./privacidad/Privacidad";
 import { useState } from "react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
+import { Link } from "react-router-dom";
 
 export const Layout = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -54,6 +55,7 @@ export const Layout = ({ children }) => {
               Aviso de privacidad
             </h3>
             <h3>Terminos y Condiciones</h3>
+            <Link to="/admin/login"><h3>Administrar</h3></Link>
           </div>
 
           <div>

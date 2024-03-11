@@ -27,32 +27,40 @@ export const LandingPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const info = {
-      name,
-      email,
-      telefono,
-      message
-    }
-    try {
-      await axios.post(formSpreeURL, info);
+    if (!name.length || !email.length || !telefono.length || !message.length) {
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Gracias por llenar el formulario",
-        text: 'Uno de nuestros asesores se pondra en contacto contigo muy pronto.',
-        showConfirmButton: false,
-        timer: 1500
+        icon: "error",
+        title: "Campos invalidos",
+        text: "Llena el formulario para poder continuar",
       });
-      setName('')
-      setEmail('')
-      setTelefono('')
-      setMessage('')
-    } catch (error) {
-      console.error("Error al enviar el formulario:", error);
+    } else {
+      const info = {
+        name,
+        email,
+        telefono,
+        message
+      }
+      try {
+        await axios.post(formSpreeURL, info);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Gracias por llenar el formulario",
+          text: 'Uno de nuestros asesores se pondra en contacto contigo muy pronto.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setName('')
+        setEmail('')
+        setTelefono('')
+        setMessage('')
+      } catch (error) {
+        console.error("Error al enviar el formulario:", error);
+      }
     }
+
   }
 
-  useEffect(() => console.log(sliderValue), [sliderValue])
 
   const searchTerreno = (e) => {
     const value = e.target.value
@@ -92,8 +100,6 @@ export const LandingPage = () => {
           break;
       }
     })
-
-    console.log(sliderValue);
   }
 
   useEffect(() => {

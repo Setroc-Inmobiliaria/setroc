@@ -30,7 +30,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 }));
 
 // eslint-disable-next-line react/prop-types
-const TextFieldComponent = ({ placeholder, setData, name, value }) => {
+const TextFieldComponent = ({ placeholder, setData, name, value, type }) => {
 
 
   const setInputValue = (e) => {
@@ -42,7 +42,7 @@ const TextFieldComponent = ({ placeholder, setData, name, value }) => {
   return (
 
 
-    <BootstrapInput onChange={setInputValue} name={name} placeholder={placeholder} id="bootstrap-input" value={value}/>
+    <BootstrapInput onChange={setInputValue} name={name} placeholder={placeholder} value={value} type={type ? type : "text"}/>
 
   );
 };
