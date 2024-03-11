@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import { getDocs, collection } from "firebase/firestore";
-import { Tab, Tabs, } from "@mui/material";
+import { Button, Tab, } from "@mui/material";
 import Loader from "../../components/pageComponents/Loader/Loader";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
+import { useNavigate } from "react-router-dom";
 
 
 
-const Dashboard = () => {
+// eslint-disable-next-line react/prop-types
+const Dashboard = ({setIsLoggedIn}) => {
     const [tableValue, setTableValue] = useState("1")
     const [data, setData] = useState([]);
+    const navigate = useNavigate()
 
     const handleChangeTab = (event, newValue) => {
         setTableValue(newValue)
@@ -34,6 +37,12 @@ const Dashboard = () => {
     };
 
 
+    const cerrarSesion = () => {
+        localStorage.removeItem('auth')
+        setIsLoggedIn(false)
+        navigate('/')
+    }
+
 
 
 
@@ -44,13 +53,15 @@ const Dashboard = () => {
             <TabList 
             onChange={handleChangeTab}
             visibleScrollbar={true} 
-            variant="scrollable">
+            variant="scrollable"
+            >
                 <Tab label="Terrenos disponibles en SETROC" value="1"/>
                 <Tab label="Agregar un nuevo terreno" value="2" />
                 <Tab label="Mensajes" value="3"/>
             </TabList>
             <TabPanel value="1">
                 <Loader/>
+                <Button onClick={cerrarSesion}>Cerrar Sesion</Button>
             </TabPanel>
             <TabPanel value="2">
                 <h1>HOLAAAAA 2</h1>

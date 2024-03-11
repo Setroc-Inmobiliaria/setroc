@@ -7,7 +7,7 @@ import ContactoPage from "./pages/contactanos/Contacto";
 import Terrenos from "./pages/terrenos/Terrenos";
 import Propiedades from "./pages/propiedades/Propiedades";
 import Nosotros from "./pages/nosotros/Nosotros";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginComponent from "./pages/LogIn/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 
@@ -16,7 +16,11 @@ import Dashboard from "./pages/dashboard/Dashboard";
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('auth'))
+  
+  useEffect(() => {
+   
+  }, [])
   return (
     <Layout>
       <Routes>
@@ -25,12 +29,12 @@ function App() {
         <Route path="/propiedades/:id" element={<Propiedades />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<ContactoPage/>} />
-        <Route path="/admin/login" element={isLoggedIn ? <Navigate to="/admin/dashboard"/> : <LoginComponent setLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/admin/login" element={isLoggedIn ? <Navigate to="/admin/dashboard"/> : <LoginComponent isLog={isLoggedIn} setLoggedIn={setIsLoggedIn}/>} />
 
 
 
         {/* Ruta Protegida */}
-        <Route path="/admin/dashboard" element={isLoggedIn ? <Dashboard/> : <Navigate to='/' />} />
+        <Route path="/admin/dashboard" element={isLoggedIn ? <Dashboard setIsLoggedIn={setIsLoggedIn}/> : <Navigate to='/' />} />
       </Routes>
     </Layout>
 

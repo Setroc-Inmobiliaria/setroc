@@ -18,6 +18,8 @@ const LoginComponent = ({ setLoggedIn }) => {
 
     useEffect(() => {
         goToTop()
+        localStorage.getItem('auth')
+
     }, [])
 
     const handleSignIn = async () => {
@@ -25,6 +27,7 @@ const LoginComponent = ({ setLoggedIn }) => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             setLoggedIn(true);
+            localStorage.setItem('auth', true)
             navigate("/admin/dashboard");
             setIsLoading(false)
         } catch (error) {
@@ -32,7 +35,6 @@ const LoginComponent = ({ setLoggedIn }) => {
             setError(error.message)
             setLoggedIn(false);
             setIsLoading(false)
-            // Aquí puedes mostrar un mensaje de error al usuario
         }
     };
 
