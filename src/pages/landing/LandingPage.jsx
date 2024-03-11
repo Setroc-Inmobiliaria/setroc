@@ -7,28 +7,64 @@ import { useEffect, useState } from "react";
 import CardComponent from "../../components/pageComponents/CardComponent/CardComponent";
 import db from "../../db/db";
 import { currencyFormatter } from "../../utils/functions";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export const LandingPage = () => {
 
-  const [mensajeContacto, setMensajeContacto] = useState("")
   const [sliderValue, setSliderValue] = useState(90000)
   const terrenos = db
   const [terreno, setTerreno] = useState(terrenos[0])
   const [formatEngancheCalculated, setFormatEngancheCalculated] = useState(0)
+
+
+  //Formulario
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefono, setTelefono] = useState('')
+  const [message, setMessage] = useState('')
+  const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const info = {
+      name,
+      email,
+      telefono,
+      message
+    }
+    try {
+      await axios.post(formSpreeURL, info);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Gracias por llenar el formulario",
+        text: 'Uno de nuestros asesores se pondra en contacto contigo muy pronto.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setName('')
+      setEmail('')
+      setTelefono('')
+      setMessage('')
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+    }
+  }
 
   useEffect(() => console.log(sliderValue), [sliderValue])
 
   const searchTerreno = (e) => {
     const value = e.target.value
     setSliderValue(value)
-   terrenos.filter(() => {
+    terrenos.filter(() => {
       // const precioTotal = (terreno.metrosCuadrados[0] * terreno.costoPorMetroCuadrado)
-      
+
 
       const value = sliderValue
       const formatSliderValue = currencyFormatter({
         currency: 'MXN',
-        value : value
+        value: value
       })
       setFormatEngancheCalculated(formatSliderValue)
       switch (sliderValue) {
@@ -38,31 +74,31 @@ export const LandingPage = () => {
         case 60000:
           setTerreno(terrenos[2])
           break;
-        
-          case 70000:
-            setTerreno(terrenos[3])
-            break;
-          
-          case 90000:
-            setTerreno(terrenos[1])
-            break;
 
-            case 140000:
-              setTerreno(terrenos[4]); 
-              break;
-             
-      
-        default:  setTerreno(terrenos[1])
+        case 70000:
+          setTerreno(terrenos[3])
+          break;
+
+        case 90000:
+          setTerreno(terrenos[1])
+          break;
+
+        case 140000:
+          setTerreno(terrenos[4]);
+          break;
+
+
+        default: setTerreno(terrenos[1])
           break;
       }
     })
-    
+
     console.log(sliderValue);
   }
 
   useEffect(() => {
     searchTerreno({ target: { value: sliderValue } }); // Llamar a la función searchTerreno con el valor actual de sliderValue
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sliderValue]);
 
   return (
@@ -73,49 +109,49 @@ export const LandingPage = () => {
           <div className="bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-2">
 
             <div className="bg-white bg-opacity-80 h-full w-full md:w-full flex flex-col gap-5 bg-smoke p-4 md:p-24 rounded-lg drop-shadow-2xl">
-            <h1 className="title  font-roboto text-5xl md:text-5xl text-p3 font-medium">
-              <span className="font-extrabold text-7xl">E</span>L lugar de tus sueños
-            </h1>
-        <h1 className="text-end font-nunito text-3xl md:text-5xl text-p2"><span className="text-6xl font-bold">C</span>ada presupuesto tiene su terreno ideal</h1>
+              <h1 className="title  font-roboto text-5xl md:text-5xl text-p3 font-medium">
+                <span className="font-extrabold text-7xl">E</span>L lugar de tus sueños
+              </h1>
+              <h1 className="text-end font-nunito text-3xl md:text-5xl text-p2"><span className="text-6xl font-bold">C</span>ada presupuesto tiene su terreno ideal</h1>
 
-        <div className="w-full flex flex-col justify-center items-center md:p-12 ">
-        <h1 className="md:text-2xl text-2xl text-center py-5 text-p4"><span className="text-5xl">S</span>elecciona el rango del presupuesto destinado para el enganche</h1>
-        <h1 className="md:text-2xl text-lg text-center py-5 text-p3"><span className="text-5xl">C</span>on un enganche de {formatEngancheCalculated} te recomendamos:</h1>
+              <div className="w-full flex flex-col justify-center items-center md:p-12 ">
+                <h1 className="md:text-2xl text-2xl text-center py-5 text-p4"><span className="text-5xl">S</span>elecciona el rango del presupuesto destinado para el enganche</h1>
+                <h1 className="md:text-2xl text-lg text-center py-5 text-p3"><span className="text-5xl">C</span>on un enganche de {formatEngancheCalculated} te recomendamos:</h1>
 
-    <div className="w-full flex flex-col gap-12">
-       <Slider spacing={2} step={10000}
-                marks
-                min={50000}
-                max={140000}
-                valueLabelDisplay="auto"
-                value={sliderValue}
-                onChange={(e) => searchTerreno(e)}
-                // sx={{'width' : 350}}
-                sx={{
-                  color: '#42838A', // Color del slider
-                  '& .MuiSlider-thumb': {
-                    backgroundColor: '#42838A', // Color de la bolita del slider
-                  },
-                }}
-              />
+                <div className="w-full flex flex-col gap-12">
+                  <Slider spacing={2} step={10000}
+                    marks
+                    min={50000}
+                    max={140000}
+                    valueLabelDisplay="auto"
+                    value={sliderValue}
+                    onChange={(e) => searchTerreno(e)}
+                    // sx={{'width' : 350}}
+                    sx={{
+                      color: '#42838A', // Color del slider
+                      '& .MuiSlider-thumb': {
+                        backgroundColor: '#42838A', // Color de la bolita del slider
+                      },
+                    }}
+                  />
 
-              <CardComponent 
-              nombre={terreno.nombre} 
-              costoPorMetroCuadrado={terreno.costoPorMetroCuadrado} 
-              imagenes={terreno.imagenes} 
-              metrosCuadrados={terreno.metrosCuadrados} 
-              municipio={terreno.municipio} 
-              ubicacion={terreno.ubicacion} 
-              />
+                  <CardComponent
+                    nombre={terreno.nombre}
+                    costoPorMetroCuadrado={terreno.costoPorMetroCuadrado}
+                    imagenes={terreno.imagenes}
+                    metrosCuadrados={terreno.metrosCuadrados}
+                    municipio={terreno.municipio}
+                    ubicacion={terreno.ubicacion}
+                  />
 
-    </div>
+                </div>
 
-           
-        </div>
-            
+
+              </div>
+
 
             </div>
-            
+
           </div>
         </div>
 
@@ -130,17 +166,16 @@ export const LandingPage = () => {
           </span>
 
           <label>Nombre Completo</label>
-          <TextFieldComponent label="Nombre Completo *" />
+          <TextFieldComponent setData={setName} value={name} name="name" label="Nombre Completo *" />
           <label>Email</label>
-          <TextFieldComponent label="Email *" />
+          <TextFieldComponent setData={setEmail} value={email} name="email" label="Email *" />
           <label>Numero de teléfono</label>
-          <TextFieldComponent label="Número de teléfono *" />
+          <TextFieldComponent setData={setTelefono} value={telefono} name="telefono" label="Número de teléfono *" />
           <label>Tu mensaje</label>
-          <TextAreaComponent label="Tu mensaje" setValue={setMensajeContacto} value={mensajeContacto} />
-          <Button variant="contained" disableElevation className="w-full">
+          <TextAreaComponent setData={setMessage} value={message} name="message" label="Tu mensaje" />
+          <Button onClick={handleSubmit} variant="contained" disableElevation className="w-full">
             Enviar
           </Button>
-
         </div>
 
       </div>

@@ -1,9 +1,49 @@
 import TextFieldComponent from "../../components/styledComponents/textfield/TextfieldComponent";
-import { Button, FormControl } from "@mui/material";
+import { Button } from "@mui/material";
 import TextAreaComponent from "../../components/styledComponents/textfield/TextareaComponent";
+// import getFirebase from "../../firebase";
 import './Contacto.css'
+import { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ContactoPage = () => {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefono, setTelefono] = useState('')
+  const [message, setMessage] = useState('')
+
+  const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const info = {
+      name,
+      email,
+      telefono,
+      message
+    }
+    try {
+      await axios.post(formSpreeURL, info);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Gracias por llenar el formulario",
+        text: 'Uno de nuestros asesores se pondra en contacto contigo muy pronto.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setName('')
+      setEmail('')
+      setTelefono('')
+      setMessage('')
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+    }
+  }
+
   return (
     <div className="w-full flex h-full flex-col">
       <div className="opacity-75 w-full">
@@ -19,19 +59,19 @@ const ContactoPage = () => {
             </h1>
           </div>
 
-          <FormControl className="w-full flex flex-col justify-center gap-8 font-afacad">
+          <div className="w-full flex flex-col justify-center gap-8 font-afacad">
             <label>Nombre Completo</label>
-            <TextFieldComponent label="Nombre Completo *" />
+            <TextFieldComponent setData={setName} value={name} name="name" label="Nombre Completo *" />
             <label>Email</label>
-            <TextFieldComponent label="Email *" />
+            <TextFieldComponent setData={setEmail} value={email} name="email" label="Email *" />
             <label>Numero de teléfono</label>
-            <TextFieldComponent label="Número de teléfono *" />
+            <TextFieldComponent setData={setTelefono} value={telefono} name="telefono" label="Número de teléfono *" />
             <label>Tu mensaje</label>
-            <TextAreaComponent label="Tu mensaje" />
-            <Button variant="contained" disableElevation className="w-full">
-             Enviar
+            <TextAreaComponent setData={setMessage} value={message} name="message" label="Tu mensaje" />
+            <Button onClick={handleSubmit} variant="contained" disableElevation className="w-full">
+              Enviar
             </Button>
-          </FormControl>
+          </div>
         </div>
       </div>
     </div>

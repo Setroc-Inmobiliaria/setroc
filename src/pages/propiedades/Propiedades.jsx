@@ -1,4 +1,3 @@
-import React from "react";
 import DetalleTerreno from "../../components/pageComponents/detalle/Detalle";
 
 const Propiedades = () => {

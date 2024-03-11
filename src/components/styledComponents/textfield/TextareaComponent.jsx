@@ -26,18 +26,17 @@ const BootstrapTextarea = styled(TextareaAutosize)(({ theme }) => ({
 }));
 
 // eslint-disable-next-line react/prop-types
-const TextAreaComponent = ({ value, setValue }) => {
-
+const TextAreaComponent = ({ setData, value, name }) => {
 
   const handleOnChange = (e)  => {
-    setValue(e.target.value);
-    console.log(e.target.value);
+    setData(e.target.value);
   };
 
   return (
     <BootstrapTextarea
       value={value}
       onChange={handleOnChange}
+      name={name}
       // placeholder={label}
     />
   );
