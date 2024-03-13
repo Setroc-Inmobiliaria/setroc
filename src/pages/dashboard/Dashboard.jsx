@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { db } from "../../firebase";
+import { fire_db } from "../../firebase";
 import { getDocs, collection } from "firebase/firestore";
 import { Button, Tab, } from "@mui/material";
 import Loader from "../../components/pageComponents/Loader/Loader";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { useNavigate } from "react-router-dom";
-
+import UploadTerreno from "../../components/pageComponents/uploadTerreno/uploadTerreno";
+import Mensajes from "../../components/pageComponents/Mensajes/Mensajes";
 
 
 // eslint-disable-next-line react/prop-types
-const Dashboard = ({setIsLoggedIn}) => {
+const Dashboard = ({ setIsLoggedIn }) => {
     const [tableValue, setTableValue] = useState("1")
     const [data, setData] = useState([]);
     const navigate = useNavigate()
@@ -25,13 +26,11 @@ const Dashboard = ({setIsLoggedIn}) => {
 
     const obtenerElementos = async () => {
 
-        const docRef = collection(db, 'contacto');
-        const querySnapshot = await getDocs(docRef);
+        const contactosRef = collection(fire_db, 'contactos');
+        const querySnapshot = await getDocs(contactosRef);
         const newData = [];
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
             newData.push(doc.data());
-
         });
         setData(newData);
     };
@@ -50,24 +49,27 @@ const Dashboard = ({setIsLoggedIn}) => {
     return (
         <TabContext value={tableValue}>
 
-            <TabList 
-            onChange={handleChangeTab}
-            visibleScrollbar={true} 
-            variant="scrollable"
+            <TabList
+                onChange={handleChangeTab}
+                visibleScrollbar={true}
+                variant="scrollable"
             >
-                <Tab label="Terrenos disponibles en SETROC" value="1"/>
+                <Tab label="Terrenos disponibles en SETROC" value="1" />
                 <Tab label="Agregar un nuevo terreno" value="2" />
-                <Tab label="Mensajes" value="3"/>
+                <Tab label="Mensajes" value="3" />
+                <Tab label='Cerrar Sesion' value="4" />
             </TabList>
             <TabPanel value="1">
-                <Loader/>
-                <Button onClick={cerrarSesion}>Cerrar Sesion</Button>
+                <Loader />
             </TabPanel>
             <TabPanel value="2">
-                <h1>HOLAAAAA 2</h1>
+               <UploadTerreno/>
             </TabPanel>
             <TabPanel value="3">
-                <h1>HOLAAAAA 3</h1>
+                <Mensajes data={data}/>
+            </TabPanel>
+            <TabPanel value="4">
+                <Button onClick={cerrarSesion}>Cerrar Sesion</Button>
             </TabPanel>
 
         </TabContext>

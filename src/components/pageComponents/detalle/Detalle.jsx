@@ -12,6 +12,8 @@ import SelectComponent from "../../styledComponents/select/SelectComponent";
 import { currencyFormatter, goToTop } from "../../../utils/functions";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { fire_db } from "../../../firebase";
 
 
 const DetalleTerreno = () => {
@@ -74,12 +76,13 @@ const DetalleTerreno = () => {
   const [email, setEmail] = useState('')
   const [telefono, setTelefono] = useState('')
   const mensaje = `Quisiera recibir informacion de la propiedad ${terreno.nombre} ¡Gracias!`
-  const [messageTextArea, setMessageTextArea] = useState(mensaje)
+  const [message, setMessage] = useState(mensaje)
   const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
+  const contactosRef = collection(fire_db, 'contactos');
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!name.length || !email.length || !telefono.length || !messageTextArea.length) {
+    if (!name.length || !email.length || !telefono.length || !message.length) {
       Swal.fire({
         icon: "error",
         title: "Campos invalidos",
@@ -90,10 +93,13 @@ const DetalleTerreno = () => {
         name,
         email,
         telefono,
-        messageTextArea
+        message,
+        timestamp: serverTimestamp(),
+        active: true,
       }
       try {
         await axios.post(formSpreeURL, info);
+        await addDoc(contactosRef, info)
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -105,7 +111,7 @@ const DetalleTerreno = () => {
         setName('')
         setEmail('')
         setTelefono('')
-        setMessageTextArea('')
+        setMessage('')
       } catch (error) {
         console.error("Error al enviar el formulario:", error);
       }
@@ -198,7 +204,7 @@ const DetalleTerreno = () => {
 
             <TextFieldComponent setData={setTelefono} value={telefono} name="telefono" label="Número de teléfono *" placeholder="Numero de contacto" />
 
-            <TextAreaComponent setData={setMessageTextArea} placeholder="Tu mensaje" value={messageTextArea} name="message" />
+            <TextAreaComponent setData={setMessage} placeholder="Tu mensaje" value={message} name="message" />
             <Button variant="contained" sx={{ padding: 1 }} className="w-full" onClick={handleSubmit}>
               Enviar
             </Button>

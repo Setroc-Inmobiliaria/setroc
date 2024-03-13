@@ -7,7 +7,7 @@ import ContactoPage from "./pages/contactanos/Contacto";
 import Terrenos from "./pages/terrenos/Terrenos";
 import Propiedades from "./pages/propiedades/Propiedades";
 import Nosotros from "./pages/nosotros/Nosotros";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoginComponent from "./pages/LogIn/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 
@@ -18,9 +18,6 @@ import Dashboard from "./pages/dashboard/Dashboard";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('auth'))
   
-  useEffect(() => {
-   
-  }, [])
   return (
     <Layout>
       <Routes>

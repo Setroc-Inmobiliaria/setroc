@@ -6,6 +6,8 @@ import './Contacto.css'
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { fire_db } from "../../firebase";
 
 const ContactoPage = () => {
 
@@ -15,33 +17,46 @@ const ContactoPage = () => {
   const [message, setMessage] = useState('')
 
   const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
+  const contactosRef = collection(fire_db, 'contactos');
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const info = {
-      name,
-      email,
-      telefono,
-      message
-    }
-    try {
-      await axios.post(formSpreeURL, info);
+    if (!name.length || !email.length || !telefono.length || !message.length) {
       Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Gracias por llenar el formulario",
-        text: 'Uno de nuestros asesores se pondra en contacto contigo muy pronto.',
-        showConfirmButton: false,
-        timer: 1500
+        icon: "error",
+        title: "Campos invalidos",
+        text: "Llena el formulario para poder continuar",
       });
-      setName('')
-      setEmail('')
-      setTelefono('')
-      setMessage('')
-    } catch (error) {
-      console.error("Error al enviar el formulario:", error);
+    } else {
+      const info = {
+        name,
+        email,
+        telefono,
+        message,
+        timestamp: serverTimestamp(),
+        active: true,
+      }
+      try {
+        await axios.post(formSpreeURL, info);
+        await addDoc(contactosRef, info)
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Gracias por llenar el formulario",
+          text: 'Uno de nuestros asesores se pondra en contacto contigo muy pronto.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setName('')
+        setEmail('')
+        setTelefono('')
+        setMessage('')
+      } catch (error) {
+        console.error("Error al enviar el formulario:", error);
+      }
     }
+
   }
 
   return (

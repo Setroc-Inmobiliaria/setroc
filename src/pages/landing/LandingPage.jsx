@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import CardComponent from "../../components/pageComponents/CardComponent/CardComponent";
 import db from "../../db/db";
 import { currencyFormatter } from "../../utils/functions";
-import axios from "axios";
 import Swal from "sweetalert2";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { fire_db } from "../../firebase";
+import axios from "axios";
 
 export const LandingPage = () => {
 
@@ -25,6 +27,8 @@ export const LandingPage = () => {
   const [message, setMessage] = useState('')
   const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
 
+  const contactosRef = collection(fire_db, 'contactos');
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!name.length || !email.length || !telefono.length || !message.length) {
@@ -38,10 +42,14 @@ export const LandingPage = () => {
         name,
         email,
         telefono,
-        message
+        message,
+        timestamp: serverTimestamp(),
+        active: true,
       }
       try {
         await axios.post(formSpreeURL, info);
+        const newContact = await addDoc(contactosRef, info)
+        await newContact.update
         Swal.fire({
           position: "top-end",
           icon: "success",
