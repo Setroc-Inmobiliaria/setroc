@@ -7,9 +7,11 @@ import ContactoPage from "./pages/contactanos/Contacto";
 import Terrenos from "./pages/terrenos/Terrenos";
 import Propiedades from "./pages/propiedades/Propiedades";
 import Nosotros from "./pages/nosotros/Nosotros";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginComponent from "./pages/LogIn/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
+import { collection, getDocs } from "firebase/firestore";
+import { fire_db } from "./firebase";
 
 
 
@@ -17,6 +19,22 @@ import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('auth'))
+  const [terrenosFB, setTerrenosFB] = useState([])
+
+  useEffect(() => {
+    getTerrenosFromFirebase()
+  }, [])
+
+  const getTerrenosFromFirebase = async () => {
+    const contactosRef = collection(fire_db, 'terrenos');
+    const querySnapshot = await getDocs(contactosRef);
+    const newData = [];
+    querySnapshot.forEach((doc) => {
+        newData.push(doc.data());
+    });
+    setTerrenosFB(newData);
+};
+
   
   return (
     <Layout>
@@ -31,7 +49,7 @@ function App() {
 
 
         {/* Ruta Protegida */}
-        <Route path="/admin/dashboard" element={isLoggedIn ? <Dashboard setIsLoggedIn={setIsLoggedIn}/> : <Navigate to='/' />} />
+        <Route path="/admin/dashboard" element={isLoggedIn ? <Dashboard setIsLoggedIn={setIsLoggedIn} terrenosFB={terrenosFB}/> : <Navigate to='/' />} />
       </Routes>
     </Layout>
 

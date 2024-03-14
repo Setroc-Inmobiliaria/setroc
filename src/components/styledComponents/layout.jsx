@@ -10,7 +10,9 @@ import { Privacidad } from "./privacidad/Privacidad";
 import { useState } from "react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { Link } from "react-router-dom";
+import setroc from  '../../assets/set_fon.jpg'
 
+// eslint-disable-next-line react/prop-types
 export const Layout = ({ children }) => {
   const [open, setOpen] = useState(false);
 
@@ -29,12 +31,13 @@ export const Layout = ({ children }) => {
           <FloatingWhatsApp
             phoneNumber="525577137642"
             accountName="SETROC Inmobiliaria"
-            // avatar={setroc}
+            avatar={setroc}
             allowClickAway={true}
             chatMessage="¡Hola! ¿En qué puedo ayudarte?"
             notification={true}
             statusMessage="Online"
-            // darkMode={true}
+            className="bg-white"
+            darkMode={false}
           />
         </div>
         <Header />
