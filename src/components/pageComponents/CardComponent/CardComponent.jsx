@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
 import {
   CarouselProvider,
   Slider,
@@ -17,17 +16,11 @@ import { Link } from "react-router-dom";
 
 const CardComponent = ({
   nombre,
-  // precio,
   costoPorMetroCuadrado,
   metrosCuadrados,
-
-  // enganche,
-
   municipio,
   ubicacion,
   imagenes,
-  // meses,
-
 }) => {
   function currencyFormatter({ currency, value }) {
     const formatter = new Intl.NumberFormat("es-EU", {
