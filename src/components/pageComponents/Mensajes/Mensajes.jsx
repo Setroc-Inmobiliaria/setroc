@@ -62,8 +62,7 @@ const Mensajes = () => {
                 const setRead = false;
                 await updateDoc(docRef, { active: setRead });
                 console.log('Campo actualizado correctamente', document.id);
-                setData([]);
-                obtenerElementos();
+                setActiveMessages(activeMessages.filter(msg => msg.nombre !== nombre))
                 setIsLoad(false);
             });
         } catch (error) {
