@@ -7,8 +7,8 @@ import { Button, Checkbox } from "@mui/material";
 
 const UploadTerreno = () => {
 
-  const [image, setImage] = useState(null);
-  const [url, setUrl] = useState("");
+  const [image, setImage] = useState([]);
+  const [url, setUrl] = useState([]);
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
   const [nombre, setNombre] = useState("")
@@ -27,6 +27,7 @@ const UploadTerreno = () => {
    
 
   const saveTerreno = () => {
+    uploadImage()
     const newTerreno = {
       nombre,
       municipio,
@@ -58,14 +59,17 @@ const UploadTerreno = () => {
   const uploadImage = async () => {
     setLoading(true);
     const data = new FormData();
-    data.append("file", image);
+    image.forEach((image, index) => {
+      data.append(`image${index}`, image);
+    });
+  
     data.append(
       "upload_preset",
       import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
     );
     data.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
     data.append("folder", "Cloudinary-Setroc");
-
+  
     try {
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,
@@ -77,25 +81,29 @@ const UploadTerreno = () => {
       const res = await response.json();
       console.log(res);
       setLoading(false);
-      setPreview(null)
-      setImage(null)
-      setUrl(res.secure_url);
+      
+      setImage([]); // Limpiar el array de imágenes después de cargarlas
+      setUrl(res.map((item) => item.secure_url)); // Establecer las URL de las imágenes cargadas
       console.log(url);
     } catch (error) {
       setLoading(false);
     }
   };
+  
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setImage(file);
+    const filesEvent = event.target.files;
+    const newFE = []
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    for (let i = 0; i < filesEvent.length; i++) {
+      const fileIndex = filesEvent[i]
+      newFE.push(fileIndex)
+      console.log(newFE);
+      
+    }
 
-    reader.onload = () => {
-      setPreview(reader.result);
-    };
+    setImage(newFE)
+
   };
 
   const handleResetClick = () => {
