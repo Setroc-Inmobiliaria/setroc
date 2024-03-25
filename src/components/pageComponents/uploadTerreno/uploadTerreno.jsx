@@ -105,7 +105,7 @@ const UploadTerreno = () => {
     setPreview(null);
     setImages([]);
   };
-  
+
 
 
   const handleImageChange = (event) => {
@@ -124,8 +124,8 @@ const UploadTerreno = () => {
 
   return (
     <div className="flex h-full flex-col md:flex-row gap-12 p-2 md:p-12">
-
       <div className="w-full flex flex-col gap-4">
+        
         <h2 className="text-3xl font-afacad">Informacion necesaria para anadir un terreno</h2>
 
         <TextFieldComponent
@@ -174,7 +174,7 @@ const UploadTerreno = () => {
           type="number"
           setData={setPrecio}
         />
-        
+
         <label>{`Escribe los metros cuadrados separados por una coma (",")`}</label>
         <label>Ejemplo: 345.12, 100, 222, 450</label>
         <TextFieldComponent
@@ -275,7 +275,24 @@ const UploadTerreno = () => {
       </div>
 
       <div className="container mx-auto max-w-screen-lg h-full flex flex-col justify-center w-full">
+      <h1 className="text-3xl font-bold">Instrucciones</h1>
+        <p className="my-4">
+          Todos los campos son obligatorios. Asegúrate de completarlos todos, de lo contrario, el terreno no será publicado.
+        </p>
+        <p className="my-4">
+          Redacta correctamente en todos los campos. Utiliza acentos en todos, excepto en el municipio, ya que este último se utiliza para realizar filtros en la página.
+        </p>
+        <p className="my-4">
+          Si cometes un error en algún campo, contacta con un administrador para eliminar el elemento y volver a completar el formulario.
+        </p>
+        <p className="my-4">
+          Puedes cargar múltiples imágenes que se publicarán. Te recomendamos cargar todas las imágenes del terreno haciendo clic en el botón <button className="bg-p1 p-2 rounded-xl">Upload a File</button>.
+        </p>
+        <p className="my-4">
+          Algunos campos tienen instrucciones adicionales, como los metros cuadrados. Antes de enviar el formulario, asegúrate de que los datos ingresados tengan el formato solicitado, de lo contrario, el terreno no se podrá publicar.
+        </p>
         <header className="border-dashed h-96 border-2 border-gray-400 flex flex-col justify-center items-center">
+          
           <p className="font-semibold text-gray-900 flex flex-wrap justify-center">
 
           </p>
@@ -300,10 +317,10 @@ const UploadTerreno = () => {
             </div>
             {preview?.map((pr, index) => {
               return (
-                  <span key={index}>{pr.name}</span>
-                
+                <span key={index}>{pr.name}</span>
+
               )
-            }) }
+            })}
           </div>
         </header>
         <div className="flex justify-end pb-8 pt-6 gap-4">
