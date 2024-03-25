@@ -1,11 +1,11 @@
-
-import db from '../../../db/db'
 import CardComponent from "../CardComponent/CardComponent";
 
-const CardsComponent = () => {
+// eslint-disable-next-line react/prop-types
+const CardsComponent = ({dbFirebase}) => {
 
 
-const terrenos = db.map(elemento => {
+// eslint-disable-next-line react/prop-types
+const terrenos = dbFirebase.map(elemento => {
     return (
         <CardComponent
         nombre={elemento.nombre}
@@ -17,7 +17,7 @@ const terrenos = db.map(elemento => {
         metrosCuadrados={elemento.metrosCuadrados}
         costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
-        key={elemento.id}
+        key={elemento.nombre}
         imagenes={elemento.imagenes}
         escritura={elemento.tipoEscritura}
         meses={elemento.mensualidades[0]}
@@ -25,7 +25,8 @@ const terrenos = db.map(elemento => {
     )
 }).slice(0,3)
 
-const terrenos2 = db.map(elemento => {
+// eslint-disable-next-line react/prop-types
+const terrenos2 = dbFirebase.map(elemento => {
     return (
         <CardComponent
         nombre={elemento.nombre}
@@ -37,7 +38,7 @@ const terrenos2 = db.map(elemento => {
         metrosCuadrados={elemento.metrosCuadrados}
         costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
-        key={elemento.id}
+        key={elemento.nombre}
         imagenes={elemento.imagenes}
         escritura={elemento.tipoEscritura}
         meses={elemento.mensualidades[0]}

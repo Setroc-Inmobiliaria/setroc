@@ -4,7 +4,6 @@ import MapContainer from "../../googleMap/CustomMap";
 import { Button } from "@mui/material";
 // import makeStyles from "@mui/material";
 import CustomCarousel from "../../styledComponents/carousel/CustomCarousel";
-import db from "../../../db/db";
 import './Detalle.css'
 import TextFieldComponent from "../../styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../styledComponents/textfield/TextareaComponent";
@@ -16,7 +15,8 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { fire_db } from "../../../firebase";
 
 
-const DetalleTerreno = () => {
+// eslint-disable-next-line react/prop-types
+const DetalleTerreno = ({dbFirebase}) => {
 
 
   const [switchContainer, setSwitchContainer] = useState(true);
@@ -28,7 +28,8 @@ const DetalleTerreno = () => {
 
   const { id } = useParams();
 
-  const terreno = db.find((terreno) => terreno.nombre === id);
+  // eslint-disable-next-line react/prop-types
+  const terreno = dbFirebase.find((terreno) => terreno.nombre === id);
   useEffect(() => {
     // Esta función se ejecutará cada vez que supValue o monthValue cambien
     console.log(terreno);

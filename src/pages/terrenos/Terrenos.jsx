@@ -1,10 +1,10 @@
 import { useState } from "react";
 import CardComponent from "../../components/pageComponents/CardComponent/CardComponent";
 import FilterAccordion from "../../components/pageComponents/Accordion/CustomAccordion";
-import db from "../../db/db";
 
-const Terrenos = () => {
-  const terreno = db;
+// eslint-disable-next-line react/prop-types
+const Terrenos = ({dbFirebase}) => {
+  const terreno = dbFirebase;
   const [terrenoWFilter, setTerrenoWFilter] = useState(terreno);
 
   const setFilter = (filter) => {

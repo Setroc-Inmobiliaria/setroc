@@ -1,4 +1,4 @@
-import { Button, Collapse, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
+import { Collapse, Paper, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 
 // import CardComponent from "../CardComponent/CardComponent";
 import React, { useState } from "react";
@@ -14,7 +14,7 @@ const TerrenosDash = ({terrenosFB}) => {
     const [openRows, setOpenRows] = useState({});
     const [isLoad, setIsLoad] = useState(false);
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     console.log(terrenosFB);
     // const str = JSON.stringify(terrenosFB)
@@ -34,15 +34,15 @@ const TerrenosDash = ({terrenosFB}) => {
         setOpenRows(updatedOpenRows);
     };
 
-    const readMessage = async (nombre) => {
-        const consulta = query(collection(fire_db, 'contactos'), where('name', '==', nombre));
+    const activarTerreno = async (nombre) => {
+        const consulta = query(collection(fire_db, 'terrenos'), where('nombre', '==', nombre));
         try {
             setIsLoad(true);
             const res = await getDocs(consulta);
             res.forEach(async (document) => {
-                const docRef = doc(fire_db, 'contactos', document.id);
-                const setRead = false;
-                await updateDoc(docRef, { active: setRead });
+                const docRef = doc(fire_db, 'terrenos', document.id);
+                const setRead = docRef.active;
+                await updateDoc(docRef, { active: !setRead });
                 console.log('Campo actualizado correctamente', document.id);
    
                 setIsLoad(false);
@@ -54,7 +54,7 @@ const TerrenosDash = ({terrenosFB}) => {
 
 
     return (
-        <div>
+        <div className="h-screen">
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>
@@ -62,6 +62,7 @@ const TerrenosDash = ({terrenosFB}) => {
                             <TableCell />
                             <TableCell>Nombre</TableCell>
                             <TableCell>Status</TableCell>
+                            <TableCell>Cambiar Status</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -76,7 +77,8 @@ const TerrenosDash = ({terrenosFB}) => {
                                         {openRows[index] ? <FaArrowUp /> : <FaArrowDown />}
                                     </TableCell>
                                     <TableCell>{datos.nombre}</TableCell>
-                                    <TableCell>Activo</TableCell>
+                                    <TableCell>{datos.active ? 'Activo' : 'Inactivo'}</TableCell>
+                                    <TableCell><Switch onChange={() => activarTerreno(datos.nombre)} checked={datos.active}/></TableCell>
                                     
                                 </TableRow>
                                 <TableRow>
@@ -87,7 +89,6 @@ const TerrenosDash = ({terrenosFB}) => {
                                                     <strong>Nombre:</strong> {datos.nombre}
                                                     <strong>Municipio:</strong> {datos.municipio}
                                                     <strong>Descripcion:</strong> {datos.descripcion}
-                                                    <Button onClick={() => readMessage(datos.name)} sx={{ padding: 5 }}>Marcar como leído</Button>
                                                 </div>
                                             }
                                         </Collapse>

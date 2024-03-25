@@ -3,12 +3,15 @@ import Loader from "../Loader/Loader";
 import TextFieldComponent from '../../styledComponents/textfield/TextfieldComponent'
 import TextAreaComponent from '../../styledComponents/textfield/TextareaComponent'
 import { Button, Checkbox } from "@mui/material";
+import { collection, addDoc } from "firebase/firestore";
+import { fire_db } from "../../../firebase";
 
 
 const UploadTerreno = () => {
 
-  const [image, setImage] = useState(null);
-  const [url, setUrl] = useState("");
+  const [images, setImages] = useState([]);
+  const [metrosCuadrados, setMetrosCuadrados] = useState('')
+  const [amenidades, setAmenidades] = useState('')
   const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState(null);
   const [nombre, setNombre] = useState("")
@@ -16,91 +19,105 @@ const UploadTerreno = () => {
   const [estado, setEstado] = useState("")
   const [descripcion, setDescripcion] = useState("")
   const [tipoEscritura, setTipoEscritura] = useState("")
-  const [precio, setPrecio] = useState('')
+  const [precio, setPrecio] = useState(0)
   const [costoPorMetroCuadrado, setCostoPorMetroCuadrado] = useState('')
   const [electricidad, setElectricidad] = useState(false)
   const [pavimentacion, setPavimentacion] = useState(false)
   const [mensualidades, setMensualidades] = useState([])
-  const [coorX, setCoorX] = useState('')
-  const [coorY, setCoorY] = useState('')
+  const [coorX, setCoorX] = useState(0)
+  const [coorY, setCoorY] = useState(0)
 
-   
 
-  const saveTerreno = () => {
-    const newTerreno = {
-      nombre,
-      municipio,
-      estado,
-      descripcion, 
-      tipoEscritura,
-      precio,
-      costoPorMetroCuadrado,
-      servicios: {
-        electricidad,
-        pavimentacion
-      },
-      mensualidades,
-      coordenadas: [coorX, coorY]
-    }
-
-    console.log(newTerreno);
-  }
 
   const setArrayMonths = (e) => {
     e.preventDefault()
     setMensualidades([
       ...mensualidades,
-      e.target.value
+      parseFloat(e.target.value)
     ])
   }
 
 
-  const uploadImage = async () => {
+
+  const uploadToDB = async () => {
     setLoading(true);
     const data = new FormData();
-    data.append("file", image);
-    data.append(
-      "upload_preset",
-      import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
-    );
-    data.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
-    data.append("folder", "Cloudinary-Setroc");
-
+    let imagesUrl = [];
+    let m2 = [];
     try {
-      const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,
-        {
-          method: "POST",
-          body: data,
-        }
+      // Esperar a que todas las solicitudes fetch se completen
+      await Promise.all(
+        images.map(async (image) => {
+          data.append("file", image);
+          data.append(
+            "upload_preset",
+            import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+          );
+          data.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
+          data.append("folder", "Cloudinary-Setroc");
+
+          const response = await fetch(
+            `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,
+            {
+              method: "POST",
+              body: data,
+            }
+          );
+          const res = await response.json();
+          console.log('res', res);
+
+          imagesUrl.push(res.secure_url)
+        })
       );
-      const res = await response.json();
-      console.log(res);
-      setLoading(false);
-      setPreview(null)
-      setImage(null)
-      setUrl(res.secure_url);
-      console.log(url);
+      const coor = [parseFloat(coorX), parseFloat(coorY)]
+      const arrayMetrosCuadrados = metrosCuadrados.split(',')
+      arrayMetrosCuadrados.map(x => {
+        m2.push(parseFloat(x))
+      })
+
+      const newTerreno = {
+        nombre,
+        municipio,
+        estado,
+        descripcion,
+        amenidades,
+        tipoEscritura,
+        precio: parseFloat(precio),
+        metrosCuadrados: m2,
+        costoPorMetroCuadrado: parseFloat(costoPorMetroCuadrado),
+        servicios: {
+          electricidad,
+          pavimentacion
+        },
+        mensualidades,
+        coordenadas: coor,
+        imagenes: imagesUrl,
+        active: true
+      }
+
+      await addDoc(collection(fire_db, 'terrenos'), newTerreno)
     } catch (error) {
-      setLoading(false);
+      console.error("Error al cargar las imágenes:", error);
     }
+
+
+    setLoading(false);
+    setPreview(null);
+    setImages([]);
   };
 
+
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setImage(file);
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      setPreview(reader.result);
-    };
+    const files = event.target.files;
+    const filesArray = Array.from(files)
+    setImages(filesArray)
+    setPreview(filesArray)
+    console.log(filesArray);
   };
 
   const handleResetClick = () => {
     setPreview(null);
-    setImage(null);
+    setImages(null);
   };
 
 
@@ -127,7 +144,14 @@ const UploadTerreno = () => {
           placeholder="Estado"
           name="estado"
           setData={setEstado}
-          
+
+        />
+
+        <label>Amenidades: </label>
+        <TextAreaComponent
+          placeholder="Descripcion"
+          name="descripcion"
+          setData={setAmenidades}
         />
 
         <label>Descripcion del terreno: </label>
@@ -149,6 +173,14 @@ const UploadTerreno = () => {
           type="number"
           setData={setPrecio}
         />
+        
+        <label>{`Escribe los metros cuadrados separados por una coma (",")`}</label>
+        <label>Ejemplo: 345.12, 100, 222, 450</label>
+        <TextFieldComponent
+          placeholder="Metros cuadrados"
+          name="metros cuadrados"
+          setData={setMetrosCuadrados}
+        />
 
         <TextFieldComponent
           placeholder="Costo por metro cuadrado"
@@ -164,16 +196,16 @@ const UploadTerreno = () => {
 
           <div className="flex flex-row items-center">
             <label>Electricidad</label>
-            <Checkbox 
-            aria-placeholder="electricidad" 
-            // value={electricidad}
-            onChange={() => setElectricidad(!electricidad)}
+            <Checkbox
+              aria-placeholder="electricidad"
+              // value={electricidad}
+              onChange={() => setElectricidad(!electricidad)}
             // checked={electricidad}
             />
             <label>Pavimentacion</label>
-            <Checkbox 
-            aria-placeholder="pavimentacion" 
-            onChange={() => setPavimentacion(!pavimentacion)}
+            <Checkbox
+              aria-placeholder="pavimentacion"
+              onChange={() => setPavimentacion(!pavimentacion)}
             />
           </div>
         </div>
@@ -186,24 +218,24 @@ const UploadTerreno = () => {
 
           <div className="flex flex-row items-center">
             <label>12</label>
-            <Checkbox 
-            aria-placeholder="12" 
-            value={12}
-            onChange={setArrayMonths}
+            <Checkbox
+              aria-placeholder="12"
+              value={12}
+              onChange={setArrayMonths}
             />
 
             <label>24</label>
-            <Checkbox 
-            aria-placeholder="24" 
-            value={24}
-            onChange={setArrayMonths}
+            <Checkbox
+              aria-placeholder="24"
+              value={24}
+              onChange={setArrayMonths}
             />
 
             <label>36</label>
-            <Checkbox 
-            aria-placeholder="36" 
-            value={36}
-            onChange={setArrayMonths}
+            <Checkbox
+              aria-placeholder="36"
+              value={36}
+              onChange={setArrayMonths}
             />
           </div>
 
@@ -236,7 +268,7 @@ const UploadTerreno = () => {
               backgroundColor: '#91D1C5'
             }
           }}
-          onClick={() => saveTerreno()}
+          onClick={() => uploadToDB()}
         >Confirmar</Button>
 
       </div>
@@ -262,8 +294,15 @@ const UploadTerreno = () => {
             </div>
           </label>
 
-          <div className="flex justify-center items-center mt-5 mx-3 max-w-xs">
-            {preview && <img src={preview} alt="preview" className="w-full" />}
+          <div className="flex justify-center flex-col items-center mt-5 mx-3 max-w-xs">
+            <div >Se subiran las siguientes imagenes
+            </div>
+            {preview?.map((pr, index) => {
+              return (
+                  <span key={index}>{pr.name}</span>
+                
+              )
+            }) }
           </div>
         </header>
         <div className="flex justify-end pb-8 pt-6 gap-4">

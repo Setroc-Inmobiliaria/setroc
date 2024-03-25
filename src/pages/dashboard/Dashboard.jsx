@@ -18,7 +18,7 @@ const Dashboard = ({ setIsLoggedIn, terrenosFB }) => {
     }
 
 
-    
+
 
 
     const cerrarSesion = () => {
@@ -45,16 +45,18 @@ const Dashboard = ({ setIsLoggedIn, terrenosFB }) => {
                 <Tab label='Cerrar Sesion' value="4" />
             </TabList>
             <TabPanel value="1">
-                <TerrenosDash terrenosFB={terrenosFB}/>
+                <TerrenosDash terrenosFB={terrenosFB} />
             </TabPanel>
             <TabPanel value="2">
-               <UploadTerreno/>
+                <UploadTerreno />
             </TabPanel>
             <TabPanel value="3">
-                <Mensajes/>
+                <Mensajes />
             </TabPanel>
             <TabPanel value="4">
-                <Button onClick={cerrarSesion}>Cerrar Sesion</Button>
+                <div className="h-screen">
+                    <Button onClick={cerrarSesion}>Cerrar Sesion</Button>
+                </div>
             </TabPanel>
 
         </TabContext>

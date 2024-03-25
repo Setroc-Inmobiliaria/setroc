@@ -39,9 +39,9 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/catalogo" element={<Terrenos />} />
-        <Route path="/propiedades/:id" element={<Propiedades />} />
+        <Route path="/" element={<LandingPage dbFirebase={terrenosFB}/>} />
+        <Route path="/catalogo" element={<Terrenos dbFirebase={terrenosFB}/>} />
+        <Route path="/propiedades/:id" element={<Propiedades dbFirebase={terrenosFB}/>} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<ContactoPage/>} />
         <Route path="/admin/login" element={isLoggedIn ? <Navigate to="/admin/dashboard"/> : <LoginComponent isLog={isLoggedIn} setLoggedIn={setIsLoggedIn}/>} />

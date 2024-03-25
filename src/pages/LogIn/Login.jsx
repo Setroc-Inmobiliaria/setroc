@@ -25,7 +25,9 @@ const LoginComponent = ({ setLoggedIn }) => {
     const handleSignIn = async () => {
         setIsLoading(true)
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email, password).then((res) => {
+                console.log(res);
+            })
             setLoggedIn(true);
             localStorage.setItem('auth', true)
             navigate("/admin/dashboard");

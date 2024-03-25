@@ -11,7 +11,7 @@ const Mensajes = () => {
     const [activeMessages, setActiveMessages] = useState([]);
     const [isLoad, setIsLoad] = useState(false);
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     useEffect(() => {
         obtenerElementos();
@@ -71,7 +71,7 @@ const Mensajes = () => {
     };
 
     return (
-        <div className='h-full w-full'>
+        <div className='h-screen w-full'>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>
