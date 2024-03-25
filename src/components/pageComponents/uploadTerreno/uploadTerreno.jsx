@@ -105,6 +105,7 @@ const UploadTerreno = () => {
     setPreview(null);
     setImages([]);
   };
+  
 
 
   const handleImageChange = (event) => {
