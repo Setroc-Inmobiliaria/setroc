@@ -5,6 +5,7 @@ import TextAreaComponent from '../../styledComponents/textfield/TextareaComponen
 import { Button, Checkbox } from "@mui/material";
 import { collection, addDoc } from "firebase/firestore";
 import { fire_db } from "../../../firebase";
+import Swal from "sweetalert2";
 
 
 const UploadTerreno = () => {
@@ -19,15 +20,34 @@ const UploadTerreno = () => {
   const [estado, setEstado] = useState("")
   const [descripcion, setDescripcion] = useState("")
   const [tipoEscritura, setTipoEscritura] = useState("")
-  const [precio, setPrecio] = useState(0)
+  const [precio, setPrecio] = useState(null)
   const [costoPorMetroCuadrado, setCostoPorMetroCuadrado] = useState('')
   const [electricidad, setElectricidad] = useState(false)
   const [pavimentacion, setPavimentacion] = useState(false)
   const [mensualidades, setMensualidades] = useState([])
-  const [coorX, setCoorX] = useState(0)
-  const [coorY, setCoorY] = useState(0)
+  const [coorX, setCoorX] = useState(null)
+  const [coorY, setCoorY] = useState(null)
 
 
+  const clearFields = () => {
+    setImages([])
+    setMetrosCuadrados('')
+    setAmenidades('')
+    setLoading(false)
+    setPreview(null)
+    setNombre('')
+    setMunicipio('')
+    setEstado("")
+    setDescripcion('')
+    setTipoEscritura('')
+    setPrecio(null)
+    setCostoPorMetroCuadrado('')
+    setElectricidad(false)
+    setPavimentacion(false)
+    setMensualidades([])
+    setCoorX(null)
+    setCoorY(null)
+  }
 
   const setArrayMonths = (e) => {
     e.preventDefault()
@@ -95,15 +115,28 @@ const UploadTerreno = () => {
         active: true
       }
 
-      await addDoc(collection(fire_db, 'terrenos'), newTerreno)
+      if(!newTerreno.nombre || !newTerreno.municipio || !newTerreno.estado || !newTerreno.descripcion || !newTerreno.amenidades || !newTerreno.tipoEscritura || !newTerreno.precio || !newTerreno.metrosCuadrados || !newTerreno.costoPorMetroCuadrado || !newTerreno.servicios.electricidad || !newTerreno.servicios.pavimentacion || !newTerreno.mensualidades || !newTerreno.coordenadas || !newTerreno.imagenes ){
+        Swal.fire({
+          title: 'Completa todos los campos para continuar',
+          text: 'Es necesario llenar todos los campos para agregar un terreno a la lista',
+          
+          
+        })
+      } else {
+        Swal.fire({
+          
+          title: 'Nuevo terreno asignado',
+          text: 'El terreno aparecera en el inicio automaticamente. Este terreno estara publicado inmediatamente, si prefieres que permanezca oculto puedes cambiar su estado en la pestana de "Terrenos disponibles"',
+
+        })
+        await addDoc(collection(fire_db, 'terrenos'), newTerreno).then(() => {
+          clearFields()
+        })
+      }
+
     } catch (error) {
       console.error("Error al cargar las imágenes:", error);
     }
-
-
-    setLoading(false);
-    setPreview(null);
-    setImages([]);
   };
 
 
@@ -113,7 +146,6 @@ const UploadTerreno = () => {
     const filesArray = Array.from(files)
     setImages(filesArray)
     setPreview(filesArray)
-    console.log(filesArray);
   };
 
   const handleResetClick = () => {
@@ -124,20 +156,38 @@ const UploadTerreno = () => {
 
   return (
     <div className="flex h-full flex-col md:flex-row gap-12 p-2 md:p-12">
+      
       <div className="w-full flex flex-col gap-4">
-        
+      <h1 className="text-3xl font-bold">Instrucciones</h1>
+        <p className="my-4">
+          Todos los campos son obligatorios. Asegúrate de completarlos todos, de lo contrario, el terreno no será publicado.
+        </p>
+        <p className="my-4">
+          Redacta correctamente en todos los campos. Utiliza acentos en todos, excepto en el municipio, ya que este último se utiliza para realizar filtros en la página.
+        </p>
+        <p className="my-4">
+          Si cometes un error en algún campo, contacta con un administrador para eliminar el elemento y volver a completar el formulario.
+        </p>
+        <p className="my-4">
+          Puedes cargar múltiples imágenes que se publicarán. Te recomendamos cargar todas las imágenes del terreno haciendo clic en el botón <button className="bg-p1 p-2 rounded-xl">Upload a File</button>.
+        </p>
+        <p className="my-4">
+          Algunos campos tienen instrucciones adicionales, como los metros cuadrados. Antes de enviar el formulario, asegúrate de que los datos ingresados tengan el formato solicitado, de lo contrario, el terreno no se podrá publicar.
+        </p>
         <h2 className="text-3xl font-afacad">Informacion necesaria para anadir un terreno</h2>
 
         <TextFieldComponent
           placeholder="Nombre del terreno"
           name="nombre"
           setData={setNombre}
+          value={nombre}
         />
 
         <TextFieldComponent
           placeholder="Municipio"
           name="municipio"
           setData={setMunicipio}
+          value={municipio}
 
         />
 
@@ -145,6 +195,7 @@ const UploadTerreno = () => {
           placeholder="Estado"
           name="estado"
           setData={setEstado}
+          value={estado}
 
         />
 
@@ -153,6 +204,7 @@ const UploadTerreno = () => {
           placeholder="Descripcion"
           name="descripcion"
           setData={setAmenidades}
+          value={amenidades}
         />
 
         <label>Descripcion del terreno: </label>
@@ -160,12 +212,14 @@ const UploadTerreno = () => {
           placeholder="Descripcion"
           name="descripcion"
           setData={setDescripcion}
+          value={descripcion}
         />
 
         <TextFieldComponent
           placeholder="Tipo de escritura"
           name="tipoEscritura"
           setData={setTipoEscritura}
+          value={tipoEscritura}
         />
 
         <TextFieldComponent
@@ -173,6 +227,7 @@ const UploadTerreno = () => {
           name="precio"
           type="number"
           setData={setPrecio}
+          value={precio}
         />
 
         <label>{`Escribe los metros cuadrados separados por una coma (",")`}</label>
@@ -251,46 +306,19 @@ const UploadTerreno = () => {
             name="x"
             type="number"
             setData={setCoorX}
+            value={coorX}
           />
           <TextFieldComponent
             placeholder="Coordenada Y"
             name="y"
             type="number"
             setData={setCoorY}
+            value={coorY}
           />
         </div>
-
-        <Button
-          sx={{
-            backgroundColor: '#67ADD4',
-            color: "black",
-
-            '&:hover': {
-              backgroundColor: '#91D1C5'
-            }
-          }}
-          onClick={() => uploadToDB()}
-        >Confirmar</Button>
-
       </div>
 
       <div className="container mx-auto max-w-screen-lg h-full flex flex-col justify-center w-full">
-      <h1 className="text-3xl font-bold">Instrucciones</h1>
-        <p className="my-4">
-          Todos los campos son obligatorios. Asegúrate de completarlos todos, de lo contrario, el terreno no será publicado.
-        </p>
-        <p className="my-4">
-          Redacta correctamente en todos los campos. Utiliza acentos en todos, excepto en el municipio, ya que este último se utiliza para realizar filtros en la página.
-        </p>
-        <p className="my-4">
-          Si cometes un error en algún campo, contacta con un administrador para eliminar el elemento y volver a completar el formulario.
-        </p>
-        <p className="my-4">
-          Puedes cargar múltiples imágenes que se publicarán. Te recomendamos cargar todas las imágenes del terreno haciendo clic en el botón <button className="bg-p1 p-2 rounded-xl">Upload a File</button>.
-        </p>
-        <p className="my-4">
-          Algunos campos tienen instrucciones adicionales, como los metros cuadrados. Antes de enviar el formulario, asegúrate de que los datos ingresados tengan el formato solicitado, de lo contrario, el terreno no se podrá publicar.
-        </p>
         <header className="border-dashed h-96 border-2 border-gray-400 flex flex-col justify-center items-center">
           
           <p className="font-semibold text-gray-900 flex flex-wrap justify-center">
@@ -330,6 +358,19 @@ const UploadTerreno = () => {
           >
             Reset Imagen
           </button>
+
+          
+        <Button
+          sx={{
+            backgroundColor: '#67ADD4',
+            color: "black",
+
+            '&:hover': {
+              backgroundColor: '#91D1C5'
+            }
+          }}
+          onClick={() => uploadToDB()}
+        >Confirmar</Button>
         </div>
       </div>
     </div>

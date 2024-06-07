@@ -9,7 +9,7 @@ import { fire_db } from "../../../firebase";
 
 
 // eslint-disable-next-line react/prop-types
-const TerrenosDash = ({terrenosFB}) => {
+const TerrenosDash = ({ terrenosFB }) => {
 
     const [openRows, setOpenRows] = useState({});
     const [isLoad, setIsLoad] = useState(false);
@@ -27,7 +27,7 @@ const TerrenosDash = ({terrenosFB}) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-    
+
     const handleRowClick = (index) => {
         const updatedOpenRows = { ...openRows };
         updatedOpenRows[index] = !updatedOpenRows[index];
@@ -41,10 +41,10 @@ const TerrenosDash = ({terrenosFB}) => {
             const res = await getDocs(consulta);
             res.forEach(async (document) => {
                 const docRef = doc(fire_db, 'terrenos', document.id);
-                const setRead = docRef.active;
-                await updateDoc(docRef, { active: !setRead });
+                const docData = document.data(); // Obtener los datos del documento
+                const setRead = docData.active; // Obtener el valor actual del campo 'active'
+                await updateDoc(docRef, { active: !setRead }); // Actualizar el campo 'active'
                 console.log('Campo actualizado correctamente', document.id);
-   
                 setIsLoad(false);
             });
         } catch (error) {
@@ -53,8 +53,9 @@ const TerrenosDash = ({terrenosFB}) => {
     };
 
 
+
     return (
-        <div className="h-screen">
+        <div className="h-full">
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>
@@ -78,8 +79,8 @@ const TerrenosDash = ({terrenosFB}) => {
                                     </TableCell>
                                     <TableCell>{datos.nombre}</TableCell>
                                     <TableCell>{datos.active ? 'Activo' : 'Inactivo'}</TableCell>
-                                    <TableCell><Switch onChange={() => activarTerreno(datos.nombre)} checked={datos.active}/></TableCell>
-                                    
+                                    <TableCell><Switch onChange={() => activarTerreno(datos.nombre)} checked={datos.active} /></TableCell>
+
                                 </TableRow>
                                 <TableRow>
                                     <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
