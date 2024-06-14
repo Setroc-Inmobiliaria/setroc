@@ -17,7 +17,7 @@ const terrenos = dbFirebase.map(elemento => {
         metrosCuadrados={elemento.metrosCuadrados}
         costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
-        key={elemento.nombre}
+        key={elemento.id}
         imagenes={elemento.imagenes}
         escritura={elemento.tipoEscritura}
         meses={elemento.mensualidades[0]}
@@ -38,7 +38,7 @@ const terrenos2 = dbFirebase.map(elemento => {
         metrosCuadrados={elemento.metrosCuadrados}
         costoPorMetroCuadrado={elemento.costoPorMetroCuadrado}
         id={elemento.id}
-        key={elemento.nombre}
+        key={elemento.id}
         imagenes={elemento.imagenes}
         escritura={elemento.tipoEscritura}
         meses={elemento.mensualidades[0]}

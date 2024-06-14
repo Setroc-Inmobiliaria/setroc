@@ -9,7 +9,7 @@ import { fire_db } from "../../../firebase";
 
 
 // eslint-disable-next-line react/prop-types
-const TerrenosDash = ({ terrenosFB }) => {
+const TerrenosDash = ({ terrenosFB, getTerrenosFromFirebase }) => {
 
     const [openRows, setOpenRows] = useState({});
     const [isLoad, setIsLoad] = useState(false);
@@ -47,6 +47,7 @@ const TerrenosDash = ({ terrenosFB }) => {
                 console.log('Campo actualizado correctamente', document.id);
                 setIsLoad(false);
             });
+            getTerrenosFromFirebase();
         } catch (error) {
             console.log('Error en la lectura del mensaje', error);
         }
@@ -79,7 +80,7 @@ const TerrenosDash = ({ terrenosFB }) => {
                                     </TableCell>
                                     <TableCell>{datos.nombre}</TableCell>
                                     <TableCell>{datos.active ? 'Activo' : 'Inactivo'}</TableCell>
-                                    <TableCell><Switch onChange={() => activarTerreno(datos.nombre)} checked={datos.active} /></TableCell>
+                                    <TableCell><Switch style={{zIndex: 10}} onChange={() => activarTerreno(datos.nombre)} checked={datos.active} /></TableCell>
 
                                 </TableRow>
                                 <TableRow>

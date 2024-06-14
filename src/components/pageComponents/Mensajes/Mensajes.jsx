@@ -20,6 +20,7 @@ const Mensajes = () => {
     useEffect(() => {
         const filteredMessages = data.filter(message => message.active === true);
         setActiveMessages(filteredMessages);
+        
     }, [data]);
 
     const handleChangePage = (event, newPage) => {
@@ -62,16 +63,16 @@ const Mensajes = () => {
                 const setRead = false;
                 await updateDoc(docRef, { active: setRead });
                 console.log('Campo actualizado correctamente', document.id);
-                setActiveMessages(activeMessages.filter(msg => msg.nombre !== nombre))
-                setIsLoad(false);
             });
+            setActiveMessages(activeMessages.filter(msg => msg.nombre !== nombre))
+            setIsLoad(false);
         } catch (error) {
             console.log('Error en la lectura del mensaje', error);
         }
     };
 
     return (
-        <div className='h-screen w-full'>
+        <div className='min-h-dvh w-full'>
             <TableContainer component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>

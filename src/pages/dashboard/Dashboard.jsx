@@ -9,7 +9,7 @@ import TerrenosDash from "../../components/pageComponents/TerrenosDashboard/Terr
 
 
 // eslint-disable-next-line react/prop-types
-const Dashboard = ({ setIsLoggedIn, terrenosFB }) => {
+const Dashboard = ({ setIsLoggedIn, terrenosFB, getTerrenosFromFirebase }) => {
     const [tableValue, setTableValue] = useState("1")
     const navigate = useNavigate()
 
@@ -45,7 +45,7 @@ const Dashboard = ({ setIsLoggedIn, terrenosFB }) => {
                 <Tab label='Cerrar Sesion' value="4" />
             </TabList>
             <TabPanel value="1">
-                <TerrenosDash terrenosFB={terrenosFB} />
+                <TerrenosDash terrenosFB={terrenosFB} getTerrenosFromFirebase={getTerrenosFromFirebase} />
             </TabPanel>
             <TabPanel value="2">
                 <UploadTerreno />

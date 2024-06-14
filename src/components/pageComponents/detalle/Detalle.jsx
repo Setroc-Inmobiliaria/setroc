@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapContainer from "../../googleMap/CustomMap";
-import { Button } from "@mui/material";
+import { Button, Checkbox } from "@mui/material";
 // import makeStyles from "@mui/material";
 import CustomCarousel from "../../styledComponents/carousel/CustomCarousel";
 import './Detalle.css'
@@ -16,7 +16,7 @@ import { fire_db } from "../../../firebase";
 
 
 // eslint-disable-next-line react/prop-types
-const DetalleTerreno = ({dbFirebase}) => {
+const DetalleTerreno = ({ dbFirebase }) => {
 
 
   const [switchContainer, setSwitchContainer] = useState(true);
@@ -27,6 +27,7 @@ const DetalleTerreno = ({dbFirebase}) => {
   const [montFinal, setMonthFinal] = useState(0)
 
   const { id } = useParams();
+
 
   // eslint-disable-next-line react/prop-types
   const terreno = dbFirebase.find((terreno) => terreno.nombre === id);
@@ -78,17 +79,30 @@ const DetalleTerreno = ({dbFirebase}) => {
   const [telefono, setTelefono] = useState('')
   const mensaje = `Quisiera recibir informacion de la propiedad ${terreno.nombre} ¡Gracias!`
   const [message, setMessage] = useState(mensaje)
-  const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
+  const [acceptTerms, setAcceptTerms] = useState(false)
+  // const formSpreeURL = 'https://formspree.io/f/mqkrlqjy'
+  const formSpreeURL = import.meta.env.VITE_FORMSPREE_API_KEY
+
   const contactosRef = collection(fire_db, 'contactos');
+  const verifyEmailFormat = (correo) => {
+    const patron = /^[\w.-]+@[a-zA-Z\d\\.-]+\.[a-zA-Z]{2,}$/;
+    return patron.test(correo);
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!name.length || !email.length || !telefono.length || !message.length) {
+    if (!name.length || !email.length || !verifyEmailFormat(email) || !telefono.length || telefono.length < 8 || isNaN(telefono) || !message.length) {
       Swal.fire({
         icon: "error",
-        title: "Campos invalidos",
-        text: "Llena el formulario para poder continuar",
+        title: "Campos inválidos",
+        text: "Llena bien el formulario para poder continuar",
       });
+    } else if (!acceptTerms) {
+      Swal.fire({
+        icon: "error",
+        title: 'Acepta los terminos y condiciones'
+      })
     } else {
       const info = {
         name,
@@ -206,6 +220,11 @@ const DetalleTerreno = ({dbFirebase}) => {
             <TextFieldComponent setData={setTelefono} value={telefono} name="telefono" label="Número de teléfono *" placeholder="Numero de contacto" />
 
             <TextAreaComponent setData={setMessage} placeholder="Tu mensaje" value={message} name="message" />
+            <div className="w-full flex flex-col justify-center items-center">
+              <label className="text-sm text-center font-nunito font-extrabold">Al enviar este formulario, aceptas los términos y condiciones, así como la política de privacidad.
+              </label>
+              <Checkbox checked={acceptTerms} onChange={() => setAcceptTerms(!acceptTerms)}></Checkbox>
+            </div>
             <Button variant="contained" sx={{ padding: 1 }} className="w-full" onClick={handleSubmit}>
               Enviar
             </Button>

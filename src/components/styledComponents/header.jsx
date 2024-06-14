@@ -28,17 +28,17 @@ export const Header = () => {
         </div>
 
         {/* Navegación en pantallas grandes */}
-        <ul className="hidden md:flex flex-row w-full md:w-5/12 justify-between font-afacad text-xl">
+        <ul className="hidden md:flex flex-row w-full md:w-5/12 justify-end gap-20 font-afacad text-xl">
           <div className="flex flex-row gap-5 justify-start items-center ">
             <Link to="/catalogo">
               <li className="flex justify-center items-center gap-2"><GiPineTree />Catálogo</li>
             </Link>
           </div>
-          <div className="flex flex-row gap-5 justify-start items-center">
+          {/* <div className="flex flex-row gap-5 justify-start items-center">
             <Link to="/servicios">
             <li className="flex justify-center items-center gap-2"><IoBuild />Servicios</li>
             </Link>
-          </div>
+          </div> */}
 
           <div className="flex flex-row gap-5 justify-start items-center">
             <Link to="/nosotros">

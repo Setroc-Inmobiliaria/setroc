@@ -20,6 +20,7 @@ import { fire_db } from "./firebase";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('auth'))
   const [terrenosFB, setTerrenosFB] = useState([])
+  const [terrenosActivos, setTerrenosActivos] = useState([])
 
   useEffect(() => {
     getTerrenosFromFirebase()
@@ -29,27 +30,32 @@ function App() {
     const contactosRef = collection(fire_db, 'terrenos');
     const querySnapshot = await getDocs(contactosRef);
     const newData = [];
-    querySnapshot.forEach((doc) => {
-        newData.push(doc.data());
+    
+    querySnapshot.forEach(async(doc) => {
+      
+      const data = doc.data()
+      const finalData = {...data, 'id': doc.id};
+        newData.push(finalData);
     });
+    console.log(newData);
+    const activeData = newData?.filter((data) => data?.active === true)
     setTerrenosFB(newData);
+    setTerrenosActivos(activeData)
 };
 
   
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<LandingPage dbFirebase={terrenosFB}/>} />
-        <Route path="/catalogo" element={<Terrenos dbFirebase={terrenosFB}/>} />
-        <Route path="/propiedades/:id" element={<Propiedades dbFirebase={terrenosFB}/>} />
+        <Route path="/" element={<LandingPage dbFirebase={terrenosActivos}/>} />
+        <Route path="/catalogo" element={<Terrenos dbFirebase={terrenosActivos}/>} />
+        <Route path="/propiedades/:id" element={<Propiedades dbFirebase={terrenosActivos}/>} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<ContactoPage/>} />
         <Route path="/admin/login" element={isLoggedIn ? <Navigate to="/admin/dashboard"/> : <LoginComponent isLog={isLoggedIn} setLoggedIn={setIsLoggedIn}/>} />
-
-
-
         {/* Ruta Protegida */}
-        <Route path="/admin/dashboard" element={isLoggedIn ? <Dashboard setIsLoggedIn={setIsLoggedIn} terrenosFB={terrenosFB}/> : <Navigate to='/' />} />
+    getTerrenosFromFirebase()
+        <Route path="/admin/dashboard" element={isLoggedIn ? <Dashboard setIsLoggedIn={setIsLoggedIn} terrenosFB={terrenosFB} getTerrenosFromFirebase={getTerrenosFromFirebase}/> : <Navigate to='/' />} />
       </Routes>
     </Layout>
 

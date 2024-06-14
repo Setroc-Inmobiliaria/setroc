@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-import { Button, Slider } from "@mui/material";
+import { Button, Checkbox, Slider } from "@mui/material";
 import CardsComponent from "../../components/pageComponents/CardsComponent/CardsComponent";
 import TextFieldComponent from "../../components/styledComponents/textfield/TextfieldComponent";
 import TextAreaComponent from "../../components/styledComponents/textfield/TextareaComponent";
@@ -12,29 +12,41 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { fire_db } from "../../firebase";
 import axios from "axios";
 
-// eslint-disable-next-line react/prop-types
-export const LandingPage = ({dbFirebase}) => {
+
+export const LandingPage = ({ dbFirebase }) => {
   const [sliderValue, setSliderValue] = useState(90000);
   const terrenos = dbFirebase ? dbFirebase : db;
-  const [terreno, setTerreno] = useState(terrenos[0]);
+  const [terreno, setTerreno] = useState('');
   const [formatEngancheCalculated, setFormatEngancheCalculated] = useState(0);
+ 
 
   // Formulario
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [message, setMessage] = useState('');
-  const formSpreeURL = 'https://formspree.io/f/mqkrlqjy';
+  const [acceptTerms, setAcceptTerms] = useState(false)
+  const formSpreeURL = import.meta.env.VITE_FORMSPREE_API_KEY
   const contactosRef = collection(fire_db, 'contactos');
+
+  const verifyEmailFormat = (correo) => {
+    const patron = /^[\w.-]+@[a-zA-Z\d\\.-]+\.[a-zA-Z]{2,}$/;
+    return patron.test(correo);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name.length || !email.length || !telefono.length || !message.length) {
+    if (!name.length || !email.length || !verifyEmailFormat(email) || !telefono.length || telefono.length < 8 || isNaN(telefono) || !message.length) {
       Swal.fire({
         icon: "error",
         title: "Campos inválidos",
-        text: "Llena el formulario para poder continuar",
+        text: "Llena bien el formulario para poder continuar",
       });
+    } else if(!acceptTerms) { 
+      Swal.fire({
+        icon: "error",
+        title: 'Acepta los terminos y condiciones'
+      })
     } else {
       const info = {
         name,
@@ -67,41 +79,32 @@ export const LandingPage = ({dbFirebase}) => {
   };
 
   const searchTerreno = (e) => {
-    const value = e.target.value;
-    setSliderValue(value);
-    terrenos.filter(() => {
-      const value = sliderValue;
+    setSliderValue(e.value)
+    const terrenoFiltrado = terrenos.find((item) => {
+      const percent = item.precio
       const formatSliderValue = currencyFormatter({
         currency: 'MXN',
-        value: value
+        value: e.value
       });
       setFormatEngancheCalculated(formatSliderValue);
-      switch (sliderValue) {
-        case 50000:
-          setTerreno(terrenos[0]);
-          break;
-        case 60000:
-          setTerreno(terrenos[2]);
-          break;
-        case 70000:
-          setTerreno(terrenos[3]);
-          break;
-        case 90000:
-          setTerreno(terrenos[1]);
-          break;
-        case 140000:
-          setTerreno(terrenos[4]);
-          break;
-        default:
-          setTerreno(terrenos[1]);
-          break;
-      }
-    });
+      return sliderValue <  percent
+    })
+    console.log(terrenoFiltrado);
+    setTerreno(terrenoFiltrado)
   };
 
   useEffect(() => {
-    searchTerreno({ target: { value: sliderValue } });
-  }, [sliderValue]);
+    const formatSliderValue = currencyFormatter({
+      currency: 'MXN',
+      value: sliderValue
+    });
+    setFormatEngancheCalculated(formatSliderValue)
+    const terrenoFiltrado = terrenos.find((item) => {
+      const percent = item.precio
+      return sliderValue <  percent
+    })
+    setTerreno(terrenoFiltrado)
+  }, [sliderValue, terrenos]);
 
   return (
     <div className="flex flex-col w-full">
@@ -124,9 +127,8 @@ export const LandingPage = ({dbFirebase}) => {
                     marks
                     min={50000}
                     max={140000}
-                    valueLabelDisplay="auto"
                     value={sliderValue}
-                    onChange={(e) => searchTerreno(e)}
+                    onChange={(e) => searchTerreno(e.target)}
                     sx={{
                       color: '#42838A', // Color del slider
                       '& .MuiSlider-thumb': {
@@ -142,6 +144,7 @@ export const LandingPage = ({dbFirebase}) => {
                       metrosCuadrados={terreno.metrosCuadrados}
                       municipio={terreno.municipio}
                       ubicacion={terreno.ubicacion}
+                      key={terreno.id}
                     />
                   )}
                 </div>
@@ -154,8 +157,8 @@ export const LandingPage = ({dbFirebase}) => {
             <span className="text-5xl md:text-7xl text-p3">¡</span>Vende tu Terreno o Encuentra tu Rincón <span className="font-extrabold text-p3">Perfecto</span><span className="text-5xl md:text-7xl text-p3">!</span>
           </h1>
           <span className="title text-xl font-open text-p2">
-            ¿Listo para dar el siguiente paso? ¡Nosotros también
-            Completa este formulario rápido y nuestros expertos en terrenos se encargarán del resto. Ya sea que quieras vender tu espacio o descubrir tu nuevo oasis, ¡Estamos aquí para hacerlo realidad!
+            ¿Listo para dar el siguiente paso? ¡Nosotros también!
+            Completa este formulario y nuestros asesores se encargarán del resto. Ya sea que quieras vender tu espacio o descubrir una nueva inversion, ¡Estamos aquí para hacerlo realidad!
           </span>
           <label>Nombre Completo</label>
           <TextFieldComponent setData={setName} value={name} name="name" label="Nombre Completo *" />
@@ -165,6 +168,11 @@ export const LandingPage = ({dbFirebase}) => {
           <TextFieldComponent setData={setTelefono} value={telefono} name="telefono" label="Número de teléfono *" />
           <label>Tu mensaje</label>
           <TextAreaComponent setData={setMessage} value={message} name="message" label="Tu mensaje" />
+          <div className="w-full flex flex-col justify-center items-center">
+          <label className="text-sm text-center font-nunito font-extrabold">Al enviar este formulario, aceptas los términos y condiciones, así como la política de privacidad.
+          </label>
+          <Checkbox checked={acceptTerms} onChange={() => setAcceptTerms(!acceptTerms)}></Checkbox>
+          </div>
           <Button onClick={handleSubmit} variant="contained" disableElevation className="w-full">
             Enviar
           </Button>
@@ -176,7 +184,7 @@ export const LandingPage = ({dbFirebase}) => {
           <p className="font-afacad text-center text-4xl md:text-5xl p-4">¡Encuentra tu próximo hogar!</p>
         </div>
         <div className="z-50 p-2 md:p-16 mt-72 md:mt-40 ">
-          <CardsComponent dbFirebase={dbFirebase}/>
+          <CardsComponent dbFirebase={dbFirebase} />
         </div>
       </div>
     </div>

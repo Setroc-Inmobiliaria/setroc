@@ -20,13 +20,13 @@ const UploadTerreno = () => {
   const [estado, setEstado] = useState("")
   const [descripcion, setDescripcion] = useState("")
   const [tipoEscritura, setTipoEscritura] = useState("")
-  const [precio, setPrecio] = useState(null)
+  const [precio, setPrecio] = useState('')
   const [costoPorMetroCuadrado, setCostoPorMetroCuadrado] = useState('')
   const [electricidad, setElectricidad] = useState(false)
   const [pavimentacion, setPavimentacion] = useState(false)
   const [mensualidades, setMensualidades] = useState([])
-  const [coorX, setCoorX] = useState(null)
-  const [coorY, setCoorY] = useState(null)
+  const [coorX, setCoorX] = useState('')
+  const [coorY, setCoorY] = useState('')
 
 
   const clearFields = () => {
@@ -84,7 +84,7 @@ const UploadTerreno = () => {
             }
           );
           const res = await response.json();
-          console.log('res', res);
+
 
           imagesUrl.push(res.secure_url)
         })
@@ -115,23 +115,32 @@ const UploadTerreno = () => {
         active: true
       }
 
-      if(!newTerreno.nombre || !newTerreno.municipio || !newTerreno.estado || !newTerreno.descripcion || !newTerreno.amenidades || !newTerreno.tipoEscritura || !newTerreno.precio || !newTerreno.metrosCuadrados || !newTerreno.costoPorMetroCuadrado || !newTerreno.servicios.electricidad || !newTerreno.servicios.pavimentacion || !newTerreno.mensualidades || !newTerreno.coordenadas || !newTerreno.imagenes ){
+      if (!newTerreno.nombre || !newTerreno.municipio || !newTerreno.estado || !newTerreno.descripcion || !newTerreno.amenidades || !newTerreno.tipoEscritura || !newTerreno.precio || !newTerreno.metrosCuadrados || !newTerreno.costoPorMetroCuadrado || !newTerreno.servicios.electricidad || !newTerreno.servicios.pavimentacion || !newTerreno.mensualidades || !newTerreno.coordenadas || !newTerreno.imagenes) {
         Swal.fire({
           title: 'Completa todos los campos para continuar',
           text: 'Es necesario llenar todos los campos para agregar un terreno a la lista',
-          
-          
-        })
-      } else {
-        Swal.fire({
-          
-          title: 'Nuevo terreno asignado',
-          text: 'El terreno aparecera en el inicio automaticamente. Este terreno estara publicado inmediatamente, si prefieres que permanezca oculto puedes cambiar su estado en la pestana de "Terrenos disponibles"',
+
 
         })
+        setLoading(false);
+        setPreview(null);
+
+      } else {
         await addDoc(collection(fire_db, 'terrenos'), newTerreno).then(() => {
           clearFields()
+          setLoading(false);
+          setPreview(null);
+          Swal.fire({
+
+            title: 'Nuevo terreno asignado',
+            text: 'El terreno aparecera en el inicio automaticamente. Este terreno estara publicado inmediatamente, si prefieres que permanezca oculto puedes cambiar su estado en la pestana de "Terrenos disponibles"',
+  
+          })
         })
+       
+        
+        setLoading(false);
+        setPreview(null);
       }
 
     } catch (error) {
@@ -156,9 +165,9 @@ const UploadTerreno = () => {
 
   return (
     <div className="flex h-full flex-col md:flex-row gap-12 p-2 md:p-12">
-      
+
       <div className="w-full flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Instrucciones</h1>
+        <h1 className="text-3xl font-bold">Instrucciones</h1>
         <p className="my-4">
           Todos los campos son obligatorios. Asegúrate de completarlos todos, de lo contrario, el terreno no será publicado.
         </p>
@@ -236,6 +245,7 @@ const UploadTerreno = () => {
           placeholder="Metros cuadrados"
           name="metros cuadrados"
           setData={setMetrosCuadrados}
+          type="number"
         />
 
         <TextFieldComponent
@@ -320,7 +330,7 @@ const UploadTerreno = () => {
 
       <div className="container mx-auto max-w-screen-lg h-full flex flex-col justify-center w-full">
         <header className="border-dashed h-96 border-2 border-gray-400 flex flex-col justify-center items-center">
-          
+
           <p className="font-semibold text-gray-900 flex flex-wrap justify-center">
 
           </p>
@@ -359,18 +369,18 @@ const UploadTerreno = () => {
             Reset Imagen
           </button>
 
-          
-        <Button
-          sx={{
-            backgroundColor: '#67ADD4',
-            color: "black",
 
-            '&:hover': {
-              backgroundColor: '#91D1C5'
-            }
-          }}
-          onClick={() => uploadToDB()}
-        >Confirmar</Button>
+          <Button
+            sx={{
+              backgroundColor: '#67ADD4',
+              color: "black",
+
+              '&:hover': {
+                backgroundColor: '#91D1C5'
+              }
+            }}
+            onClick={() => uploadToDB()}
+          >Confirmar</Button>
         </div>
       </div>
     </div>
