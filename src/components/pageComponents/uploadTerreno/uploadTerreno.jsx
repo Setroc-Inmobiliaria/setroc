@@ -245,7 +245,7 @@ const UploadTerreno = () => {
           placeholder="Metros cuadrados"
           name="metros cuadrados"
           setData={setMetrosCuadrados}
-          type="number"
+          // type="number"
         />
 
         <TextFieldComponent

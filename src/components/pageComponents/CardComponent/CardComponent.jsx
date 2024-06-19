@@ -91,7 +91,7 @@ const CardComponent = ({
       <div className="w-full flex flex-row justify-between items-center">
         <div className="flex flex-col p-4 font-afacad text-p2 font-light">
           <div className="w-full flex flex-col justify-center ">
-            <h1>Desrrollo en {nombre}</h1>
+            <h1>Desarrollo en {nombre}</h1>
             <h1 className="">
                {municipio}, {ubicacion}
             </h1>
