@@ -115,7 +115,9 @@ const UploadTerreno = () => {
         active: true
       }
 
-      if (!newTerreno.nombre || !newTerreno.municipio || !newTerreno.estado || !newTerreno.descripcion || !newTerreno.amenidades || !newTerreno.tipoEscritura || !newTerreno.precio || !newTerreno.metrosCuadrados || !newTerreno.costoPorMetroCuadrado || !newTerreno.servicios.electricidad || !newTerreno.servicios.pavimentacion || !newTerreno.mensualidades || !newTerreno.coordenadas || !newTerreno.imagenes) {
+
+      
+      if (!newTerreno.nombre || !newTerreno.municipio || !newTerreno.estado || !newTerreno.descripcion || !newTerreno.amenidades || !newTerreno.tipoEscritura || !newTerreno.precio || !newTerreno.metrosCuadrados || !newTerreno.costoPorMetroCuadrado || !newTerreno.mensualidades || !newTerreno.coordenadas || !newTerreno.imagenes) {
         Swal.fire({
           title: 'Completa todos los campos para continuar',
           text: 'Es necesario llenar todos los campos para agregar un terreno a la lista',
@@ -124,6 +126,8 @@ const UploadTerreno = () => {
         })
         setLoading(false);
         setPreview(null);
+
+        
 
       } else {
         await addDoc(collection(fire_db, 'terrenos'), newTerreno).then(() => {
@@ -134,11 +138,11 @@ const UploadTerreno = () => {
 
             title: 'Nuevo terreno asignado',
             text: 'El terreno aparecera en el inicio automaticamente. Este terreno estara publicado inmediatamente, si prefieres que permanezca oculto puedes cambiar su estado en la pestana de "Terrenos disponibles"',
-  
+
           })
         })
-       
-        
+
+
         setLoading(false);
         setPreview(null);
       }
@@ -245,7 +249,7 @@ const UploadTerreno = () => {
           placeholder="Metros cuadrados"
           name="metros cuadrados"
           setData={setMetrosCuadrados}
-          // type="number"
+        // type="number"
         />
 
         <TextFieldComponent
