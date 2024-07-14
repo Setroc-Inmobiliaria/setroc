@@ -23,7 +23,7 @@ isPlaying={true}
               <Slide key={index} index={index}>
                 <img
                 key={index}
-                  className="h-96 w-full object-cover object-botom"
+                  className="h-96 w-full object-contain object-center"
                   src={img}
                   alt="terreno"
                 />

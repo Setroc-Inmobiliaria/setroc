@@ -20,7 +20,7 @@ export default {
         'roboto': ['Roboto', 'sans-serif'],
         'open': ['Open Sans', 'sans-serif'],
         'nunito': ['Nunito', 'sans-serif'],
-
+        'lobster' : ['Lobster', 'sans-serif']
       },
       colors: {
         p1: '#91D1C5',

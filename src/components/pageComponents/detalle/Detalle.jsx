@@ -257,7 +257,7 @@ const DetalleTerreno = ({ dbFirebase }) => {
               <span className="font-roboto font-medium italic text-p4">Ubicación:</span>
               <a href={`https://www.google.com/maps?q=${terreno.coordenadas[0]},${terreno.coordenadas[1]}&z=17&hl=es`} target="_blank" rel="noreferrer" className="text-blue-500">Ver en Google Maps</a>
 
-              <p className="mt-4 font-nunito">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.ubicacion}, {terreno.municipio}!</p>
+              <p className="mt-4 font-nunito">¡Oportunidad de inversión en un terreno con gran potencial de crecimiento en {terreno.nombre}, {terreno.municipio}!</p>
 
               <span className="font-nunito text-p2">Precios sujetos a disponibilidad*</span>
 

@@ -113,10 +113,10 @@ export const LandingPage = ({ dbFirebase }) => {
         <div className="bg-image w-full flex flex-col justify-center items-center">
           <div className="bg-white bg-opacity-20 w-full flex flex-col justify-center items-center gap-6 p-2">
             <div className="bg-white bg-opacity-80 h-full w-full md:w-full flex flex-col gap-5 bg-smoke p-4 md:p-24 rounded-lg drop-shadow-2xl">
-              <h1 className="title  font-roboto text-5xl md:text-5xl text-p3 font-medium">
+              <h1 className="title  font-lobster text-5xl md:text-6xl text-p3 font-medium">
                 <span className="font-extrabold text-7xl">E</span>L lugar de tus sueños
               </h1>
-              <h1 className="text-end font-nunito text-3xl md:text-5xl text-p2"><span className="text-6xl font-bold">C</span>ada presupuesto tiene su terreno ideal</h1>
+              <h1 className="text-end font-montserrat text-3xl md:text-5xl text-p2"><span className="text-6xl font-bold">C</span>ada presupuesto tiene su terreno ideal</h1>
               <div className="w-full flex flex-col justify-center items-center md:p-12 ">
                 <h1 className="md:text-2xl text-2xl text-center py-5 text-p4"><span className="text-5xl">S</span>elecciona el rango del presupuesto destinado para el enganche</h1>
                 <h1 className="md:text-2xl text-lg text-center py-5 text-p3"><span className="text-5xl">C</span>on un enganche de {formatEngancheCalculated} te recomendamos:</h1>
@@ -153,7 +153,7 @@ export const LandingPage = ({ dbFirebase }) => {
           </div>
         </div>
         <div className="w-full flex flex-col justify-center p-5 md:p-20 gap-6 panel1">
-          <h1 className="title text-3xl font-bold md:text-5xl font-nunito text-end md:text-center text-p2">
+          <h1 className="title text-3xl font-bold md:text-5xl font-lobster text-end md:text-center text-p2">
             <span className="text-5xl md:text-7xl text-p3">¡</span>Vende tu Terreno o Encuentra tu Rincón <span className="font-extrabold text-p3">Perfecto</span><span className="text-5xl md:text-7xl text-p3">!</span>
           </h1>
           <span className="title text-xl font-open text-p2">
